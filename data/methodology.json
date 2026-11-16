@@ -1,0 +1,156 @@
+{
+ "title": "Methodology and limitations",
+ "dataset": {
+  "name": "Zomato restaurant listing dataset (zomato.csv) with Country-Code.xlsx",
+  "status": "Publicly circulated secondary data; a single undated (historical) snapshot. This website is a historical research benchmark, not a live Zomato service.",
+  "rows": 9551,
+  "columns": 21,
+  "countries": 15
+ },
+ "funnel": [
+  {
+   "step": "Full dataset",
+   "n": 9551,
+   "note": "15 countries, 12 currencies; audit only"
+  },
+  {
+   "step": "India",
+   "n": 8652,
+   "note": "Single currency; 38 of 43 cities have every restaurant rated"
+  },
+  {
+   "step": "Delhi NCR (all)",
+   "n": 7947,
+   "note": "New Delhi, Gurgaon, Noida, Faridabad, Ghaziabad"
+  },
+  {
+   "step": "Rated NCR",
+   "n": 5808,
+   "note": "Rating > 0 (equivalently 4+ votes)"
+  },
+  {
+   "step": "Unrated NCR",
+   "n": 2139,
+   "note": "No published rating (0-3 votes)"
+  }
+ ],
+ "threshold_pattern": {
+  "unrated_votes": [
+   0,
+   3
+  ],
+  "rated_votes_min": 4,
+  "exceptions": 0,
+  "text": "Every listing with 0-3 votes shows a rating of 0 and every listing with 4+ votes has a positive rating, with no exception. This is an observed pattern consistent with a rating-publication threshold; it is not confirmed Zomato policy. A zero rating means 'no published rating', never zero quality."
+ },
+ "outcomes": [
+  {
+   "dimension": "visibility",
+   "name": "Visibility",
+   "measure": "is_rated = 1 if the rating is above zero",
+   "population": "All NCR",
+   "n": 7947,
+   "model": "Logistic regression (odds ratios)"
+  },
+  {
+   "dimension": "quality",
+   "name": "Perceived quality",
+   "measure": "Displayed aggregate rating (1.8-4.9 in rated NCR)",
+   "population": "Rated NCR",
+   "n": 5808,
+   "model": "OLS, HC3 robust errors (rating points)"
+  },
+  {
+   "dimension": "engagement",
+   "name": "Customer engagement",
+   "measure": "log(1 + Votes); votes are an engagement proxy, not satisfaction",
+   "population": "Rated NCR (primary); all NCR (sensitivity)",
+   "n": 5808,
+   "model": "OLS, HC3 robust errors (% difference in the geometric mean of 1 + Votes)"
+  }
+ ],
+ "specification": "outcome ~ online delivery + table booking + price tier (categorical) + cuisine breadth + chain (5+ outlets) + city fixed effects",
+ "analyses": [
+  {
+   "name": "Regression models",
+   "text": "Three models with a common right-hand side so that associations can be compared across outcomes; Model 3b re-estimates engagement on all NCR as a sensitivity check."
+  },
+  {
+   "name": "Robustness checks",
+   "text": "India-wide replication (R1), log cost for two in place of price tier (R2), excluding placeholder-coordinate rows (R3), excluding the most influential 1% (R4), a top-tercile engagement indicator (R5), chain thresholds of 3, 5, 8 and 10 outlets."
+  },
+  {
+   "name": "Performance analysis",
+   "text": "Top and bottom 10% by rating (rated NCR) and by votes (all NCR and rated NCR, never pooled), with Benjamini-Hochberg corrected tests, effect sizes and adjusted extreme-group logits."
+  },
+  {
+   "name": "City analysis",
+   "text": "Five-city profiles with Wilson and bootstrap intervals, tests with and without Ghaziabad, city-specific models for four cities and predictor x city interaction tests."
+  },
+  {
+   "name": "Locality analysis",
+   "text": "City + Locality units with at least 30 restaurants (sensitivity 20 and 50); rating statistics need at least 20 rated restaurants; locality fixed effects compared with city fixed effects by nested tests."
+  }
+ ],
+ "figures": [
+  {
+   "file": "assets/Research_Methodology_Flowchart.png",
+   "title": "Research methodology and analytical process (Figure 2 of the final paper)"
+  },
+  {
+   "file": "assets/RQ_Hypothesis_Framework.png",
+   "title": "Research questions and hypotheses: conceptual and empirical linkage (Figure 1 of the final paper)"
+  }
+ ],
+ "limitations": [
+  {
+   "title": "Observational design",
+   "text": "Every result is an association in a single cross-section; reverse causality is plausible and no causal effect is identified."
+  },
+  {
+   "title": "Votes are a proxy",
+   "text": "Votes capture one behavioural dimension of engagement and also reflect exposure and time on the platform. They are not a measure of customer satisfaction or sales."
+  },
+  {
+   "title": "Zero rating is not zero quality",
+   "text": "Restaurants without a published rating are excluded from rating statistics, never averaged in as low scores."
+  },
+  {
+   "title": "Publication threshold not confirmed",
+   "text": "The 0-3 / 4+ vote pattern is inferred from a perfect empirical separation, not verified against platform documentation."
+  },
+  {
+   "title": "Historical data",
+   "text": "The snapshot is undated. The platform, its rating rules and the NCR market may have changed, so these benchmarks do not describe the current platform."
+  },
+  {
+   "title": "Not nationally representative",
+   "text": "The analysis covers Delhi NCR only; findings should not be generalised to India."
+  },
+  {
+   "title": "Small Ghaziabad sample",
+   "text": "Ghaziabad has 25 restaurants (23 rated) and no eligible locality; its values are shown but not interpreted."
+  },
+  {
+   "title": "Uneven locality coverage",
+   "text": "74 of the 98 eligible localities are in New Delhi; Faridabad has one and Ghaziabad none. Ranks near the threshold are imprecise and threshold-sensitive."
+  },
+  {
+   "title": "Locality effects bundle many factors",
+   "text": "Locality differences combine footfall, demographics, rents and restaurant mix; they are not effects of location itself."
+  },
+  {
+   "title": "Omitted variables",
+   "text": "Listing age, food, service, ambience and review text are unobserved; the rating model explains only 13% of rating variance."
+  },
+  {
+   "title": "Outlet-based chain proxy",
+   "text": "The chain indicator counts names appearing 5+ times in the snapshot; it is not corporate ownership."
+  }
+ ],
+ "sources": [
+  "REPORTS/Final_Research_Paper.docx (corrected Stage 1): Sections 4, 5 and 11; Figures 1-2",
+  "RESULTS/key_results.json (samples)",
+  "DOCUMENTATION/Stage1_Correction_Audit.md"
+ ]
+}

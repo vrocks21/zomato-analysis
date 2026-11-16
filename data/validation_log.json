@@ -1,0 +1,880 @@
+{
+ "generated_on": "2026-11-16T23:55:32",
+ "checks": [
+  {
+   "check": "NCR n equals key_results samples.ncr",
+   "pass": true,
+   "detail": "7947 vs 7947"
+  },
+  {
+   "check": "NCR rated equals samples.ncr_rated",
+   "pass": true,
+   "detail": "5808 vs 5808"
+  },
+  {
+   "check": "Top-rated count 679",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Bottom-rated count 727",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "High-engagement count 798",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Zero-vote count 1,093",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "NCR pub_rate_pct matches T3 (73.1%)",
+   "pass": true,
+   "detail": "73.084 vs 73.100"
+  },
+  {
+   "check": "NCR delivery_pct matches T3 (29.2%)",
+   "pass": true,
+   "detail": "29.231 vs 29.200"
+  },
+  {
+   "check": "NCR booking_pct matches T3 (13.2%)",
+   "pass": true,
+   "detail": "13.200 vs 13.200"
+  },
+  {
+   "check": "NCR chain_pct matches T3 (16.5%)",
+   "pass": true,
+   "detail": "16.459 vs 16.500"
+  },
+  {
+   "check": "NCR mean rating matches T3 (3.280)",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "New Delhi: n matches samples.city_n",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "New Delhi: rated matches samples.city_rated",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "New Delhi: rated + unrated = n",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Gurgaon: n matches samples.city_n",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Gurgaon: rated matches samples.city_rated",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Gurgaon: rated + unrated = n",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Noida: n matches samples.city_n",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Noida: rated matches samples.city_rated",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Noida: rated + unrated = n",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Faridabad: n matches samples.city_n",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Faridabad: rated matches samples.city_rated",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Faridabad: rated + unrated = n",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Ghaziabad: n matches samples.city_n",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Ghaziabad: rated matches samples.city_rated",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Ghaziabad: rated + unrated = n",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Five cities",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "No significant predictor x city interaction after BH",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=20: City + Locality identifiers unique",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=20: eligible count matches key_results",
+   "pass": true,
+   "detail": "136 vs 136"
+  },
+  {
+   "check": "t=20: every unit has >= 20 restaurants",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=20: restaurants covered",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=20: New Delhi eligible count",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=20: Gurgaon eligible count",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=20: Noida eligible count",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=20: Faridabad eligible count",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=20: Ghaziabad eligible count",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=20: rating_rankable means n_rated >= 20",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=30: City + Locality identifiers unique",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=30: eligible count matches key_results",
+   "pass": true,
+   "detail": "98 vs 98"
+  },
+  {
+   "check": "t=30: every unit has >= 30 restaurants",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=30: restaurants covered",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=30: New Delhi eligible count",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=30: Gurgaon eligible count",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=30: Noida eligible count",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=30: Faridabad eligible count",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=30: Ghaziabad eligible count",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=30: rating_rankable means n_rated >= 20",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=50: City + Locality identifiers unique",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=50: eligible count matches key_results",
+   "pass": true,
+   "detail": "47 vs 47"
+  },
+  {
+   "check": "t=50: every unit has >= 50 restaurants",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=50: restaurants covered",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=50: New Delhi eligible count",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=50: Gurgaon eligible count",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=50: Noida eligible count",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=50: Faridabad eligible count",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=50: Ghaziabad eligible count",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t=50: rating_rankable means n_rated >= 20",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "t50 subset of t30 subset of t20",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Rankings: 9 rankings",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Rating-based rankings cover 82 units",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Alaknanda (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Anand Vihar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Ashok Vihar Phase 1 (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Chanakyapuri (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Chandni Chowk (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Chittaranjan Park (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Connaught Place (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Daryaganj (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Defence Colony (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Delhi University-GTB Nagar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Dilshad Garden (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "East Patel Nagar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "East of Kailash (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Greater Kailash (GK) 1 (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Greater Kailash (GK) 2 (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Green Park (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Gujranwala Town (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Hauz Khas (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "IP Extension (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Jail Road (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Janakpuri (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Jangpura (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Janpath (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Kalkaji (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Kamla Nagar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Karol Bagh (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Khan Market (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Kirti Nagar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Krishna Nagar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Laxmi Nagar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Lodhi Colony (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Mahipalpur (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Malviya Nagar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Mayur Vihar Phase 1 (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Mayur Vihar Phase 3 (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Moti Nagar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Mukherjee Nagar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Munirka (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Naraina (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Nehru Place (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Netaji Subhash Place (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "New Friends Colony (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Paharganj (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Paschim Vihar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Pitampura (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Preet Vihar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Punjabi Bagh (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Rajinder Nagar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Rajouri Garden (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Rohini (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Safdarjung (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Saket (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Satyaniketan (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Shahdara (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Shalimar Bagh (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "South Extension 2 (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Tagore Garden (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Tilak Nagar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Uttam Nagar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Vasant Vihar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Vijay Nagar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Vikaspuri (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Vivek Vihar (New Delhi): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Cyber Hub, DLF Cyber City (Gurgaon): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "DLF Phase 3 (Gurgaon): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Old Railway Road (Gurgaon): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Sector 14 (Gurgaon): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Sector 29 (Gurgaon): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Sector 31 (Gurgaon): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Sector 56 (Gurgaon): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Sohna Road (Gurgaon): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Sushant Lok (Gurgaon): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "DLF Mall of India, Sector 18, Noida (Noida): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Greater Noida (Noida): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Sector 110 (Noida): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Sector 18 (Noida): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Sector 41 (Noida): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Sector 50 (Noida): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Sector 62 (Noida): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Sector 72 (Noida): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "The Great India Place, Sector 38 (Noida): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Sector 15 (Faridabad): quadrant n_rated matches",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Locality records = 136 (t20 superset)",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Primary-threshold records = 98",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Rankable at t30 = 82",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Patterns at t30 = 82",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Locality names repeating across cities exist (City + Locality key needed)",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Extremes rating: group sizes positive",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Extremes votes_rated: group sizes positive",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Extremes votes_all: group sizes positive",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Quadrant sizes sum to rated NCR",
+   "pass": true,
+   "detail": "5808"
+  },
+  {
+   "check": "Quadrant Stars: T9 n matches key_results",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Quadrant Crowd magnets: T9 n matches key_results",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Quadrant Hidden gems: T9 n matches key_results",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Quadrant Low profile: T9 n matches key_results",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Delivery quality SD = 0.208",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Delivery engagement SD = 0.48",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Booking visibility p = .004",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Booking quality ns",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Booking rated engagement ns",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Booking all-NCR engagement significant",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "Engagement % equals 100*(exp(b)-1)",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "site.json: no NaN/Inf values",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "site.json: has sources or provenance",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "cities.json: no NaN/Inf values",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "cities.json: has sources or provenance",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "localities.json: no NaN/Inf values",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "localities.json: has sources or provenance",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "performance_extremes.json: no NaN/Inf values",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "performance_extremes.json: has sources or provenance",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "research_findings.json: no NaN/Inf values",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "research_findings.json: has sources or provenance",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "methodology.json: no NaN/Inf values",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "methodology.json: has sources or provenance",
+   "pass": true,
+   "detail": ""
+  }
+ ]
+}

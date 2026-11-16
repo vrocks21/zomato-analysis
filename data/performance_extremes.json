@@ -1,0 +1,564 @@
+{
+ "title": "Performance extremes",
+ "comparisons": [
+  {
+   "id": "rating",
+   "title": "Highest- vs lowest-rated",
+   "population": "Rated NCR restaurants",
+   "n_population": 5808,
+   "top_rule": "rating >= 3.9 (P90)",
+   "bottom_rule": "rating <= 2.7 (P10)",
+   "n_top": 679,
+   "n_bottom": 727,
+   "price34": {
+    "top": 50.96,
+    "bottom": 11.28
+   },
+   "binary": [
+    {
+     "characteristic": "Online delivery",
+     "top": 47.42,
+     "bottom": 53.37,
+     "top_stat": "47.4% (322/679)",
+     "bottom_stat": "53.4% (388/727)",
+     "effect_size": 0.059,
+     "effect_metric": "Cramer's V (phi)",
+     "magnitude": "negligible",
+     "p_BH": 0.025823067747202475,
+     "significant_BH": true,
+     "test": "Chi-square (df=1)"
+    },
+    {
+     "characteristic": "Table booking",
+     "top": 40.06,
+     "bottom": 11.97,
+     "top_stat": "40.1% (272/679)",
+     "bottom_stat": "12.0% (87/727)",
+     "effect_size": 0.322,
+     "effect_metric": "Cramer's V (phi)",
+     "magnitude": "medium",
+     "p_BH": 5.612568776130135e-33,
+     "significant_BH": true,
+     "test": "Chi-square (df=1)"
+    },
+    {
+     "characteristic": "Chain indicator (5+ outlets)",
+     "top": 8.39,
+     "bottom": 29.16,
+     "top_stat": "8.4% (57/679)",
+     "bottom_stat": "29.2% (212/727)",
+     "effect_size": 0.264,
+     "effect_metric": "Cramer's V (phi)",
+     "magnitude": "small",
+     "p_BH": 9.636197534259678e-23,
+     "significant_BH": true,
+     "test": "Chi-square (df=1)"
+    }
+   ],
+   "medians": [
+    {
+     "characteristic": "Average cost for two (INR)",
+     "top": 1000.0,
+     "bottom": 500.0,
+     "top_stat": "median 1000.00 (IQR 500.00-1600.00); mean 1223.56, SD 1031.75",
+     "bottom_stat": "median 500.00 (IQR 400.00-700.00); mean 595.60, SD 361.01",
+     "effect_size": 0.455,
+     "effect_metric": "rank-biserial r",
+     "magnitude": "medium",
+     "p_BH": 8.257171124006639e-49,
+     "significant_BH": true,
+     "test": "Mann-Whitney U"
+    },
+    {
+     "characteristic": "Number of cuisines",
+     "top": 2.0,
+     "bottom": 2.0,
+     "top_stat": "median 2.00 (IQR 2.00-3.00); mean 2.63, SD 1.31",
+     "bottom_stat": "median 2.00 (IQR 2.00-3.00); mean 2.24, SD 1.02",
+     "effect_size": 0.162,
+     "effect_metric": "rank-biserial r",
+     "magnitude": "small",
+     "p_BH": 5.729293060215944e-08,
+     "significant_BH": true,
+     "test": "Mann-Whitney U"
+    }
+   ],
+   "adjusted_or": [
+    {
+     "term": "Online delivery",
+     "OR": 1.105,
+     "lo": 0.856,
+     "hi": 1.426,
+     "p": 0.44435646192457046,
+     "significant": false
+    },
+    {
+     "term": "Table booking",
+     "OR": 0.926,
+     "lo": 0.608,
+     "hi": 1.411,
+     "p": 0.7218635485370957,
+     "significant": false
+    },
+    {
+     "term": "Chain (5+ outlets)",
+     "OR": 0.292,
+     "lo": 0.207,
+     "hi": 0.412,
+     "p": 2.1795019588447475e-12,
+     "significant": true
+    },
+    {
+     "term": "Cuisine breadth (+1 tag)",
+     "OR": 1.101,
+     "lo": 0.983,
+     "hi": 1.234,
+     "p": 0.09511951387800709,
+     "significant": false
+    },
+    {
+     "term": "Price tier 2 (vs 1)",
+     "OR": 1.291,
+     "lo": 0.959,
+     "hi": 1.738,
+     "p": 0.09180431003765738,
+     "significant": false
+    },
+    {
+     "term": "Price tier 3 (vs 1)",
+     "OR": 7.756,
+     "lo": 4.85,
+     "hi": 12.404,
+     "p": 1.2244843716775046e-17,
+     "significant": true
+    },
+    {
+     "term": "Price tier 4 (vs 1)",
+     "OR": 13.327,
+     "lo": 6.585,
+     "hi": 26.971,
+     "p": 6.015635195765006e-13,
+     "significant": true
+    }
+   ],
+   "adjusted_note": "Logistic regression of top (1) vs bottom (0) membership on the Model 1-3 predictors with city fixed effects.",
+   "takeaway": "Price positioning and chain status separate the rating extremes; after adjustment, delivery (OR 1.10, p = .444) and table booking do not."
+  },
+  {
+   "id": "votes_rated",
+   "title": "Most- vs least-voted (rated restaurants)",
+   "population": "Rated NCR restaurants",
+   "n_population": 5808,
+   "top_rule": "votes >= 321 (P90 among rated)",
+   "bottom_rule": "votes <= 7 (P10 among rated)",
+   "n_top": 582,
+   "n_bottom": 681,
+   "price34": {
+    "top": 57.39,
+    "bottom": 4.11
+   },
+   "binary": [
+    {
+     "characteristic": "Online delivery",
+     "top": 52.92,
+     "bottom": 15.12,
+     "top_stat": "52.9% (308/582)",
+     "bottom_stat": "15.1% (103/681)",
+     "effect_size": 0.402,
+     "effect_metric": "Cramer's V (phi)",
+     "magnitude": "medium",
+     "p_BH": 6.2816035752333644e-46,
+     "significant_BH": true,
+     "test": "Chi-square (df=1)"
+    },
+    {
+     "characteristic": "Table booking",
+     "top": 45.19,
+     "bottom": 3.96,
+     "top_stat": "45.2% (263/582)",
+     "bottom_stat": "4.0% (27/681)",
+     "effect_size": 0.489,
+     "effect_metric": "Cramer's V (phi)",
+     "magnitude": "medium",
+     "p_BH": 5.8603083510623e-67,
+     "significant_BH": true,
+     "test": "Chi-square (df=1)"
+    },
+    {
+     "characteristic": "Chain indicator (5+ outlets)",
+     "top": 16.67,
+     "bottom": 12.92,
+     "top_stat": "16.7% (97/582)",
+     "bottom_stat": "12.9% (88/681)",
+     "effect_size": 0.053,
+     "effect_metric": "Cramer's V (phi)",
+     "magnitude": "negligible",
+     "p_BH": 0.06498671098742789,
+     "significant_BH": false,
+     "test": "Chi-square (df=1)"
+    }
+   ],
+   "medians": [
+    {
+     "characteristic": "Average cost for two (INR)",
+     "top": 1150.0,
+     "bottom": 350.0,
+     "top_stat": "median 1150.00 (IQR 600.00-1600.00); mean 1243.13, SD 848.88",
+     "bottom_stat": "median 350.00 (IQR 200.00-500.00); mean 410.44, SD 320.83",
+     "effect_size": 0.76,
+     "effect_metric": "rank-biserial r",
+     "magnitude": "large",
+     "p_BH": 7.272393422481896e-120,
+     "significant_BH": true,
+     "test": "Mann-Whitney U"
+    },
+    {
+     "characteristic": "Number of cuisines",
+     "top": 3.0,
+     "bottom": 2.0,
+     "top_stat": "median 3.00 (IQR 2.00-4.00); mean 2.75, SD 1.32",
+     "bottom_stat": "median 2.00 (IQR 1.00-2.00); mean 1.77, SD 0.87",
+     "effect_size": 0.447,
+     "effect_metric": "rank-biserial r",
+     "magnitude": "medium",
+     "p_BH": 3.907251326278977e-46,
+     "significant_BH": true,
+     "test": "Mann-Whitney U"
+    }
+   ],
+   "adjusted_or": [
+    {
+     "term": "Online delivery",
+     "OR": 7.28,
+     "lo": 5.068,
+     "hi": 10.458,
+     "p": 6.361952575864746e-27,
+     "significant": true
+    },
+    {
+     "term": "Table booking",
+     "OR": 1.743,
+     "lo": 0.964,
+     "hi": 3.153,
+     "p": 0.06606931971928826,
+     "significant": false
+    },
+    {
+     "term": "Chain (5+ outlets)",
+     "OR": 1.841,
+     "lo": 1.177,
+     "hi": 2.878,
+     "p": 0.0074584230880245005,
+     "significant": true
+    },
+    {
+     "term": "Cuisine breadth (+1 tag)",
+     "OR": 1.53,
+     "lo": 1.305,
+     "hi": 1.793,
+     "p": 1.5535987158863207e-07,
+     "significant": true
+    },
+    {
+     "term": "Price tier 2 (vs 1)",
+     "OR": 3.393,
+     "lo": 2.291,
+     "hi": 5.027,
+     "p": 1.1006375614643979e-09,
+     "significant": true
+    },
+    {
+     "term": "Price tier 3 (vs 1)",
+     "OR": 42.024,
+     "lo": 21.713,
+     "hi": 81.332,
+     "p": 1.3096758822260945e-28,
+     "significant": true
+    },
+    {
+     "term": "Price tier 4 (vs 1)",
+     "OR": 66.47,
+     "lo": 25.189,
+     "hi": 175.405,
+     "p": 2.3132252337624502e-17,
+     "significant": true
+    }
+   ],
+   "adjusted_note": "Logistic regression of top (1) vs bottom (0) membership among rated restaurants.",
+   "takeaway": "Delivery, upper price tiers and cuisine breadth distinguish the most-voted rated restaurants; the unadjusted chain difference does not survive multiple-testing correction."
+  },
+  {
+   "id": "votes_all",
+   "title": "Most-voted vs zero-vote (all NCR)",
+   "population": "All NCR restaurants",
+   "n_population": 7947,
+   "top_rule": "votes >= 234 (P90)",
+   "bottom_rule": "votes = 0 (P10 = 0, so every zero-vote listing)",
+   "n_top": 798,
+   "n_bottom": 1093,
+   "price34": {
+    "top": 55.01,
+    "bottom": 1.65
+   },
+   "binary": [
+    {
+     "characteristic": "Online delivery",
+     "top": 53.76,
+     "bottom": 2.2,
+     "top_stat": "53.8% (429/798)",
+     "bottom_stat": "2.2% (24/1093)",
+     "effect_size": 0.597,
+     "effect_metric": "Cramer's V (phi)",
+     "magnitude": "large",
+     "p_BH": 7.546486111207625e-148,
+     "significant_BH": true,
+     "test": "Chi-square (df=1)"
+    },
+    {
+     "characteristic": "Table booking",
+     "top": 44.49,
+     "bottom": 2.01,
+     "top_stat": "44.5% (355/798)",
+     "bottom_stat": "2.0% (22/1093)",
+     "effect_size": 0.525,
+     "effect_metric": "Cramer's V (phi)",
+     "magnitude": "large",
+     "p_BH": 6.644221122229532e-115,
+     "significant_BH": true,
+     "test": "Chi-square (df=1)"
+    },
+    {
+     "characteristic": "Chain indicator (5+ outlets)",
+     "top": 17.79,
+     "bottom": 7.78,
+     "top_stat": "17.8% (142/798)",
+     "bottom_stat": "7.8% (85/1093)",
+     "effect_size": 0.152,
+     "effect_metric": "Cramer's V (phi)",
+     "magnitude": "small",
+     "p_BH": 5.3997639502112146e-11,
+     "significant_BH": true,
+     "test": "Chi-square (df=1)"
+    }
+   ],
+   "medians": [
+    {
+     "characteristic": "Average cost for two (INR)",
+     "top": 1000.0,
+     "bottom": 300.0,
+     "top_stat": "median 1000.00 (IQR 600.00-1600.00); mean 1222.93, SD 870.60",
+     "bottom_stat": "median 300.00 (IQR 200.00-400.00); mean 327.24, SD 219.12",
+     "effect_size": 0.836,
+     "effect_metric": "rank-biserial r",
+     "magnitude": "large",
+     "p_BH": 1.1395104360886081e-212,
+     "significant_BH": true,
+     "test": "Mann-Whitney U"
+    },
+    {
+     "characteristic": "Number of cuisines",
+     "top": 3.0,
+     "bottom": 1.0,
+     "top_stat": "median 3.00 (IQR 2.00-4.00); mean 2.74, SD 1.35",
+     "bottom_stat": "median 1.00 (IQR 1.00-2.00); mean 1.56, SD 0.75",
+     "effect_size": 0.537,
+     "effect_metric": "rank-biserial r",
+     "magnitude": "large",
+     "p_BH": 2.7096452424364662e-98,
+     "significant_BH": true,
+     "test": "Mann-Whitney U"
+    }
+   ],
+   "adjusted_or": null,
+   "adjusted_note": "Adjusted odds ratios are not shown for this comparison: the paper reports near-separation for the upper price tiers, so its odds ratios are not interpreted as magnitudes.",
+   "takeaway": "This contrast separates engaged listings from inactive (unrated) ones; it is never pooled with the rated-only comparisons."
+  }
+ ],
+ "quadrants": {
+  "population": "Rated NCR restaurants (n = 5,808)",
+  "definition": "Median split of rating (3.3) and votes (40) among rated NCR restaurants, strict '>' rule (Phase 1 convention).",
+  "caveat": "The four quadrants are an imposed communication framework, not natural clusters: k-means prefers k = 2 (silhouette 0.478) over k = 4 (0.421); adjusted Rand index with the quadrants 0.48. They describe groups and must not be used to predict the success of an individual restaurant.",
+  "medians": {
+   "rating": 3.3,
+   "votes": 40.0
+  },
+  "segments": [
+   {
+    "name": "Stars",
+    "rule": "rating > 3.3 and votes > 40",
+    "n": 1970,
+    "share_pct": 33.92,
+    "mean_rating": 3.763,
+    "median_votes": 162,
+    "delivery_pct": 52.2,
+    "booking_pct": 30.2,
+    "chain_pct": 18.3,
+    "mean_price_tier": 2.21,
+    "median_cost_for_two": 700,
+    "mean_cuisines": 2.47
+   },
+   {
+    "name": "Crowd magnets",
+    "rule": "rating <= 3.3 and votes > 40",
+    "n": 907,
+    "share_pct": 15.62,
+    "mean_rating": 2.892,
+    "median_votes": 80,
+    "delivery_pct": 54.8,
+    "booking_pct": 20.9,
+    "chain_pct": 31.0,
+    "mean_price_tier": 1.93,
+    "median_cost_for_two": 600,
+    "mean_cuisines": 2.36
+   },
+   {
+    "name": "Hidden gems",
+    "rule": "rating > 3.3 and votes <= 40",
+    "n": 503,
+    "share_pct": 8.66,
+    "mean_rating": 3.541,
+    "median_votes": 27,
+    "delivery_pct": 36.6,
+    "booking_pct": 9.7,
+    "chain_pct": 14.7,
+    "mean_price_tier": 1.63,
+    "median_cost_for_two": 450,
+    "mean_cuisines": 1.98
+   },
+   {
+    "name": "Low profile",
+    "rule": "rating <= 3.3 and votes <= 40",
+    "n": 2428,
+    "share_pct": 41.8,
+    "mean_rating": 2.979,
+    "median_votes": 12,
+    "delivery_pct": 21.3,
+    "booking_pct": 6.9,
+    "chain_pct": 16.6,
+    "mean_price_tier": 1.45,
+    "median_cost_for_two": 400,
+    "mean_cuisines": 1.89
+   }
+  ],
+  "by_city_pct": {
+   "New Delhi": {
+    "Stars": 35.15,
+    "Crowd magnets": 15.69,
+    "Hidden gems": 8.28,
+    "Low profile": 40.88,
+    "n_rated": 4048
+   },
+   "Gurgaon": {
+    "Stars": 36.85,
+    "Crowd magnets": 14.04,
+    "Hidden gems": 10.11,
+    "Low profile": 38.99,
+    "n_rated": 890
+   },
+   "Noida": {
+    "Stars": 27.87,
+    "Crowd magnets": 17.82,
+    "Hidden gems": 8.62,
+    "Low profile": 45.69,
+    "n_rated": 696
+   },
+   "Faridabad": {
+    "Stars": 13.25,
+    "Crowd magnets": 9.27,
+    "Hidden gems": 11.26,
+    "Low profile": 66.23,
+    "n_rated": 151
+   },
+   "Ghaziabad": {
+    "Stars": 21.74,
+    "Crowd magnets": 39.13,
+    "Hidden gems": 4.35,
+    "Low profile": 34.78,
+    "n_rated": 23
+   }
+  },
+  "city_test": {
+   "V": 0.063,
+   "scope": "4 cities (excl. Ghaziabad)"
+  },
+  "locality_test": {
+   "V": 0.408,
+   "n_localities": 82
+  },
+  "source": "PHASE2_EXISTING/Phase2_Results.xlsx, sheet T9_segment_profile; RESULTS/key_results.json (integration)"
+ },
+ "rating_spread": {
+  "population": "Rated NCR restaurants by vote band",
+  "rows": [
+   {
+    "vote_band": "4-10",
+    "n": 1049,
+    "mean_rating": 2.963,
+    "sd_rating": 0.155,
+    "pct_top_rated": 0.0,
+    "pct_bottom_rated": 8.0
+   },
+   {
+    "vote_band": "11-25",
+    "n": 1186,
+    "mean_rating": 3.102,
+    "sd_rating": 0.309,
+    "pct_top_rated": 0.8,
+    "pct_bottom_rated": 15.3
+   },
+   {
+    "vote_band": "26-50",
+    "n": 993,
+    "mean_rating": 3.214,
+    "sd_rating": 0.415,
+    "pct_top_rated": 4.0,
+    "pct_bottom_rated": 18.2
+   },
+   {
+    "vote_band": "51-100",
+    "n": 928,
+    "mean_rating": 3.319,
+    "sd_rating": 0.495,
+    "pct_top_rated": 11.3,
+    "pct_bottom_rated": 17.1
+   },
+   {
+    "vote_band": "101-250",
+    "n": 907,
+    "mean_rating": 3.479,
+    "sd_rating": 0.505,
+    "pct_top_rated": 21.2,
+    "pct_bottom_rated": 11.6
+   },
+   {
+    "vote_band": "251+",
+    "n": 745,
+    "mean_rating": 3.808,
+    "sd_rating": 0.372,
+    "pct_top_rated": 44.7,
+    "pct_bottom_rated": 2.3
+   }
+  ],
+  "test": {
+   "brown_forsythe_W": 147.4,
+   "p": "< .001"
+  },
+  "source": "RESULTS/tables/rating_spread_by_vote_band.csv; key_results.json (rating_spread)"
+ },
+ "overlap": {
+  "pct_top_vote_that_are_top_rated": 43.4,
+  "pct_top_rated_that_are_top_vote": 51.0,
+  "jaccard_pct": 30.6,
+  "spearman_rating_votes_rated": 0.59
+ },
+ "notes": [
+  "Rated-NCR and all-NCR populations are reported separately and never pooled.",
+  "Group sizes exceed 10% where ties sit at the cut-off; sizes are reported, never trimmed.",
+  "p values are Benjamini-Hochberg adjusted within each comparison family."
+ ],
+ "sources": [
+  "RESULTS/key_results.json (deciles)",
+  "RESULTS/tables/decile_statistical_tests.csv",
+  "RESULTS/tables/decile_adjusted_logits.csv"
+ ]
+}

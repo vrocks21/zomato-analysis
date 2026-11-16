@@ -1,0 +1,354 @@
+{
+ "name": "NCR Restaurant Benchmark Explorer",
+ "tagline": "Explore how restaurant visibility, perceived quality and customer engagement vary across Delhi NCR.",
+ "project": "Visible, Liked, or Both? Understanding Restaurant Visibility, Perceived Quality and Customer Engagement on Zomato",
+ "team": [
+  "Mayank Kumbhat",
+  "Mohit",
+  "Tanishq Choudhary",
+  "Vansh Rastogi"
+ ],
+ "institution": "Marketing Analytics Research Project, IIT Gandhinagar",
+ "status": "Historical research benchmark built from an undated Zomato listing snapshot. Not a live Zomato service; not affiliated with Zomato.",
+ "headline_stats": [
+  {
+   "id": "ncr",
+   "value": 7947,
+   "label": "Delhi NCR restaurants",
+   "source": "RESULTS/key_results.json samples.ncr"
+  },
+  {
+   "id": "rated",
+   "value": 5808,
+   "label": "with a published rating",
+   "source": "RESULTS/key_results.json samples.ncr_rated"
+  },
+  {
+   "id": "unrated",
+   "value": 2139,
+   "label": "without a published rating",
+   "source": "RESULTS/key_results.json samples.ncr_unrated"
+  },
+  {
+   "id": "cities",
+   "value": 5,
+   "label": "cities",
+   "source": "RESULTS/key_results.json samples.city_n"
+  },
+  {
+   "id": "localities",
+   "value": 98,
+   "label": "localities with 30+ restaurants",
+   "source": "RESULTS/key_results.json eligibility.30.eligible"
+  }
+ ],
+ "dimensions": [
+  {
+   "id": "visibility",
+   "name": "Visibility",
+   "question": "Is a rating published?",
+   "measure": "Published rating (yes/no)",
+   "population": "All NCR, n = 7,947"
+  },
+  {
+   "id": "quality",
+   "name": "Perceived quality",
+   "question": "How is the restaurant rated?",
+   "measure": "Displayed rating, rated restaurants only",
+   "population": "Rated NCR, n = 5,808"
+  },
+  {
+   "id": "engagement",
+   "name": "Customer engagement",
+   "question": "How much do customers interact?",
+   "measure": "Votes, modelled as log(1 + Votes)",
+   "population": "Rated NCR, n = 5,808 (primary)"
+  }
+ ],
+ "central_question": "Are the characteristics associated with restaurant visibility and customer engagement the same characteristics associated with higher perceived quality?",
+ "answer": "Partly. The same characteristics are associated with all three outcomes, but with different weights and, for chain status, opposite signs.",
+ "metric_catalogue": {
+  "pub_rate_pct": {
+   "id": "pub_rate_pct",
+   "label": "Rating publication rate",
+   "dimension": "visibility",
+   "unit": "% of restaurants",
+   "population": "All restaurants in the unit",
+   "denominator": "n_restaurants",
+   "ci_columns": [
+    "pub_rate_lo",
+    "pub_rate_hi"
+   ],
+   "ci_method": "Wilson 95% CI",
+   "requires_min_rated": null,
+   "source_column": "pub_rate_pct",
+   "transformation": "none (published value, rounded for display)",
+   "explanation": "Share of listed restaurants that show a published (non-zero) rating. In this dataset every listing with 4+ votes is rated and every listing with 0-3 votes is not; this is an observed pattern, not confirmed platform policy."
+  },
+  "median_rating": {
+   "id": "median_rating",
+   "label": "Median rating",
+   "dimension": "quality",
+   "unit": "rating points (1-5 scale)",
+   "population": "Rated restaurants in the unit",
+   "denominator": "n_rated",
+   "ci_columns": [
+    "median_rating_lo",
+    "median_rating_hi"
+   ],
+   "ci_method": "bootstrap 95% CI (2,000 resamples)",
+   "requires_min_rated": 20,
+   "source_column": "median_rating",
+   "transformation": "none (published value, rounded for display)",
+   "explanation": "Median displayed rating among restaurants with a published rating. Unrated restaurants are excluded, never counted as zero."
+  },
+  "mean_rating": {
+   "id": "mean_rating",
+   "label": "Mean rating",
+   "dimension": "quality",
+   "unit": "rating points (1-5 scale)",
+   "population": "Rated restaurants in the unit",
+   "denominator": "n_rated",
+   "ci_columns": null,
+   "ci_method": null,
+   "requires_min_rated": 20,
+   "source_column": "mean_rating",
+   "transformation": "none (published value, rounded for display)",
+   "explanation": "Arithmetic mean of the displayed rating among rated restaurants."
+  },
+  "top_rated_share_pct": {
+   "id": "top_rated_share_pct",
+   "label": "Top-rated share (rating >= 3.9)",
+   "dimension": "quality",
+   "unit": "% of rated restaurants",
+   "population": "Rated restaurants in the unit",
+   "denominator": "n_rated",
+   "ci_columns": [
+    "top_rated_lo",
+    "top_rated_hi"
+   ],
+   "ci_method": "Wilson 95% CI",
+   "requires_min_rated": 20,
+   "source_column": "top_rated_share_pct",
+   "transformation": "none (published value, rounded for display)",
+   "explanation": "Share of rated restaurants at or above the NCR-wide 90th-percentile rating (3.9)."
+  },
+  "bottom_rated_share_pct": {
+   "id": "bottom_rated_share_pct",
+   "label": "Bottom-rated share (rating <= 2.7)",
+   "dimension": "quality",
+   "unit": "% of rated restaurants",
+   "population": "Rated restaurants in the unit",
+   "denominator": "n_rated",
+   "ci_columns": null,
+   "ci_method": null,
+   "requires_min_rated": 20,
+   "source_column": "bottom_rated_share_pct",
+   "transformation": "none (published value, rounded for display)",
+   "explanation": "Share of rated restaurants at or below the NCR-wide 10th-percentile rating (2.7)."
+  },
+  "median_votes": {
+   "id": "median_votes",
+   "label": "Median votes (all restaurants)",
+   "dimension": "engagement",
+   "unit": "votes",
+   "population": "All restaurants in the unit",
+   "denominator": "n_restaurants",
+   "ci_columns": [
+    "median_votes_lo",
+    "median_votes_hi"
+   ],
+   "ci_method": "bootstrap 95% CI (2,000 resamples)",
+   "requires_min_rated": null,
+   "source_column": "median_votes",
+   "transformation": "none (published value, rounded for display)",
+   "explanation": "Median raw vote count among all listed restaurants, including unrated ones. Votes are an engagement proxy, not satisfaction."
+  },
+  "median_votes_rated": {
+   "id": "median_votes_rated",
+   "label": "Median votes (rated restaurants)",
+   "dimension": "engagement",
+   "unit": "votes",
+   "population": "Rated restaurants in the unit",
+   "denominator": "n_rated",
+   "ci_columns": null,
+   "ci_method": null,
+   "requires_min_rated": null,
+   "source_column": "median_votes_rated",
+   "transformation": "none (published value, rounded for display)",
+   "explanation": "Median raw vote count among rated restaurants only."
+  },
+  "high_engagement_share_pct": {
+   "id": "high_engagement_share_pct",
+   "label": "High-engagement share (votes >= 234)",
+   "dimension": "engagement",
+   "unit": "% of restaurants",
+   "population": "All restaurants in the unit",
+   "denominator": "n_restaurants",
+   "ci_columns": [
+    "high_eng_lo",
+    "high_eng_hi"
+   ],
+   "ci_method": "Wilson 95% CI",
+   "requires_min_rated": null,
+   "source_column": "high_engagement_share_pct",
+   "transformation": "none (published value, rounded for display)",
+   "explanation": "Share of all listed restaurants at or above the NCR-wide 90th-percentile vote count (234 votes)."
+  },
+  "zero_vote_share_pct": {
+   "id": "zero_vote_share_pct",
+   "label": "Zero-vote share",
+   "dimension": "engagement",
+   "unit": "% of restaurants",
+   "population": "All restaurants in the unit",
+   "denominator": "n_restaurants",
+   "ci_columns": null,
+   "ci_method": null,
+   "requires_min_rated": null,
+   "source_column": "zero_vote_share_pct",
+   "transformation": "none (published value, rounded for display)",
+   "explanation": "Share of all listed restaurants with no recorded votes (all of them unrated by construction)."
+  },
+  "delivery_pct": {
+   "id": "delivery_pct",
+   "label": "Online delivery offered",
+   "dimension": "positioning",
+   "unit": "% of restaurants",
+   "population": "All restaurants in the unit",
+   "denominator": "n_restaurants",
+   "ci_columns": [
+    "delivery_lo",
+    "delivery_hi"
+   ],
+   "ci_method": "Wilson 95% CI",
+   "requires_min_rated": null,
+   "source_column": "delivery_pct",
+   "transformation": "none (published value, rounded for display)",
+   "explanation": "Share of restaurants listing online delivery."
+  },
+  "booking_pct": {
+   "id": "booking_pct",
+   "label": "Table booking offered",
+   "dimension": "positioning",
+   "unit": "% of restaurants",
+   "population": "All restaurants in the unit",
+   "denominator": "n_restaurants",
+   "ci_columns": [
+    "booking_lo",
+    "booking_hi"
+   ],
+   "ci_method": "Wilson 95% CI",
+   "requires_min_rated": null,
+   "source_column": "booking_pct",
+   "transformation": "none (published value, rounded for display)",
+   "explanation": "Share of restaurants listing table booking."
+  },
+  "chain_pct": {
+   "id": "chain_pct",
+   "label": "Chain outlets (5+ outlets)",
+   "dimension": "positioning",
+   "unit": "% of restaurants",
+   "population": "All restaurants in the unit",
+   "denominator": "n_restaurants",
+   "ci_columns": [
+    "chain_lo",
+    "chain_hi"
+   ],
+   "ci_method": "Wilson 95% CI",
+   "requires_min_rated": null,
+   "source_column": "chain_pct",
+   "transformation": "none (published value, rounded for display)",
+   "explanation": "Share of restaurants whose name appears 5+ times in the snapshot (an outlet-count proxy, not ownership)."
+  },
+  "price34_pct": {
+   "id": "price34_pct",
+   "label": "Price tiers 3-4",
+   "dimension": "positioning",
+   "unit": "% of restaurants",
+   "population": "All restaurants in the unit",
+   "denominator": "n_restaurants",
+   "ci_columns": null,
+   "ci_method": null,
+   "requires_min_rated": null,
+   "source_column": "price3_pct + price4_pct",
+   "transformation": "sum of two published shares",
+   "explanation": "Share of restaurants in the two upper platform price tiers (sum of tier 3 and tier 4 shares)."
+  },
+  "median_cost_for_two": {
+   "id": "median_cost_for_two",
+   "label": "Median cost for two",
+   "dimension": "positioning",
+   "unit": "INR",
+   "population": "All restaurants in the unit",
+   "denominator": "n_restaurants",
+   "ci_columns": null,
+   "ci_method": null,
+   "requires_min_rated": null,
+   "source_column": "median_cost_for_two",
+   "transformation": "none (published value, rounded for display)",
+   "explanation": "Median listed average cost for two, in Indian rupees."
+  }
+ },
+ "engagement_note": "The engagement outcome is log(1 + Votes). Exponentiated regression coefficients are interpreted as percentage differences on the geometric scale of 1 + Votes, not exact percentage changes in raw vote counts.",
+ "built": "2026-11-16",
+ "provenance": {
+  "generated_by": "PHASE3_STAGE2/WEBSITE/build_website_data.py",
+  "generated_on": "2026-11-16T23:55:32",
+  "inputs": [
+   {
+    "file": "RESULTS/key_results.json",
+    "md5": "fa4e1937c7a2be67a5e88a75b96a1a93"
+   },
+   {
+    "file": "RESULTS/tables/city_profile.csv",
+    "md5": "9e58368ec7cdaa129a443f78df012ee1"
+   },
+   {
+    "file": "RESULTS/tables/locality_profile_t20.csv",
+    "md5": "1a54a99960ccb72acf45a7e80f29418b"
+   },
+   {
+    "file": "RESULTS/tables/locality_profile_t30.csv",
+    "md5": "3bfe6b12df3ccb50a312d321ca352765"
+   },
+   {
+    "file": "RESULTS/tables/locality_profile_t50.csv",
+    "md5": "a93d775634467df158ced1772b0ff6c4"
+   },
+   {
+    "file": "RESULTS/tables/locality_rankings_t30_full.csv",
+    "md5": "81e281c9270e917bf0f9b95a87396a3b"
+   },
+   {
+    "file": "RESULTS/tables/locality_rating_engagement_patterns.csv",
+    "md5": "116a37ab4cf9d9870c2f0c1f3978da8a"
+   },
+   {
+    "file": "RESULTS/tables/quadrants_by_city.csv",
+    "md5": "1fc89fbb3896261a6126c14f17f5ddb7"
+   },
+   {
+    "file": "RESULTS/tables/quadrants_by_locality_t30.csv",
+    "md5": "4294b46514868255e2b0fbee3cf7ae44"
+   },
+   {
+    "file": "RESULTS/tables/city_specific_models.csv",
+    "md5": "65ab7f7943d99c02fe9d82de2427068d"
+   },
+   {
+    "file": "RESULTS/tables/rating_spread_by_vote_band.csv",
+    "md5": "0860119840892e3fc630d25d766f7dbc"
+   },
+   {
+    "file": "RESULTS/tables/integrated_direction_table.csv",
+    "md5": "c9e65224bc6765a889802e8bf588ac14"
+   },
+   {
+    "file": "PHASE2_EXISTING/Phase2_Results.xlsx",
+    "md5": "26ca157d840e59276094aa770f8cc585"
+   }
+  ],
+  "raw_data_used": false,
+  "models_estimated": false
+ }
+}

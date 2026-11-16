@@ -1,0 +1,1336 @@
+{
+ "title": "City benchmarks: five Delhi NCR cities",
+ "ncr": {
+  "n_restaurants": 7947,
+  "n_rated": 5808,
+  "metrics": {
+   "pub_rate_pct": {
+    "value": 73.0842,
+    "derivation": "sum of city n_rated / sum of city n_restaurants"
+   },
+   "median_rating": {
+    "value": 3.3,
+    "derivation": "PHASE2_EXISTING/Phase2_Results.xlsx, sheet T3_descriptives (B/C: NCR rated, Aggregate rating, median)"
+   },
+   "mean_rating": {
+    "value": 3.2801,
+    "derivation": "city mean_rating weighted by city n_rated"
+   },
+   "top_rated_share_pct": {
+    "value": 11.6908,
+    "derivation": "sum of city n_top_rated / NCR rated (5,808)"
+   },
+   "bottom_rated_share_pct": {
+    "value": 12.5172,
+    "derivation": "sum of city n_bottom_rated / NCR rated (5,808)"
+   },
+   "median_votes": {
+    "value": null,
+    "unavailable_reason": "No NCR-wide value in the verified results (a median cannot be reconstructed from city medians)."
+   },
+   "median_votes_rated": {
+    "value": 40.0,
+    "derivation": "PHASE2_EXISTING/Phase2_Results.xlsx, sheet T3_descriptives (B/C: NCR rated, Votes, median)"
+   },
+   "high_engagement_share_pct": {
+    "value": 10.0415,
+    "derivation": "sum of city n_top_vote / NCR restaurants (7,947)"
+   },
+   "zero_vote_share_pct": {
+    "value": 13.7536,
+    "derivation": "sum of city n_bottom_vote / NCR restaurants (7,947)"
+   },
+   "delivery_pct": {
+    "value": 29.2312,
+    "derivation": "city shares converted to counts, summed, divided by 7,947"
+   },
+   "booking_pct": {
+    "value": 13.1999,
+    "derivation": "city shares converted to counts, summed, divided by 7,947"
+   },
+   "chain_pct": {
+    "value": 16.459,
+    "derivation": "city shares converted to counts, summed, divided by 7,947"
+   },
+   "price34_pct": {
+    "value": 14.106,
+    "derivation": "city tier-3 and tier-4 shares converted to counts, summed, divided by 7,947"
+   },
+   "median_cost_for_two": {
+    "value": null,
+    "unavailable_reason": "No NCR-wide value in the verified results (a median cannot be reconstructed from city medians)."
+   }
+  }
+ },
+ "cities": [
+  {
+   "id": "New Delhi",
+   "name": "New Delhi",
+   "n_restaurants": 5473,
+   "n_rated": 4048,
+   "n_unrated": 1425,
+   "share_of_ncr_pct": 68.8688,
+   "small_sample": false,
+   "small_sample_note": null,
+   "eligible_localities": {
+    "20": 97,
+    "30": 74,
+    "50": 40
+   },
+   "metrics": {
+    "pub_rate_pct": {
+     "value": 73.9631,
+     "lo": 72.784,
+     "hi": 75.1086
+    },
+    "median_rating": {
+     "value": 3.3,
+     "lo": 3.3,
+     "hi": 3.3
+    },
+    "mean_rating": {
+     "value": 3.2974
+    },
+    "top_rated_share_pct": {
+     "value": 12.0553,
+     "lo": 11.0881,
+     "hi": 13.0945
+    },
+    "bottom_rated_share_pct": {
+     "value": 11.3636
+    },
+    "median_votes": {
+     "value": 21.0,
+     "lo": 19.0,
+     "hi": 22.0
+    },
+    "median_votes_rated": {
+     "value": 42.0
+    },
+    "high_engagement_share_pct": {
+     "value": 10.4513,
+     "lo": 9.6684,
+     "hi": 11.2897
+    },
+    "zero_vote_share_pct": {
+     "value": 13.0641
+    },
+    "delivery_pct": {
+     "value": 27.2063,
+     "lo": 26.0436,
+     "hi": 28.401
+    },
+    "booking_pct": {
+     "value": 13.0641,
+     "lo": 12.1971,
+     "hi": 13.9829
+    },
+    "chain_pct": {
+     "value": 16.2799,
+     "lo": 15.3255,
+     "hi": 17.2816
+    },
+    "price34_pct": {
+     "value": 13.9777
+    },
+    "median_cost_for_two": {
+     "value": 400.0
+    }
+   },
+   "price_mix_pct": {
+    "tier1": 55.7647,
+    "tier2": 30.2576,
+    "tier3": 10.0311,
+    "tier4": 3.9466
+   },
+   "rating_bands_pct": {
+    "Poor (<2.5)": 2.3962,
+    "Average (2.5-3.4)": 61.6354,
+    "Good (3.5-3.9)": 27.8656,
+    "Very good (4.0-4.4)": 7.4111,
+    "Excellent (4.5+)": 0.6917
+   },
+   "quadrant_mix_pct": {
+    "Stars": 35.1532,
+    "Crowd magnets": 15.6868,
+    "Hidden gems": 8.2757,
+    "Low profile": 40.8844
+   },
+   "quadrant_n_rated": 4048,
+   "within_city_models": [
+    {
+     "outcome": "visibility",
+     "predictor": "Online delivery",
+     "estimate": 9.5066,
+     "lo": 7.1245,
+     "hi": 12.6851,
+     "p": 7.399173591907102e-53,
+     "sig": "***",
+     "unit": "odds ratio",
+     "n": 5473
+    },
+    {
+     "outcome": "visibility",
+     "predictor": "Table booking",
+     "estimate": 1.6588,
+     "lo": 1.0093,
+     "hi": 2.7262,
+     "p": 0.04587202204830637,
+     "sig": "*",
+     "unit": "odds ratio",
+     "n": 5473
+    },
+    {
+     "outcome": "visibility",
+     "predictor": "Chain indicator (5+ outlets)",
+     "estimate": 2.5048,
+     "lo": 2.0078,
+     "hi": 3.1246,
+     "p": 4.0095364210566916e-16,
+     "sig": "***",
+     "unit": "odds ratio",
+     "n": 5473
+    },
+    {
+     "outcome": "visibility",
+     "predictor": "Cuisine breadth (+1 tag)",
+     "estimate": 1.4377,
+     "lo": 1.3176,
+     "hi": 1.5687,
+     "p": 3.3857294309024798e-16,
+     "sig": "***",
+     "unit": "odds ratio",
+     "n": 5473
+    },
+    {
+     "outcome": "quality",
+     "predictor": "Online delivery",
+     "estimate": 0.0884,
+     "lo": 0.057,
+     "hi": 0.1199,
+     "p": 3.591660560435612e-08,
+     "sig": "***",
+     "unit": "rating points",
+     "n": 4048
+    },
+    {
+     "outcome": "quality",
+     "predictor": "Table booking",
+     "estimate": -0.0521,
+     "lo": -0.1097,
+     "hi": 0.0054,
+     "p": 0.07598089220252732,
+     "sig": "ns",
+     "unit": "rating points",
+     "n": 4048
+    },
+    {
+     "outcome": "quality",
+     "predictor": "Chain indicator (5+ outlets)",
+     "estimate": -0.0994,
+     "lo": -0.1338,
+     "hi": -0.065,
+     "p": 1.497300324954922e-08,
+     "sig": "***",
+     "unit": "rating points",
+     "n": 4048
+    },
+    {
+     "outcome": "quality",
+     "predictor": "Cuisine breadth (+1 tag)",
+     "estimate": 0.0209,
+     "lo": 0.0074,
+     "hi": 0.0345,
+     "p": 0.002440679872932155,
+     "sig": "**",
+     "unit": "rating points",
+     "n": 4048
+    },
+    {
+     "outcome": "engagement (rated)",
+     "predictor": "Online delivery",
+     "estimate": 91.9658,
+     "lo": 76.8269,
+     "hi": 108.4008,
+     "p": 1.3623868182144923e-54,
+     "sig": "***",
+     "unit": "% difference in the geometric mean of (1 + Votes)",
+     "n": 4048
+    },
+    {
+     "outcome": "engagement (rated)",
+     "predictor": "Table booking",
+     "estimate": 3.4651,
+     "lo": -12.6882,
+     "hi": 22.6068,
+     "p": 0.6940888163800096,
+     "sig": "ns",
+     "unit": "% difference in the geometric mean of (1 + Votes)",
+     "n": 4048
+    },
+    {
+     "outcome": "engagement (rated)",
+     "predictor": "Chain indicator (5+ outlets)",
+     "estimate": 26.19,
+     "lo": 15.5445,
+     "hi": 37.8165,
+     "p": 2.3023450674215823e-07,
+     "sig": "***",
+     "unit": "% difference in the geometric mean of (1 + Votes)",
+     "n": 4048
+    },
+    {
+     "outcome": "engagement (rated)",
+     "predictor": "Cuisine breadth (+1 tag)",
+     "estimate": 19.4061,
+     "lo": 14.8921,
+     "hi": 24.0975,
+     "p": 1.8750569904866086e-19,
+     "sig": "***",
+     "unit": "% difference in the geometric mean of (1 + Votes)",
+     "n": 4048
+    }
+   ],
+   "source": "RESULTS/tables/city_profile.csv (= Updated_Results.xlsx, sheet City_Analysis)"
+  },
+  {
+   "id": "Gurgaon",
+   "name": "Gurgaon",
+   "n_restaurants": 1118,
+   "n_rated": 890,
+   "n_unrated": 228,
+   "share_of_ncr_pct": 14.0682,
+   "small_sample": false,
+   "small_sample_note": null,
+   "eligible_localities": {
+    "20": 20,
+    "30": 12,
+    "50": 3
+   },
+   "metrics": {
+    "pub_rate_pct": {
+     "value": 79.6064,
+     "lo": 77.1451,
+     "hi": 81.865
+    },
+    "median_rating": {
+     "value": 3.3,
+     "lo": 3.3,
+     "hi": 3.4
+    },
+    "mean_rating": {
+     "value": 3.3307
+    },
+    "top_rated_share_pct": {
+     "value": 15.3933,
+     "lo": 13.1715,
+     "hi": 17.9125
+    },
+    "bottom_rated_share_pct": {
+     "value": 11.1236
+    },
+    "median_votes": {
+     "value": 27.0,
+     "lo": 25.0,
+     "hi": 31.0
+    },
+    "median_votes_rated": {
+     "value": 42.0
+    },
+    "high_engagement_share_pct": {
+     "value": 11.8962,
+     "lo": 10.1278,
+     "hi": 13.9257
+    },
+    "zero_vote_share_pct": {
+     "value": 11.5385
+    },
+    "delivery_pct": {
+     "value": 38.0143,
+     "lo": 35.2145,
+     "hi": 40.8962
+    },
+    "booking_pct": {
+     "value": 18.2469,
+     "lo": 16.0929,
+     "hi": 20.6183
+    },
+    "chain_pct": {
+     "value": 16.2791,
+     "lo": 14.2312,
+     "hi": 18.5579
+    },
+    "price34_pct": {
+     "value": 20.1252
+    },
+    "median_cost_for_two": {
+     "value": 500.0
+    }
+   },
+   "price_mix_pct": {
+    "tier1": 40.5188,
+    "tier2": 39.356,
+    "tier3": 14.1324,
+    "tier4": 5.9928
+   },
+   "rating_bands_pct": {
+    "Poor (<2.5)": 3.8202,
+    "Average (2.5-3.4)": 56.6292,
+    "Good (3.5-3.9)": 28.8764,
+    "Very good (4.0-4.4)": 9.3258,
+    "Excellent (4.5+)": 1.3483
+   },
+   "quadrant_mix_pct": {
+    "Stars": 36.8539,
+    "Crowd magnets": 14.0449,
+    "Hidden gems": 10.1124,
+    "Low profile": 38.9888
+   },
+   "quadrant_n_rated": 890,
+   "within_city_models": [
+    {
+     "outcome": "visibility",
+     "predictor": "Online delivery",
+     "estimate": 12.9188,
+     "lo": 7.1725,
+     "hi": 23.2687,
+     "p": 1.5597657564174543e-17,
+     "sig": "***",
+     "unit": "odds ratio",
+     "n": 1118
+    },
+    {
+     "outcome": "visibility",
+     "predictor": "Table booking",
+     "estimate": 3.6891,
+     "lo": 0.9773,
+     "hi": 13.9258,
+     "p": 0.05410065103683348,
+     "sig": "ns",
+     "unit": "odds ratio",
+     "n": 1118
+    },
+    {
+     "outcome": "visibility",
+     "predictor": "Chain indicator (5+ outlets)",
+     "estimate": 1.7324,
+     "lo": 1.0612,
+     "hi": 2.8283,
+     "p": 0.027987671416283725,
+     "sig": "*",
+     "unit": "odds ratio",
+     "n": 1118
+    },
+    {
+     "outcome": "visibility",
+     "predictor": "Cuisine breadth (+1 tag)",
+     "estimate": 1.4778,
+     "lo": 1.2099,
+     "hi": 1.8051,
+     "p": 0.00012988005411594954,
+     "sig": "***",
+     "unit": "odds ratio",
+     "n": 1118
+    },
+    {
+     "outcome": "quality",
+     "predictor": "Online delivery",
+     "estimate": 0.1717,
+     "lo": 0.11,
+     "hi": 0.2334,
+     "p": 4.968483716237145e-08,
+     "sig": "***",
+     "unit": "rating points",
+     "n": 890
+    },
+    {
+     "outcome": "quality",
+     "predictor": "Table booking",
+     "estimate": 0.0221,
+     "lo": -0.0928,
+     "hi": 0.137,
+     "p": 0.7065177332562993,
+     "sig": "ns",
+     "unit": "rating points",
+     "n": 890
+    },
+    {
+     "outcome": "quality",
+     "predictor": "Chain indicator (5+ outlets)",
+     "estimate": -0.1353,
+     "lo": -0.2169,
+     "hi": -0.0537,
+     "p": 0.0011571994031354235,
+     "sig": "**",
+     "unit": "rating points",
+     "n": 890
+    },
+    {
+     "outcome": "quality",
+     "predictor": "Cuisine breadth (+1 tag)",
+     "estimate": 0.0405,
+     "lo": 0.0151,
+     "hi": 0.066,
+     "p": 0.0018097515614132408,
+     "sig": "**",
+     "unit": "rating points",
+     "n": 890
+    },
+    {
+     "outcome": "engagement (rated)",
+     "predictor": "Online delivery",
+     "estimate": 142.0385,
+     "lo": 108.206,
+     "hi": 181.3685,
+     "p": 1.228421376616787e-30,
+     "sig": "***",
+     "unit": "% difference in the geometric mean of (1 + Votes)",
+     "n": 890
+    },
+    {
+     "outcome": "engagement (rated)",
+     "predictor": "Table booking",
+     "estimate": 22.5275,
+     "lo": -11.4941,
+     "hi": 69.6271,
+     "p": 0.2208704452067719,
+     "sig": "ns",
+     "unit": "% difference in the geometric mean of (1 + Votes)",
+     "n": 890
+    },
+    {
+     "outcome": "engagement (rated)",
+     "predictor": "Chain indicator (5+ outlets)",
+     "estimate": 35.7436,
+     "lo": 10.7044,
+     "hi": 66.4462,
+     "p": 0.0033091494318835987,
+     "sig": "**",
+     "unit": "% difference in the geometric mean of (1 + Votes)",
+     "n": 890
+    },
+    {
+     "outcome": "engagement (rated)",
+     "predictor": "Cuisine breadth (+1 tag)",
+     "estimate": 20.8279,
+     "lo": 12.5596,
+     "hi": 29.7035,
+     "p": 1.6829864925735443e-07,
+     "sig": "***",
+     "unit": "% difference in the geometric mean of (1 + Votes)",
+     "n": 890
+    }
+   ],
+   "source": "RESULTS/tables/city_profile.csv (= Updated_Results.xlsx, sheet City_Analysis)"
+  },
+  {
+   "id": "Noida",
+   "name": "Noida",
+   "n_restaurants": 1080,
+   "n_rated": 696,
+   "n_unrated": 384,
+   "share_of_ncr_pct": 13.59,
+   "small_sample": false,
+   "small_sample_note": null,
+   "eligible_localities": {
+    "20": 17,
+    "30": 11,
+    "50": 4
+   },
+   "metrics": {
+    "pub_rate_pct": {
+     "value": 64.4444,
+     "lo": 61.543,
+     "hi": 67.2435
+    },
+    "median_rating": {
+     "value": 3.1,
+     "lo": 3.1,
+     "hi": 3.2
+    },
+    "mean_rating": {
+     "value": 3.1596
+    },
+    "top_rated_share_pct": {
+     "value": 7.0402,
+     "lo": 5.3661,
+     "hi": 9.186
+    },
+    "bottom_rated_share_pct": {
+     "value": 20.2586
+    },
+    "median_votes": {
+     "value": 10.5,
+     "lo": 9.0,
+     "hi": 13.0
+    },
+    "median_votes_rated": {
+     "value": 34.0
+    },
+    "high_engagement_share_pct": {
+     "value": 7.8704,
+     "lo": 6.4096,
+     "hi": 9.6297
+    },
+    "zero_vote_share_pct": {
+     "value": 17.6852
+    },
+    "delivery_pct": {
+     "value": 33.7037,
+     "lo": 30.9467,
+     "hi": 36.5762
+    },
+    "booking_pct": {
+     "value": 10.3704,
+     "lo": 8.6904,
+     "hi": 12.3313
+    },
+    "chain_pct": {
+     "value": 17.1296,
+     "lo": 15.0001,
+     "hi": 19.4922
+    },
+    "price34_pct": {
+     "value": 10.5556
+    },
+    "median_cost_for_two": {
+     "value": 450.0
+    }
+   },
+   "price_mix_pct": {
+    "tier1": 52.3148,
+    "tier2": 37.1296,
+    "tier3": 8.6111,
+    "tier4": 1.9444
+   },
+   "rating_bands_pct": {
+    "Poor (<2.5)": 6.4655,
+    "Average (2.5-3.4)": 64.5115,
+    "Good (3.5-3.9)": 24.8563,
+    "Very good (4.0-4.4)": 3.8793,
+    "Excellent (4.5+)": 0.2874
+   },
+   "quadrant_mix_pct": {
+    "Stars": 27.8736,
+    "Crowd magnets": 17.8161,
+    "Hidden gems": 8.6207,
+    "Low profile": 45.6897
+   },
+   "quadrant_n_rated": 696,
+   "within_city_models": [
+    {
+     "outcome": "visibility",
+     "predictor": "Online delivery",
+     "estimate": 9.5244,
+     "lo": 6.2479,
+     "hi": 14.5192,
+     "p": 1.0961816247398633e-25,
+     "sig": "***",
+     "unit": "odds ratio",
+     "n": 1080
+    },
+    {
+     "outcome": "visibility",
+     "predictor": "Table booking",
+     "estimate": 2.3517,
+     "lo": 0.8959,
+     "hi": 6.1732,
+     "p": 0.08245204929779086,
+     "sig": "ns",
+     "unit": "odds ratio",
+     "n": 1080
+    },
+    {
+     "outcome": "visibility",
+     "predictor": "Chain indicator (5+ outlets)",
+     "estimate": 1.8794,
+     "lo": 1.2514,
+     "hi": 2.8225,
+     "p": 0.0023610197000663046,
+     "sig": "**",
+     "unit": "odds ratio",
+     "n": 1080
+    },
+    {
+     "outcome": "visibility",
+     "predictor": "Cuisine breadth (+1 tag)",
+     "estimate": 1.3286,
+     "lo": 1.1213,
+     "hi": 1.5742,
+     "p": 0.0010299559358848596,
+     "sig": "**",
+     "unit": "odds ratio",
+     "n": 1080
+    },
+    {
+     "outcome": "quality",
+     "predictor": "Online delivery",
+     "estimate": 0.0561,
+     "lo": -0.0171,
+     "hi": 0.1292,
+     "p": 0.13298601472035945,
+     "sig": "ns",
+     "unit": "rating points",
+     "n": 696
+    },
+    {
+     "outcome": "quality",
+     "predictor": "Table booking",
+     "estimate": 0.0191,
+     "lo": -0.1444,
+     "hi": 0.1825,
+     "p": 0.8190182355490216,
+     "sig": "ns",
+     "unit": "rating points",
+     "n": 696
+    },
+    {
+     "outcome": "quality",
+     "predictor": "Chain indicator (5+ outlets)",
+     "estimate": -0.0303,
+     "lo": -0.1278,
+     "hi": 0.0673,
+     "p": 0.5432166404173985,
+     "sig": "ns",
+     "unit": "rating points",
+     "n": 696
+    },
+    {
+     "outcome": "quality",
+     "predictor": "Cuisine breadth (+1 tag)",
+     "estimate": 0.0075,
+     "lo": -0.028,
+     "hi": 0.0429,
+     "p": 0.6803630173851668,
+     "sig": "ns",
+     "unit": "rating points",
+     "n": 696
+    },
+    {
+     "outcome": "engagement (rated)",
+     "predictor": "Online delivery",
+     "estimate": 85.3019,
+     "lo": 55.4515,
+     "hi": 120.8844,
+     "p": 5.879407334273551e-12,
+     "sig": "***",
+     "unit": "% difference in the geometric mean of (1 + Votes)",
+     "n": 696
+    },
+    {
+     "outcome": "engagement (rated)",
+     "predictor": "Table booking",
+     "estimate": 58.9247,
+     "lo": 2.1504,
+     "hi": 147.2537,
+     "p": 0.039945628436380116,
+     "sig": "*",
+     "unit": "% difference in the geometric mean of (1 + Votes)",
+     "n": 696
+    },
+    {
+     "outcome": "engagement (rated)",
+     "predictor": "Chain indicator (5+ outlets)",
+     "estimate": 80.1017,
+     "lo": 42.4467,
+     "hi": 127.7107,
+     "p": 8.817719405746671e-07,
+     "sig": "***",
+     "unit": "% difference in the geometric mean of (1 + Votes)",
+     "n": 696
+    },
+    {
+     "outcome": "engagement (rated)",
+     "predictor": "Cuisine breadth (+1 tag)",
+     "estimate": 20.1505,
+     "lo": 11.0235,
+     "hi": 30.0278,
+     "p": 5.256925532279757e-06,
+     "sig": "***",
+     "unit": "% difference in the geometric mean of (1 + Votes)",
+     "n": 696
+    }
+   ],
+   "source": "RESULTS/tables/city_profile.csv (= Updated_Results.xlsx, sheet City_Analysis)"
+  },
+  {
+   "id": "Faridabad",
+   "name": "Faridabad",
+   "n_restaurants": 251,
+   "n_rated": 151,
+   "n_unrated": 100,
+   "share_of_ncr_pct": 3.1584,
+   "small_sample": false,
+   "small_sample_note": "Small sample (251 restaurants); city-specific model estimates are imprecise.",
+   "eligible_localities": {
+    "20": 2,
+    "30": 1,
+    "50": 0
+   },
+   "metrics": {
+    "pub_rate_pct": {
+     "value": 60.1594,
+     "lo": 53.9935,
+     "hi": 66.0189
+    },
+    "median_rating": {
+     "value": 3.0,
+     "lo": 3.0,
+     "hi": 3.1
+    },
+    "mean_rating": {
+     "value": 3.1033
+    },
+    "top_rated_share_pct": {
+     "value": 2.649,
+     "lo": 1.0349,
+     "hi": 6.6126
+    },
+    "bottom_rated_share_pct": {
+     "value": 14.5695
+    },
+    "median_votes": {
+     "value": 7.0,
+     "lo": 4.0,
+     "hi": 9.0
+    },
+    "median_votes_rated": {
+     "value": 18.0
+    },
+    "high_engagement_share_pct": {
+     "value": 1.992,
+     "lo": 0.8538,
+     "hi": 4.5776
+    },
+    "zero_vote_share_pct": {
+     "value": 22.7092
+    },
+    "delivery_pct": {
+     "value": 13.9442,
+     "lo": 10.2001,
+     "hi": 18.7754
+    },
+    "booking_pct": {
+     "value": 5.9761,
+     "lo": 3.6547,
+     "hi": 9.6247
+    },
+    "chain_pct": {
+     "value": 15.5378,
+     "lo": 11.5794,
+     "hi": 20.5353
+    },
+    "price34_pct": {
+     "value": 5.5777
+    },
+    "median_cost_for_two": {
+     "value": 400.0
+    }
+   },
+   "price_mix_pct": {
+    "tier1": 60.1594,
+    "tier2": 34.2629,
+    "tier3": 5.5777,
+    "tier4": 0.0
+   },
+   "rating_bands_pct": {
+    "Poor (<2.5)": 1.3245,
+    "Average (2.5-3.4)": 81.457,
+    "Good (3.5-3.9)": 14.5695,
+    "Very good (4.0-4.4)": 1.9868,
+    "Excellent (4.5+)": 0.6623
+   },
+   "quadrant_mix_pct": {
+    "Stars": 13.245,
+    "Crowd magnets": 9.2715,
+    "Hidden gems": 11.2583,
+    "Low profile": 66.2252
+   },
+   "quadrant_n_rated": 151,
+   "within_city_models": [
+    {
+     "outcome": "visibility",
+     "predictor": "Online delivery",
+     "estimate": 17.0604,
+     "lo": 2.2126,
+     "hi": 131.5447,
+     "p": 0.006488580861765139,
+     "sig": "**",
+     "unit": "odds ratio",
+     "n": 251
+    },
+    {
+     "outcome": "visibility",
+     "predictor": "Table booking",
+     "estimate": 0.5834,
+     "lo": 0.1265,
+     "hi": 2.6893,
+     "p": 0.4894466770824425,
+     "sig": "ns",
+     "unit": "odds ratio",
+     "n": 251
+    },
+    {
+     "outcome": "visibility",
+     "predictor": "Chain indicator (5+ outlets)",
+     "estimate": 4.4341,
+     "lo": 1.5809,
+     "hi": 12.4362,
+     "p": 0.00464847358525196,
+     "sig": "**",
+     "unit": "odds ratio",
+     "n": 251
+    },
+    {
+     "outcome": "visibility",
+     "predictor": "Cuisine breadth (+1 tag)",
+     "estimate": 1.451,
+     "lo": 1.0392,
+     "hi": 2.026,
+     "p": 0.028830237369243127,
+     "sig": "*",
+     "unit": "odds ratio",
+     "n": 251
+    },
+    {
+     "outcome": "quality",
+     "predictor": "Online delivery",
+     "estimate": 0.0616,
+     "lo": -0.1117,
+     "hi": 0.2348,
+     "p": 0.48606778681733587,
+     "sig": "ns",
+     "unit": "rating points",
+     "n": 151
+    },
+    {
+     "outcome": "quality",
+     "predictor": "Table booking",
+     "estimate": -0.1274,
+     "lo": -0.5651,
+     "hi": 0.3104,
+     "p": 0.5685388376631906,
+     "sig": "ns",
+     "unit": "rating points",
+     "n": 151
+    },
+    {
+     "outcome": "quality",
+     "predictor": "Chain indicator (5+ outlets)",
+     "estimate": 0.0665,
+     "lo": -0.086,
+     "hi": 0.2191,
+     "p": 0.39262558418566096,
+     "sig": "ns",
+     "unit": "rating points",
+     "n": 151
+    },
+    {
+     "outcome": "quality",
+     "predictor": "Cuisine breadth (+1 tag)",
+     "estimate": -0.0073,
+     "lo": -0.075,
+     "hi": 0.0604,
+     "p": 0.8327025085024118,
+     "sig": "ns",
+     "unit": "rating points",
+     "n": 151
+    },
+    {
+     "outcome": "engagement (rated)",
+     "predictor": "Online delivery",
+     "estimate": 46.8485,
+     "lo": -0.3473,
+     "hi": 116.3965,
+     "p": 0.05209139698490958,
+     "sig": "ns",
+     "unit": "% difference in the geometric mean of (1 + Votes)",
+     "n": 151
+    },
+    {
+     "outcome": "engagement (rated)",
+     "predictor": "Table booking",
+     "estimate": -38.7181,
+     "lo": -75.3073,
+     "hi": 52.0885,
+     "p": 0.2910259919005612,
+     "sig": "ns",
+     "unit": "% difference in the geometric mean of (1 + Votes)",
+     "n": 151
+    },
+    {
+     "outcome": "engagement (rated)",
+     "predictor": "Chain indicator (5+ outlets)",
+     "estimate": 49.6511,
+     "lo": 4.9194,
+     "hi": 113.4539,
+     "p": 0.026080409841381866,
+     "sig": "*",
+     "unit": "% difference in the geometric mean of (1 + Votes)",
+     "n": 151
+    },
+    {
+     "outcome": "engagement (rated)",
+     "predictor": "Cuisine breadth (+1 tag)",
+     "estimate": 7.3396,
+     "lo": -10.9639,
+     "hi": 29.4057,
+     "p": 0.4577716507099344,
+     "sig": "ns",
+     "unit": "% difference in the geometric mean of (1 + Votes)",
+     "n": 151
+    }
+   ],
+   "source": "RESULTS/tables/city_profile.csv (= Updated_Results.xlsx, sheet City_Analysis)"
+  },
+  {
+   "id": "Ghaziabad",
+   "name": "Ghaziabad",
+   "n_restaurants": 25,
+   "n_rated": 23,
+   "n_unrated": 2,
+   "share_of_ncr_pct": 0.3146,
+   "small_sample": true,
+   "small_sample_note": "Very small sample (25 restaurants, 23 rated). Reported for completeness; not interpreted in the paper.",
+   "eligible_localities": {
+    "20": 0,
+    "30": 0,
+    "50": 0
+   },
+   "metrics": {
+    "pub_rate_pct": {
+     "value": 92.0,
+     "lo": 75.0339,
+     "hi": 97.778
+    },
+    "median_rating": {
+     "value": 3.2,
+     "lo": 3.0,
+     "hi": 3.3
+    },
+    "mean_rating": {
+     "value": 3.1
+    },
+    "top_rated_share_pct": {
+     "value": 4.3478,
+     "lo": 0.7717,
+     "hi": 20.9912
+    },
+    "bottom_rated_share_pct": {
+     "value": 21.7391
+    },
+    "median_votes": {
+     "value": 60.0,
+     "lo": 16.0,
+     "hi": 150.0
+    },
+    "median_votes_rated": {
+     "value": 63.0
+    },
+    "high_engagement_share_pct": {
+     "value": 12.0,
+     "lo": 4.1668,
+     "hi": 29.9558
+    },
+    "zero_vote_share_pct": {
+     "value": 4.0
+    },
+    "delivery_pct": {
+     "value": 40.0,
+     "lo": 23.4033,
+     "hi": 59.2605
+    },
+    "booking_pct": {
+     "value": 12.0,
+     "lo": 4.1668,
+     "hi": 29.9558
+    },
+    "chain_pct": {
+     "value": 44.0,
+     "lo": 26.6656,
+     "hi": 62.9327
+    },
+    "price34_pct": {
+     "value": 12.0
+    },
+    "median_cost_for_two": {
+     "value": 500.0
+    }
+   },
+   "price_mix_pct": {
+    "tier1": 36.0,
+    "tier2": 52.0,
+    "tier3": 8.0,
+    "tier4": 4.0
+   },
+   "rating_bands_pct": {
+    "Poor (<2.5)": 4.3478,
+    "Average (2.5-3.4)": 78.2609,
+    "Good (3.5-3.9)": 17.3913,
+    "Very good (4.0-4.4)": 0.0,
+    "Excellent (4.5+)": 0.0
+   },
+   "quadrant_mix_pct": {
+    "Stars": 21.7391,
+    "Crowd magnets": 39.1304,
+    "Hidden gems": 4.3478,
+    "Low profile": 34.7826
+   },
+   "quadrant_n_rated": 23,
+   "within_city_models": [],
+   "source": "RESULTS/tables/city_profile.csv (= Updated_Results.xlsx, sheet City_Analysis)"
+  }
+ ],
+ "tests": [
+  {
+   "scope": "5 cities",
+   "characteristic": "Rating publication rate",
+   "n": 7947,
+   "test": "Chi-square",
+   "effect_size": 0.1083,
+   "effect_metric": "Cramer's V",
+   "p_BH": 7.754478223480334e-19,
+   "sig_BH": "***"
+  },
+  {
+   "scope": "5 cities",
+   "characteristic": "Rating (rated)",
+   "n": 5808,
+   "test": "Kruskal-Wallis",
+   "effect_size": 0.0143,
+   "effect_metric": "epsilon-squared",
+   "p_BH": 7.656597993941217e-17,
+   "sig_BH": "***"
+  },
+  {
+   "scope": "5 cities",
+   "characteristic": "Votes (all)",
+   "n": 7947,
+   "test": "Kruskal-Wallis",
+   "effect_size": 0.0166,
+   "effect_metric": "epsilon-squared",
+   "p_BH": 1.2770025255861346e-26,
+   "sig_BH": "***"
+  },
+  {
+   "scope": "5 cities",
+   "characteristic": "Online delivery",
+   "n": 7947,
+   "test": "Chi-square",
+   "effect_size": 0.108,
+   "effect_metric": "Cramer's V",
+   "p_BH": 7.754478223480334e-19,
+   "sig_BH": "***"
+  },
+  {
+   "scope": "5 cities",
+   "characteristic": "Table booking",
+   "n": 7947,
+   "test": "Chi-square (expected<5 in some cells; Monte Carlo p)",
+   "effect_size": 0.0744,
+   "effect_metric": "Cramer's V",
+   "p_BH": 0.00022495500899820034,
+   "sig_BH": "***"
+  },
+  {
+   "scope": "5 cities",
+   "characteristic": "Chain indicator",
+   "n": 7947,
+   "test": "Chi-square (expected<5 in some cells; Monte Carlo p)",
+   "effect_size": 0.0426,
+   "effect_metric": "Cramer's V",
+   "p_BH": 0.0069986002799440105,
+   "sig_BH": "**"
+  },
+  {
+   "scope": "5 cities",
+   "characteristic": "Price range distribution",
+   "n": 7947,
+   "test": "Chi-square (expected<5 in some cells; Monte Carlo p)",
+   "effect_size": 0.0759,
+   "effect_metric": "Cramer's V",
+   "p_BH": 0.00022495500899820034,
+   "sig_BH": "***"
+  },
+  {
+   "scope": "5 cities",
+   "characteristic": "Cost for two",
+   "n": 7947,
+   "test": "Kruskal-Wallis",
+   "effect_size": 0.0137,
+   "effect_metric": "epsilon-squared",
+   "p_BH": 5.486077133107038e-22,
+   "sig_BH": "***"
+  },
+  {
+   "scope": "5 cities",
+   "characteristic": "Number of cuisines",
+   "n": 7947,
+   "test": "Kruskal-Wallis",
+   "effect_size": 0.003,
+   "effect_metric": "epsilon-squared",
+   "p_BH": 0.00011013437800626702,
+   "sig_BH": "***"
+  },
+  {
+   "scope": "4 cities (excl. Ghaziabad)",
+   "characteristic": "Rating publication rate",
+   "n": 7922,
+   "test": "Chi-square",
+   "effect_size": 0.1057,
+   "effect_metric": "Cramer's V",
+   "p_BH": 8.337800663117806e-19,
+   "sig_BH": "***"
+  },
+  {
+   "scope": "4 cities (excl. Ghaziabad)",
+   "characteristic": "Rating (rated)",
+   "n": 5785,
+   "test": "Kruskal-Wallis",
+   "effect_size": 0.0139,
+   "effect_metric": "epsilon-squared",
+   "p_BH": 3.2832115123001174e-17,
+   "sig_BH": "***"
+  },
+  {
+   "scope": "4 cities (excl. Ghaziabad)",
+   "characteristic": "Votes (all)",
+   "n": 7922,
+   "test": "Kruskal-Wallis",
+   "effect_size": 0.016,
+   "effect_metric": "epsilon-squared",
+   "p_BH": 2.303229670727941e-26,
+   "sig_BH": "***"
+  },
+  {
+   "scope": "4 cities (excl. Ghaziabad)",
+   "characteristic": "Online delivery",
+   "n": 7922,
+   "test": "Chi-square",
+   "effect_size": 0.1074,
+   "effect_metric": "Cramer's V",
+   "p_BH": 2.4709698396538347e-19,
+   "sig_BH": "***"
+  },
+  {
+   "scope": "4 cities (excl. Ghaziabad)",
+   "characteristic": "Table booking",
+   "n": 7922,
+   "test": "Chi-square",
+   "effect_size": 0.0745,
+   "effect_metric": "Cramer's V",
+   "p_BH": 2.0270849832282327e-09,
+   "sig_BH": "***"
+  },
+  {
+   "scope": "4 cities (excl. Ghaziabad)",
+   "characteristic": "Chain indicator",
+   "n": 7922,
+   "test": "Chi-square",
+   "effect_size": 0.0089,
+   "effect_metric": "Cramer's V",
+   "p_BH": 0.8915448930938962,
+   "sig_BH": "ns"
+  },
+  {
+   "scope": "4 cities (excl. Ghaziabad)",
+   "characteristic": "Price range distribution",
+   "n": 7922,
+   "test": "Chi-square",
+   "effect_size": 0.0748,
+   "effect_metric": "Cramer's V",
+   "p_BH": 1.2713807886199367e-23,
+   "sig_BH": "***"
+  },
+  {
+   "scope": "4 cities (excl. Ghaziabad)",
+   "characteristic": "Cost for two",
+   "n": 7922,
+   "test": "Kruskal-Wallis",
+   "effect_size": 0.0136,
+   "effect_metric": "epsilon-squared",
+   "p_BH": 8.383021661148917e-23,
+   "sig_BH": "***"
+  },
+  {
+   "scope": "4 cities (excl. Ghaziabad)",
+   "characteristic": "Number of cuisines",
+   "n": 7922,
+   "test": "Kruskal-Wallis",
+   "effect_size": 0.0028,
+   "effect_metric": "epsilon-squared",
+   "p_BH": 5.842123253111674e-05,
+   "sig_BH": "***"
+  }
+ ],
+ "interaction_tests": [
+  {
+   "predictor": "Online delivery",
+   "outcome": "visibility",
+   "p_BH": 0.7694,
+   "sig_BH": "ns"
+  },
+  {
+   "predictor": "Online delivery",
+   "outcome": "quality",
+   "p_BH": 0.0837,
+   "sig_BH": "ns"
+  },
+  {
+   "predictor": "Online delivery",
+   "outcome": "engagement (rated)",
+   "p_BH": 0.0503,
+   "sig_BH": "ns"
+  },
+  {
+   "predictor": "Table booking",
+   "outcome": "visibility",
+   "p_BH": 0.0503,
+   "sig_BH": "ns"
+  },
+  {
+   "predictor": "Table booking",
+   "outcome": "quality",
+   "p_BH": 0.2003,
+   "sig_BH": "ns"
+  },
+  {
+   "predictor": "Table booking",
+   "outcome": "engagement (rated)",
+   "p_BH": 0.1039,
+   "sig_BH": "ns"
+  },
+  {
+   "predictor": "Chain indicator (5+ outlets)",
+   "outcome": "visibility",
+   "p_BH": 0.1717,
+   "sig_BH": "ns"
+  },
+  {
+   "predictor": "Chain indicator (5+ outlets)",
+   "outcome": "quality",
+   "p_BH": 0.104,
+   "sig_BH": "ns"
+  },
+  {
+   "predictor": "Chain indicator (5+ outlets)",
+   "outcome": "engagement (rated)",
+   "p_BH": 0.1239,
+   "sig_BH": "ns"
+  }
+ ],
+ "notes": [
+  "City values cover every listed restaurant in the city (all localities, eligible or not).",
+  "Rating statistics use rated restaurants only; publication, votes and positioning shares use all restaurants.",
+  "Differences between cities are statistically clear but small (Cramer's V 0.11 for publication; epsilon-squared 0.014 for ratings, 0.017 for votes).",
+  "None of the nine predictor x city interaction tests is significant after Benjamini-Hochberg correction (Ghaziabad excluded).",
+  "No city is ranked 'best': the explorer compares metrics, each with its own denominator."
+ ],
+ "sources": [
+  "RESULTS/tables/city_profile.csv (= Updated_Results.xlsx, sheet City_Analysis)",
+  "RESULTS/key_results.json (samples, city.tests, city.interactions)",
+  "RESULTS/tables/quadrants_by_city.csv",
+  "RESULTS/tables/city_specific_models.csv",
+  "PHASE2_EXISTING/Phase2_Results.xlsx, sheet T3_descriptives"
+ ]
+}

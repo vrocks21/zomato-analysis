@@ -1,0 +1,833 @@
+{
+ "title": "Research findings",
+ "engagement_note": "The engagement outcome is log(1 + Votes). Exponentiated regression coefficients are interpreted as percentage differences on the geometric scale of 1 + Votes, not exact percentage changes in raw vote counts.",
+ "models": [
+  {
+   "id": "visibility",
+   "dimension": "visibility",
+   "question": "What is associated with restaurant visibility?",
+   "model": "Model 1: logistic regression",
+   "outcome": "Published rating (is_rated)",
+   "population": "All NCR restaurants",
+   "n": 7947,
+   "scale": "Adjusted odds ratio (95% CI)",
+   "null_value": 1,
+   "log_axis": true,
+   "fit": {
+    "McFadden pseudo-R2": 0.219,
+    "AUC (in-sample, descriptive)": 0.804
+   },
+   "rows": [
+    {
+     "term": "Online delivery",
+     "estimate": 9.993,
+     "lo": 8.029,
+     "hi": 12.4374,
+     "p": 1.9189614856271217e-94,
+     "significant": true,
+     "is_city_effect": false
+    },
+    {
+     "term": "Table booking",
+     "estimate": 1.7874,
+     "lo": 1.2087,
+     "hi": 2.6431,
+     "p": 0.0036193102988710136,
+     "significant": true,
+     "is_city_effect": false
+    },
+    {
+     "term": "Price tier 2 (vs 1)",
+     "estimate": 2.0123,
+     "lo": 1.7507,
+     "hi": 2.313,
+     "p": 7.395798962068636e-23,
+     "significant": true,
+     "is_city_effect": false
+    },
+    {
+     "term": "Price tier 3 (vs 1)",
+     "estimate": 6.4107,
+     "lo": 4.1603,
+     "hi": 9.8786,
+     "p": 3.7031122351934385e-17,
+     "significant": true,
+     "is_city_effect": false
+    },
+    {
+     "term": "Price tier 4 (vs 1)",
+     "estimate": 11.5315,
+     "lo": 5.9036,
+     "hi": 22.5246,
+     "p": 8.201427110189324e-13,
+     "significant": true,
+     "is_city_effect": false
+    },
+    {
+     "term": "Cuisine breadth (+1 tag)",
+     "estimate": 1.4227,
+     "lo": 1.3261,
+     "hi": 1.5264,
+     "p": 8.417573662586874e-23,
+     "significant": true,
+     "is_city_effect": false
+    },
+    {
+     "term": "Chain (5+ outlets)",
+     "estimate": 2.311,
+     "lo": 1.9367,
+     "hi": 2.7577,
+     "p": 1.5378649134834436e-20,
+     "significant": true,
+     "is_city_effect": false
+    },
+    {
+     "term": "Gurgaon (vs New Delhi)",
+     "estimate": 0.9075,
+     "lo": 0.7582,
+     "hi": 1.0862,
+     "p": 0.28971401340958003,
+     "significant": false,
+     "is_city_effect": true
+    },
+    {
+     "term": "Noida (vs New Delhi)",
+     "estimate": 0.4795,
+     "lo": 0.407,
+     "hi": 0.5649,
+     "p": 1.488555879185651e-18,
+     "significant": true,
+     "is_city_effect": true
+    },
+    {
+     "term": "Faridabad (vs New Delhi)",
+     "estimate": 0.6284,
+     "lo": 0.4719,
+     "hi": 0.8368,
+     "p": 0.0014795998979600332,
+     "significant": true,
+     "is_city_effect": true
+    },
+    {
+     "term": "Ghaziabad (vs New Delhi; n = 25)",
+     "estimate": 3.4693,
+     "lo": 0.7482,
+     "hi": 16.0856,
+     "p": 0.1119694573018953,
+     "significant": false,
+     "is_city_effect": true
+    }
+   ],
+   "reading": "An odds ratio multiplies the odds of having a published rating, holding the other characteristics constant. It is not a percentage-point change in probability.",
+   "headline": "Online delivery has the strongest association with visibility (OR 9.99 [8.03, 12.44]). Chain outlets have more than twice the odds of being rated (OR 2.31), and table booking is significant in this baseline model (OR 1.79, p = .004)."
+  },
+  {
+   "id": "quality",
+   "dimension": "quality",
+   "question": "What is associated with perceived quality?",
+   "model": "Model 2: OLS with HC3 robust errors",
+   "outcome": "Displayed aggregate rating",
+   "population": "Rated NCR restaurants",
+   "n": 5808,
+   "scale": "Difference in rating points (95% CI)",
+   "null_value": 0,
+   "log_axis": false,
+   "fit": {
+    "Adjusted R2": 0.131
+   },
+   "rows": [
+    {
+     "term": "Online delivery",
+     "estimate": 0.0969,
+     "lo": 0.0711,
+     "hi": 0.1227,
+     "p": 1.8542312939553326e-13,
+     "significant": true,
+     "is_city_effect": false,
+     "sd_units": 0.208
+    },
+    {
+     "term": "Table booking",
+     "estimate": -0.0401,
+     "lo": -0.0888,
+     "hi": 0.0087,
+     "p": 0.10706494812154814,
+     "significant": false,
+     "is_city_effect": false,
+     "sd_units": -0.086
+    },
+    {
+     "term": "Price tier 2 (vs 1)",
+     "estimate": 0.0379,
+     "lo": 0.0114,
+     "hi": 0.0645,
+     "p": 0.005087218847976843,
+     "significant": true,
+     "is_city_effect": false,
+     "sd_units": 0.081
+    },
+    {
+     "term": "Price tier 3 (vs 1)",
+     "estimate": 0.364,
+     "lo": 0.3097,
+     "hi": 0.4183,
+     "p": 1.8741770872178802e-39,
+     "significant": true,
+     "is_city_effect": false,
+     "sd_units": 0.78
+    },
+    {
+     "term": "Price tier 4 (vs 1)",
+     "estimate": 0.4703,
+     "lo": 0.4019,
+     "hi": 0.5387,
+     "p": 1.945420526484073e-41,
+     "significant": true,
+     "is_city_effect": false,
+     "sd_units": 1.008
+    },
+    {
+     "term": "Cuisine breadth (+1 tag)",
+     "estimate": 0.0221,
+     "lo": 0.011,
+     "hi": 0.0333,
+     "p": 0.00010488630777557945,
+     "significant": true,
+     "is_city_effect": false,
+     "sd_units": 0.047
+    },
+    {
+     "term": "Chain (5+ outlets)",
+     "estimate": -0.0909,
+     "lo": -0.1206,
+     "hi": -0.0611,
+     "p": 2.126524743034793e-09,
+     "significant": true,
+     "is_city_effect": false,
+     "sd_units": -0.195
+    },
+    {
+     "term": "Gurgaon (vs New Delhi)",
+     "estimate": -0.0088,
+     "lo": -0.0414,
+     "hi": 0.0238,
+     "p": 0.596230682120966,
+     "significant": false,
+     "is_city_effect": true,
+     "sd_units": -0.019
+    },
+    {
+     "term": "Noida (vs New Delhi)",
+     "estimate": -0.1405,
+     "lo": -0.1778,
+     "hi": -0.1033,
+     "p": 1.4693973021097923e-13,
+     "significant": true,
+     "is_city_effect": true,
+     "sd_units": -0.301
+    },
+    {
+     "term": "Faridabad (vs New Delhi)",
+     "estimate": -0.138,
+     "lo": -0.1977,
+     "hi": -0.0782,
+     "p": 6.02483819045333e-06,
+     "significant": true,
+     "is_city_effect": true,
+     "sd_units": -0.296
+    },
+    {
+     "term": "Ghaziabad (vs New Delhi; n = 25)",
+     "estimate": -0.1649,
+     "lo": -0.39,
+     "hi": 0.0602,
+     "p": 0.15106277870455853,
+     "significant": false,
+     "is_city_effect": true,
+     "sd_units": -0.354
+    }
+   ],
+   "reading": "Coefficients are differences in rating points on the 1-5 scale, holding the other characteristics constant.",
+   "headline": "Price tier dominates: Tier 3 is +0.364 and Tier 4 +0.470 rating points above Tier 1. Delivery is associated with +0.097 points (0.208 SD); chain outlets are rated 0.091 points lower; table booking is not significant (p = .107)."
+  },
+  {
+   "id": "engagement",
+   "dimension": "engagement",
+   "question": "What is associated with customer engagement?",
+   "model": "Model 3: OLS with HC3 robust errors (primary)",
+   "outcome": "log(1 + Votes)",
+   "population": "Rated NCR restaurants",
+   "n": 5808,
+   "scale": "% difference in the geometric mean of (1 + Votes) (95% CI)",
+   "null_value": 0,
+   "log_axis": true,
+   "fit": {
+    "Adjusted R2": 0.314
+   },
+   "rows": [
+    {
+     "term": "Online delivery",
+     "estimate": 97.5239,
+     "lo": 84.9624,
+     "hi": 110.9386,
+     "p": 1.1840822270143736e-91,
+     "significant": true,
+     "is_city_effect": false,
+     "log_coef": 0.6807,
+     "sd_units": 0.484
+    },
+    {
+     "term": "Table booking",
+     "estimate": 10.2706,
+     "lo": -4.1169,
+     "hi": 26.817,
+     "p": 0.1704987326074212,
+     "significant": false,
+     "is_city_effect": false,
+     "log_coef": 0.0978,
+     "sd_units": 0.069
+    },
+    {
+     "term": "Price tier 2 (vs 1)",
+     "estimate": 58.8382,
+     "lo": 48.0309,
+     "hi": 70.4346,
+     "p": 6.620460821288182e-38,
+     "significant": true,
+     "is_city_effect": false,
+     "log_coef": 0.4627,
+     "sd_units": 0.329
+    },
+    {
+     "term": "Price tier 3 (vs 1)",
+     "estimate": 348.8379,
+     "lo": 283.6177,
+     "hi": 425.1465,
+     "p": 2.2270415180197353e-78,
+     "significant": true,
+     "is_city_effect": false,
+     "log_coef": 1.5015,
+     "sd_units": 1.067
+    },
+    {
+     "term": "Price tier 4 (vs 1)",
+     "estimate": 431.1277,
+     "lo": 333.135,
+     "hi": 551.2903,
+     "p": 6.010400239494862e-58,
+     "significant": true,
+     "is_city_effect": false,
+     "log_coef": 1.6698,
+     "sd_units": 1.187
+    },
+    {
+     "term": "Cuisine breadth (+1 tag)",
+     "estimate": 19.3761,
+     "lo": 15.7626,
+     "hi": 23.1024,
+     "p": 1.415574466898637e-29,
+     "significant": true,
+     "is_city_effect": false,
+     "log_coef": 0.1771,
+     "sd_units": 0.126
+    },
+    {
+     "term": "Chain (5+ outlets)",
+     "estimate": 34.452,
+     "lo": 24.7827,
+     "hi": 44.8706,
+     "p": 7.587900670328111e-15,
+     "significant": true,
+     "is_city_effect": false,
+     "log_coef": 0.296,
+     "sd_units": 0.21
+    },
+    {
+     "term": "Gurgaon (vs New Delhi)",
+     "estimate": -16.361,
+     "lo": -23.0542,
+     "hi": -9.0856,
+     "p": 2.6898982231988906e-05,
+     "significant": true,
+     "is_city_effect": true,
+     "log_coef": -0.1787,
+     "sd_units": -0.127
+    },
+    {
+     "term": "Noida (vs New Delhi)",
+     "estimate": -23.0312,
+     "lo": -29.8577,
+     "hi": -15.5403,
+     "p": 3.308695773256126e-08,
+     "significant": true,
+     "is_city_effect": true,
+     "log_coef": -0.2618,
+     "sd_units": -0.186
+    },
+    {
+     "term": "Faridabad (vs New Delhi)",
+     "estimate": -43.1316,
+     "lo": -51.147,
+     "hi": -33.8011,
+     "p": 3.296672388523629e-13,
+     "significant": true,
+     "is_city_effect": true,
+     "log_coef": -0.5644,
+     "sd_units": -0.401
+    },
+    {
+     "term": "Ghaziabad (vs New Delhi; n = 25)",
+     "estimate": 3.3078,
+     "lo": -29.4134,
+     "hi": 51.1974,
+     "p": 0.8670042399964847,
+     "significant": false,
+     "is_city_effect": true,
+     "log_coef": 0.0325,
+     "sd_units": 0.023
+    }
+   ],
+   "reading": "The engagement outcome is log(1 + Votes). Exponentiated regression coefficients are interpreted as percentage differences on the geometric scale of 1 + Votes, not exact percentage changes in raw vote counts. Example: +97.5% means the geometric mean of (1 + Votes) is about 1.98 times as high, holding the other characteristics constant.",
+   "headline": "Delivery is associated with a geometric mean of (1 + Votes) about twice as high (+97.5%), chain outlets +34.5% and each extra cuisine tag +19.4%, all on the geometric scale. Table booking is not significant among rated restaurants (p = .170)."
+  }
+ ],
+ "engagement_all_ncr": {
+  "model": "Model 3b: OLS with HC3 robust errors (sensitivity)",
+  "outcome": "log(1 + Votes)",
+  "population": "All NCR restaurants",
+  "n": 7947,
+  "scale": "% difference in the geometric mean of (1 + Votes) (95% CI)",
+  "fit": {
+   "Adjusted R2": 0.406
+  },
+  "rows": [
+   {
+    "term": "Online delivery",
+    "estimate": 283.7089,
+    "lo": 256.0905,
+    "hi": 313.4693,
+    "p": 1.0805008134069898e-272,
+    "significant": true,
+    "is_city_effect": false,
+    "log_coef": 1.3447,
+    "sd_units": 0.694
+   },
+   {
+    "term": "Table booking",
+    "estimate": 24.3658,
+    "lo": 6.049,
+    "hi": 45.8462,
+    "p": 0.0073084490027136104,
+    "significant": true,
+    "is_city_effect": false,
+    "log_coef": 0.2181,
+    "sd_units": 0.113
+   },
+   {
+    "term": "Price tier 2 (vs 1)",
+    "estimate": 105.1761,
+    "lo": 89.0148,
+    "hi": 122.7191,
+    "p": 4.5072934558973587e-66,
+    "significant": true,
+    "is_city_effect": false,
+    "log_coef": 0.7187,
+    "sd_units": 0.371
+   },
+   {
+    "term": "Price tier 3 (vs 1)",
+    "estimate": 621.2001,
+    "lo": 501.7931,
+    "hi": 764.2997,
+    "p": 1.516894006354714e-101,
+    "significant": true,
+    "is_city_effect": false,
+    "log_coef": 1.9757,
+    "sd_units": 1.02
+   },
+   {
+    "term": "Price tier 4 (vs 1)",
+    "estimate": 996.4772,
+    "lo": 775.7731,
+    "hi": 1272.8011,
+    "p": 7.621265333492113e-97,
+    "significant": true,
+    "is_city_effect": false,
+    "log_coef": 2.3947,
+    "sd_units": 1.236
+   },
+   {
+    "term": "Cuisine breadth (+1 tag)",
+    "estimate": 31.4186,
+    "lo": 26.9221,
+    "hi": 36.0743,
+    "p": 2.170309202706027e-53,
+    "significant": true,
+    "is_city_effect": false,
+    "log_coef": 0.2732,
+    "sd_units": 0.141
+   },
+   {
+    "term": "Chain (5+ outlets)",
+    "estimate": 72.5125,
+    "lo": 57.7448,
+    "hi": 88.6627,
+    "p": 7.088810409772112e-33,
+    "significant": true,
+    "is_city_effect": false,
+    "log_coef": 0.5453,
+    "sd_units": 0.281
+   },
+   {
+    "term": "Gurgaon (vs New Delhi)",
+    "estimate": -15.4819,
+    "lo": -22.8967,
+    "hi": -7.3541,
+    "p": 0.000330079093338102,
+    "significant": true,
+    "is_city_effect": true,
+    "log_coef": -0.1682,
+    "sd_units": -0.087
+   },
+   {
+    "term": "Noida (vs New Delhi)",
+    "estimate": -39.5145,
+    "lo": -45.1391,
+    "hi": -33.3133,
+    "p": 5.745288468087616e-24,
+    "significant": true,
+    "is_city_effect": true,
+    "log_coef": -0.5028,
+    "sd_units": -0.26
+   },
+   {
+    "term": "Faridabad (vs New Delhi)",
+    "estimate": -46.1574,
+    "lo": -54.7639,
+    "hi": -35.9136,
+    "p": 3.238353266046363e-12,
+    "significant": true,
+    "is_city_effect": true,
+    "log_coef": -0.6191,
+    "sd_units": -0.32
+   },
+   {
+    "term": "Ghaziabad (vs New Delhi; n = 25)",
+    "estimate": 39.6443,
+    "lo": -7.9381,
+    "hi": 111.8197,
+    "p": 0.1162099744393656,
+    "significant": false,
+    "is_city_effect": true,
+    "log_coef": 0.3339,
+    "sd_units": 0.172
+   }
+  ],
+  "caution": "Includes the 2,139 unrated restaurants, whose 0-3 votes are exactly the lower tail, so this model partly re-describes the publication threshold. Reported separately; never pooled with Model 3."
+ },
+ "price_contrasts": [
+  {
+   "step": "Tier 1 to Tier 2",
+   "quality_points": 0.038,
+   "quality_lo": 0.011,
+   "quality_hi": 0.064,
+   "quality_p": 0.005087218847976843,
+   "engagement_pct": 58.8,
+   "engagement_lo": 48.0,
+   "engagement_hi": 70.4,
+   "engagement_p": 6.620460821288182e-38
+  },
+  {
+   "step": "Tier 2 to Tier 3",
+   "quality_points": 0.326,
+   "quality_lo": 0.275,
+   "quality_hi": 0.377,
+   "quality_p": 1.7320413105716355e-35,
+   "engagement_pct": 182.6,
+   "engagement_lo": 143.8,
+   "engagement_hi": 227.5,
+   "engagement_p": 2.914049343493243e-43
+  },
+  {
+   "step": "Tier 3 to Tier 4",
+   "quality_points": 0.106,
+   "quality_lo": 0.043,
+   "quality_hi": 0.169,
+   "quality_p": 0.0009553649417996203,
+   "engagement_pct": 18.3,
+   "engagement_lo": -1.6,
+   "engagement_hi": 42.4,
+   "engagement_p": 0.07433927698040456
+  }
+ ],
+ "price_contrast_note": "Wald contrasts from Models 2 and 3. The Tier 2 to Tier 3 quality step is about 8.6 times the Tier 1 to Tier 2 step (equality test p = 2.8 x 10^-20). Engagement steps are on the geometric scale of (1 + Votes).",
+ "cross_model": {
+  "rank_correlations": "0.82-0.93 (standardised magnitudes; Phase2_Results.xlsx T7/T10)",
+  "sign_agreement": "5 of 7 predictors",
+  "rows": [
+   {
+    "predictor": "Online delivery",
+    "visibility_or": "9.99 ***",
+    "quality_b": "+0.097 ***",
+    "quality_sd": 0.208,
+    "engagement_sd": 0.484
+   },
+   {
+    "predictor": "Table booking",
+    "visibility_or": "1.79 **",
+    "quality_b": "-0.040 ns",
+    "quality_sd": -0.086,
+    "engagement_sd": 0.069
+   },
+   {
+    "predictor": "Price tier 2 (vs 1)",
+    "visibility_or": "2.01 ***",
+    "quality_b": "+0.038 **",
+    "quality_sd": 0.081,
+    "engagement_sd": 0.329
+   },
+   {
+    "predictor": "Price tier 3 (vs 1)",
+    "visibility_or": "6.41 ***",
+    "quality_b": "+0.364 ***",
+    "quality_sd": 0.78,
+    "engagement_sd": 1.067
+   },
+   {
+    "predictor": "Price tier 4 (vs 1)",
+    "visibility_or": "11.53 ***",
+    "quality_b": "+0.470 ***",
+    "quality_sd": 1.008,
+    "engagement_sd": 1.187
+   },
+   {
+    "predictor": "Cuisine breadth (+1 tag)",
+    "visibility_or": "1.42 ***",
+    "quality_b": "+0.022 ***",
+    "quality_sd": 0.047,
+    "engagement_sd": 0.126
+   },
+   {
+    "predictor": "Chain indicator (5+ outlets)",
+    "visibility_or": "2.31 ***",
+    "quality_b": "-0.091 ***",
+    "quality_sd": -0.195,
+    "engagement_sd": 0.21
+   }
+  ],
+  "direction_table": [
+   {
+    "Predictor": "Online delivery",
+    "Visibility (Model 1)": "+",
+    "Quality (Model 2)": "+",
+    "Engagement, rated (Model 3)": "+",
+    "Engagement, all NCR (3b)": "+",
+    "Top vs bottom rating (adj.)": "+ (ns)",
+    "Top vs zero-vote (adj., all NCR)": "+",
+    "Top vs bottom votes (adj., rated)": "+"
+   },
+   {
+    "Predictor": "Table booking",
+    "Visibility (Model 1)": "+",
+    "Quality (Model 2)": "− (ns)",
+    "Engagement, rated (Model 3)": "+ (ns)",
+    "Engagement, all NCR (3b)": "+",
+    "Top vs bottom rating (adj.)": "− (ns)",
+    "Top vs zero-vote (adj., all NCR)": "+ (ns)",
+    "Top vs bottom votes (adj., rated)": "+ (ns)"
+   },
+   {
+    "Predictor": "Price tier 2 (vs 1)",
+    "Visibility (Model 1)": "+",
+    "Quality (Model 2)": "+",
+    "Engagement, rated (Model 3)": "+",
+    "Engagement, all NCR (3b)": "+",
+    "Top vs bottom rating (adj.)": "+ (ns)",
+    "Top vs zero-vote (adj., all NCR)": "+",
+    "Top vs bottom votes (adj., rated)": "+"
+   },
+   {
+    "Predictor": "Price tier 3 (vs 1)",
+    "Visibility (Model 1)": "+",
+    "Quality (Model 2)": "+",
+    "Engagement, rated (Model 3)": "+",
+    "Engagement, all NCR (3b)": "+",
+    "Top vs bottom rating (adj.)": "+",
+    "Top vs zero-vote (adj., all NCR)": "+",
+    "Top vs bottom votes (adj., rated)": "+"
+   },
+   {
+    "Predictor": "Price tier 4 (vs 1)",
+    "Visibility (Model 1)": "+",
+    "Quality (Model 2)": "+",
+    "Engagement, rated (Model 3)": "+",
+    "Engagement, all NCR (3b)": "+",
+    "Top vs bottom rating (adj.)": "+",
+    "Top vs zero-vote (adj., all NCR)": "+",
+    "Top vs bottom votes (adj., rated)": "+"
+   },
+   {
+    "Predictor": "Cuisine breadth (+1 tag)",
+    "Visibility (Model 1)": "+",
+    "Quality (Model 2)": "+",
+    "Engagement, rated (Model 3)": "+",
+    "Engagement, all NCR (3b)": "+",
+    "Top vs bottom rating (adj.)": "+ (ns)",
+    "Top vs zero-vote (adj., all NCR)": "+",
+    "Top vs bottom votes (adj., rated)": "+"
+   },
+   {
+    "Predictor": "Chain indicator (5+ outlets)",
+    "Visibility (Model 1)": "+",
+    "Quality (Model 2)": "−",
+    "Engagement, rated (Model 3)": "+",
+    "Engagement, all NCR (3b)": "+",
+    "Top vs bottom rating (adj.)": "−",
+    "Top vs zero-vote (adj., all NCR)": "+",
+    "Top vs bottom votes (adj., rated)": "+"
+   }
+  ]
+ },
+ "locality_fixed_effects": [
+  {
+   "outcome": "quality",
+   "adj_r2_city_fe": 0.131,
+   "adj_r2_locality_fe": 0.235,
+   "test": "F (nested)",
+   "n": 5808
+  },
+  {
+   "outcome": "engagement (rated)",
+   "adj_r2_city_fe": 0.314,
+   "adj_r2_locality_fe": 0.468,
+   "test": "F (nested)",
+   "n": 5808
+  },
+  {
+   "outcome": "engagement (all NCR)",
+   "adj_r2_city_fe": 0.406,
+   "adj_r2_locality_fe": 0.536,
+   "test": "F (nested)",
+   "n": 7947
+  },
+  {
+   "outcome": "visibility",
+   "adj_r2_city_fe": 0.219,
+   "adj_r2_locality_fe": 0.348,
+   "test": "Likelihood ratio (pseudo-R2 columns)",
+   "n": 7947
+  }
+ ],
+ "hypotheses": [
+  {
+   "id": "H1",
+   "name": "Digital service",
+   "verdict": "Supported in its Phase 2 comparative form",
+   "detail": "The Phase 1 'negligible quality association' criterion (|d| <= 0.2 SD) is marginally crossed: the standardised quality association is 0.208 SD. The Phase 2 comparative statement is supported: the quality association is less than half the engagement association (0.208 SD vs 0.48 SD), and delivery does not distinguish top- from bottom-rated restaurants (adjusted OR 1.10, p = .444)."
+  },
+  {
+   "id": "H2",
+   "name": "Price",
+   "verdict": "Supported",
+   "detail": "Price relates to rating non-linearly: steps of +0.038, +0.326 and +0.106 rating points; the Tier 2 to Tier 3 step is about 8.6 times the Tier 1 to Tier 2 step."
+  },
+  {
+   "id": "H3",
+   "name": "Chain status",
+   "verdict": "Supported",
+   "detail": "Chains are more visible (OR 2.31) and more engaged (+34.5%, geometric scale) but rated lower (-0.091 points); stable at chain thresholds of 3 to 10 outlets."
+  },
+  {
+   "id": "H4",
+   "name": "Different drivers",
+   "verdict": "Supported with qualification",
+   "detail": "Signs agree for 5 of 7 predictors and magnitude rankings are concordant (0.82-0.93), so the outcomes share predictors; they differ in direction (chain), weight (delivery) and, in the baseline specifications, relevance (table booking, a specification-sensitive result)."
+  }
+ ],
+ "table_booking": {
+  "summary": "Table booking is significant for visibility (OR 1.79, p = .004) in the baseline model, but not for quality (-0.040, p = .107) or rated-restaurant engagement (+10.3%, p = .170). The result is specification-sensitive: with log cost for two in place of price tier (R2) it becomes significant for quality (+0.078) and engagement (+41%, geometric scale), and it is significant in the all-NCR engagement model (+24%, p = .007).",
+  "recommendation": "No managerial recommendation is made about offering table booking.",
+  "r2": {
+   "visibility": {
+    "estimate": 2.424,
+    "sig": "***"
+   },
+   "quality": {
+    "estimate": 0.078,
+    "sig": "***"
+   },
+   "engagement (rated)": {
+    "estimate": 0.341,
+    "sig": "***"
+   }
+  }
+ },
+ "chain_thresholds": [
+  {
+   "spec": "Chain threshold k=3 | visibility",
+   "estimate": 2.162,
+   "sig": "***"
+  },
+  {
+   "spec": "Chain threshold k=3 | quality",
+   "estimate": -0.058,
+   "sig": "***"
+  },
+  {
+   "spec": "Chain threshold k=3 | engagement (rated)",
+   "estimate": 0.372,
+   "sig": "***"
+  },
+  {
+   "spec": "Chain threshold k=5 | visibility",
+   "estimate": 2.311,
+   "sig": "***"
+  },
+  {
+   "spec": "Chain threshold k=5 | quality",
+   "estimate": -0.091,
+   "sig": "***"
+  },
+  {
+   "spec": "Chain threshold k=5 | engagement (rated)",
+   "estimate": 0.296,
+   "sig": "***"
+  },
+  {
+   "spec": "Chain threshold k=8 | visibility",
+   "estimate": 2.654,
+   "sig": "***"
+  },
+  {
+   "spec": "Chain threshold k=8 | quality",
+   "estimate": -0.094,
+   "sig": "***"
+  },
+  {
+   "spec": "Chain threshold k=8 | engagement (rated)",
+   "estimate": 0.258,
+   "sig": "***"
+  },
+  {
+   "spec": "Chain threshold k=10 | visibility",
+   "estimate": 2.933,
+   "sig": "***"
+  },
+  {
+   "spec": "Chain threshold k=10 | quality",
+   "estimate": -0.09,
+   "sig": "***"
+  },
+  {
+   "spec": "Chain threshold k=10 | engagement (rated)",
+   "estimate": 0.317,
+   "sig": "***"
+  }
+ ],
+ "sources": [
+  "REPORTS/Final_Research_Paper.docx (corrected Stage 1): Tables 5, 6, 10, 11 and Appendix A-C",
+  "RESULTS/key_results.json (models, price_contrasts, robustness, locality_fe, integration)",
+  "PHASE2_EXISTING/Phase2_Results.xlsx, sheet T7_cross_model",
+  "RESULTS/tables/integrated_direction_table.csv"
+ ]
+}
