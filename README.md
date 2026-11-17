@@ -5,7 +5,7 @@
 A research-backed restaurant benchmarking and diagnostic prototype based on historical Delhi NCR restaurant data. It applies the research project *"Visible, Liked, or Both? Understanding Restaurant Visibility, Perceived Quality and Customer Engagement on Zomato"* (Marketing Analytics Research Project, IIT Gandhinagar).
 
 - **Primary users:** restaurant owners and managers (Restaurant Owner mode).
-- **Secondary users:** students, researchers, general readers (Research Explorer mode, the Stage 2 explorer preserved and reworded).
+- **Secondary users:** students, researchers, general readers (Research Explorer mode: the empirical study's results, models, comparisons and limitations, with interpretation panels alongside the research evidence).
 - **Status:** research prototype. Historical benchmarks from an undated Zomato listing snapshot. Not live Zomato data, not affiliated with Zomato. Associations, not causes.
 
 ## Run it
@@ -28,7 +28,7 @@ WEBSITE/
   css/print.css               print / Save-as-PDF layout for the diagnostic report
   js/engine.js                benchmark + rule engine (pure functions; also runs in Node for tests)
   js/owner.js                 guided wizard, six-module dashboard, printable report
-  js/glossary.js              reusable plain-language statistical explanations + popovers
+  js/glossary.js              reusable statistical-concept explanations + popovers
   js/research.js              Research Explorer (generated from the Stage 2 app.js by tools/port_research_explorer.py)
   js/charts.js, filters.js    Stage 2 chart and filter helpers (copied unchanged)
   js/data.js                  data loader and formatting helpers

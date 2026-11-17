@@ -1,6 +1,6 @@
 /* Reusable statistical explanations (glossary page + inline "?" popovers).
-   Each entry: technical term, plain-language meaning, an example from this research, and a common
-   misreading to avoid. The same wording is used in the enhanced presentation and research report. */
+   Each entry: technical term, its meaning, an example from this research, and a common
+   misreading to avoid. The same wording is used in the Final Research Presentation and Final Research Report. */
 (function () {
   "use strict";
   const esc = (s) => window.NCR.esc(s);
