@@ -290,10 +290,10 @@
   }
  },
  "engagement_note": "The engagement outcome is log(1 + Votes). Exponentiated regression coefficients are interpreted as percentage differences on the geometric scale of 1 + Votes, not exact percentage changes in raw vote counts.",
- "built": "2026-11-16",
+ "built": "2026-11-17",
  "provenance": {
   "generated_by": "PHASE3_STAGE2/WEBSITE/build_website_data.py",
-  "generated_on": "2026-11-16T23:55:32",
+  "generated_on": "2026-11-17T03:30:02",
   "inputs": [
    {
     "file": "RESULTS/key_results.json",

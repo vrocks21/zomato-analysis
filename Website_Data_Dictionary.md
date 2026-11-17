@@ -1,4 +1,144 @@
-# Website Data Dictionary
+# Website Data Dictionary — NCR Restaurant Intelligence
+
+The website reads only the files in `data/`. All are aggregated; none contains a restaurant-level row, restaurant name, address or Restaurant ID (verified by `DATA_PIPELINE/validate_diagnostic_data.py`).
+
+| File | Produced by | Used by | Content |
+|---|---|---|---|
+| `diagnostic_benchmarks.json` | `DATA_PIPELINE/build_diagnostic_data.py` | Owner diagnostic | NCR, city, locality and peer-group descriptive benchmarks (Part A) |
+| `research_evidence.json` | same | Owner diagnostic (suggestion evidence, technical details) | Model estimates copied from `RESULTS/key_results.json` (Part A §6) |
+| `diagnostic_data.js` | same | both files above as `window.NCRI_DATA` / `window.NCRI_EVIDENCE`, so the site opens from disk | — |
+| `site.json`, `cities.json`, `localities.json`, `performance_extremes.json`, `research_findings.json`, `methodology.json` | `DATA_PIPELINE/build_research_explorer_data.py` (Stage 2 builder, output folder changed) | Research Explorer | Identical to the approved Stage 2 files (Part B) |
+| `site_data.js` | same | the six research files as `window.NCR_DATA` | — |
+| `validation_log.json` | same | provenance | 175 Stage 2 pipeline checks |
+
+The owner's profile is never written to any file. It is held in browser memory and in this tab's `sessionStorage` (key `ncri.session.v1`) until cleared or the tab is closed.
+
+---
+
+## Part A — Diagnostic benchmarks
+Documents every field produced by `PHASE3_STAGE3/DATA_PIPELINE/build_diagnostic_data.py` and consumed by the NCR Restaurant Intelligence owner diagnostic. All values are **descriptive aggregates** of the historical, undated Zomato listing snapshot. No regression model is estimated; model estimates in `research_evidence.json` are copied from `RESULTS/key_results.json`.
+
+### 1. Inputs and derivation rules (re-used verbatim from Phase 2)
+
+| Input | Use |
+|---|---|
+| `RAW_DATA/zomato.csv` (Latin-1, 9,551 rows) | Read-only at build time. Never copied to the website. |
+| `RAW_DATA/Country-Code.xlsx` | Country lookup (read with the standard-library XLSX reader). |
+| `RESULTS/key_results.json` | Sample sizes, eligibility counts, cut-offs, model estimates for validation and evidence. |
+| `RESULTS/tables/city_profile.csv`, `locality_profile_all_units.csv` | Reproduction check: the pipeline must reproduce the published profiles exactly. |
+
+Derived variables follow `PHASE2_EXTENDED/zomato_ext.py` (`load_data`, `standardise_locality`):
+
+| Variable | Rule | Source column |
+|---|---|---|
+| string cleaning | Leading/trailing whitespace trimmed on every text field | all |
+| `ncr` | City ∈ {New Delhi, Gurgaon, Noida, Faridabad, Ghaziabad} and Country = India | City, Country Code |
+| `is_rated` (visibility) | 1 if Aggregate rating > 0. A 0 means *no published rating*, never zero quality | Aggregate rating |
+| `rating` | Aggregate rating; used **only** for rated restaurants | Aggregate rating |
+| `votes` | Raw vote count (engagement proxy, not satisfaction) | Votes |
+| `delivery`, `booking` | 1 if the field equals "Yes" | Has Online delivery, Has Table booking |
+| `price` | Platform price range 1–4 (categorical) | Price range |
+| `cost` | Average cost for two, INR (all NCR rows > 0; no imputation) | Average Cost for two |
+| `n_cuisines` | Number of comma-separated tags (0 if empty; no NCR row is empty) | Cuisines |
+| `tags` | Tags split on commas and trimmed. 86 distinct NCR tags; no case, spelling or similarity merging (a case/punctuation-insensitive check found no variants). A restaurant belongs to every tag it lists, so cuisine groups overlap. | Cuisines |
+| `is_chain` | 1 if the trimmed Restaurant Name appears 5+ times in the full file (112 names; 16.5% of NCR). Operational proxy, **not ownership**. | Restaurant Name (used only to derive the flag; never exported) |
+| locality unit | `City + " | " + Locality`, with whitespace-only standardisation; 496 NCR units | City, Locality |
+| breadth bucket | `1`, `2`, `3`, `4+` (4–8 tags pooled, a transparent Stage 3 grouping for peer comparison) | n_cuisines |
+
+Cut-offs (from `key_results.json.cuts`): top-rated ≥ 3.9, bottom-rated ≤ 2.7 (NCR rated P90/P10); high engagement ≥ 234 votes (all-NCR P90); high engagement among rated ≥ 321 votes (rated P90).
+
+### 2. Eligibility and suppression
+
+| Object | Metrics exported when | Otherwise |
+|---|---|---|
+| NCR, cities | always (Ghaziabad flagged `small_sample`; the engine treats its 25 restaurants as below the 30 minimum and never uses it for gaps) | — |
+| Locality units | n ≥ 20 (lowest sensitivity threshold); flags `eligible.20/30/50`; the site uses 30 by default | count-only entry in `locality_index` |
+| Peer groups | n ≥ 30 restaurants | `available: false`, counts only, `unavailable_reason` |
+| Rating statistics and rated-only vote statistics (any object) | n_rated ≥ 20 | omitted; `rating_available: false`, `rating_unavailable_reason` |
+
+Thresholds are never lowered automatically. Missing values are never replaced by zero; unsupported metrics are absent and explained.
+
+### 3. `diagnostic_benchmarks.json`
+
+| Key | Type | Description |
+|---|---|---|
+| `meta` | object | Name, status (historical, not live), generator, timestamp, input MD5s, flags `restaurant_level_rows_exported: false`, `models_estimated: false`, `rules` (thresholds, cut-offs, quantile method, CI method, cuisine normalisation), `price_tiers`. |
+| `ncr` | profile | All 7,947 NCR restaurants. |
+| `cities[]` | profile + `id`, `name`, `share_of_ncr_pct`, `small_sample`, `small_sample_note` | Five cities. |
+| `locality_index[]` | `id`, `city`, `locality`, `n_restaurants`, `n_rated`, `eligible{20,30,50}` | All 496 units (counts only). |
+| `localities[]` | profile + `id`, `city`, `locality`, `label`, `eligible`, `compound_label` | 136 units with n ≥ 20. |
+| `cuisines[]` | `tag`, `n_ncr` | 86 tags with NCR restaurant counts (overlapping). |
+| `peer_groups.<block>` | `definition`, `min_n` (30), `min_rated` (20), `groups{key: profile + key[]}` | See §5. |
+
+### Profile object
+
+| Field | Population / denominator | Transformation |
+|---|---|---|
+| `n_restaurants`, `n_rated`, `n_unrated` | group | counts |
+| `available`, `unavailable_reason` | — | eligibility (§2) |
+| `rating_available`, `rating_unavailable_reason` | — | n_rated ≥ 20 |
+| `metrics.pub_rate_pct` {value, k, n, lo, hi} | all restaurants (n) | 100·k/n; Wilson 95% CI |
+| `metrics.delivery_pct`, `booking_pct`, `chain_pct` | all restaurants | share + Wilson CI |
+| `metrics.price_mix_pct.tier1..4`, `price34_pct` | all restaurants | shares |
+| `metrics.cost_for_two` {p10, p25, median, p75, p90, mean, n} | all restaurants | quantiles (type 7 linear interpolation), mean |
+| `metrics.n_cuisines` (quantiles), `breadth_mix_pct` {1,2,3,4+} | all restaurants | quantiles; shares |
+| `metrics.votes_all` (quantiles) | **all restaurants, including unrated (0–3 votes)** | raw votes |
+| `metrics.zero_vote_share_pct` | all restaurants | share |
+| `metrics.high_engagement_share_pct` | all restaurants | share with votes ≥ 234, Wilson CI |
+| `metrics.rating` (quantiles) | **rated restaurants only** (n_rated) | displayed rating |
+| `metrics.rating_bands_pct` | rated | shares of Zomato display bands |
+| `metrics.top_rated_share_pct` / `bottom_rated_share_pct` | rated | rating ≥ 3.9 (Wilson CI) / ≤ 2.7 |
+| `metrics.votes_rated` (quantiles) | **rated restaurants only** | raw votes |
+| `metrics.high_engagement_rated_share_pct` | rated | votes ≥ 321 |
+
+`votes_all` and `votes_rated` are separate objects with separate denominators and are never mixed. The site uses `votes_rated` for an owner with a published rating and `votes_all` otherwise, and labels the population every time.
+
+### 4. Group identifiers
+
+Keys join the key parts with `|`: e.g. `city_price_cuisine["New Delhi|3|Italian"]`, `locality_price["New Delhi | Hauz Khas|3"]` (the locality id itself contains ` | `), `city_price_delivery["Noida|2|1"]` (1 = delivery offered).
+
+### 5. Peer-group blocks
+
+| Block | Definition | Groups | With metrics (n ≥ 30) | With rating stats |
+|---|---|---|---|---|
+| `ncr_price` | NCR × price tier | 4 | 4 | 4 |
+| `city_price` | City × price tier | 19 | 13 | 13 |
+| `locality_price` | City + Locality × price tier | 1,072 | 55 | 40 |
+| `city_cuisine` | City × cuisine tag (membership) | 245 | 71 | 69 |
+| `ncr_cuisine` | NCR × cuisine tag | 86 | 32 | 32 |
+| `ncr_price_cuisine` | Price tier × cuisine tag | 236 | 65 | 65 |
+| `city_price_cuisine` | City × price × cuisine tag | 563 | 93 | 92 |
+| `city_breadth` | City × breadth bucket (1, 2, 3, 4+) | 20 | 15 | 15 |
+| `city_price_delivery` | City × price × delivery (descriptive service profile) | 37 | 22 | 22 |
+| `ncr_price_delivery` | Price × delivery | 8 | 8 | 8 |
+
+Peer ladder used by the engine (first rung with ≥ 30 restaurants is used; rating comparisons use the first rung that also has ≥ 20 rated): (1) city × price × first-selected cuisine → (2) city × price → (3) city, all tiers (broader price comparison; city must have ≥ 30) → (4) NCR × price. Supplementary groups (shown, never substituted): locality × price, NCR × price × cuisine, city × cuisine.
+
+Cuisine groups are descriptive membership groups. They do not imply that a cuisine causes higher or lower ratings, and no cuisine-level claim is made in the suggestions.
+
+### 6. `research_evidence.json` (copied, not estimated)
+
+| Key | Content | Source |
+|---|---|---|
+| `models.vis/qual/eng/eng_all.<term>` | `label`, `estimate`, `lo`, `hi`, `p`, `unit`, `sd_units` (quality: b / 0.466; engagement: b / 1.407) for delivery, booking, chain, cuisine breadth, price tiers 2–4. Visibility = odds ratio; quality = rating points; engagement = 100·(exp(b) − 1), % difference in the geometric mean of (1 + votes) | `key_results.json.models` |
+| `fit`, `sd` | pseudo-R² 0.219, adj. R² 0.131 / 0.314 / 0.406; outcome SDs | `key_results.json.models.fit/sd` |
+| `price_contrasts` | Adjacent tier steps (quality, engagement) | `key_results.json.price_contrasts` |
+| `extremes_adjusted_rating`, `extremes_adjusted_votes_rated` | Adjusted ORs of top-group membership | `key_results.json.deciles.adj` |
+| `r2_booking` | Booking under log cost for two | `key_results.json.robustness.r2_booking` |
+| `cuts`, `rating_spread`, `samples` | Cut-offs, rating spread by vote band, sample sizes | `key_results.json` |
+
+### 7. Validation
+
+- `build_diagnostic_data.py`: 4,043 build checks (sample sizes, eligibility counts, exact reproduction of 13 city metrics × 5 cities and ≥ 900 locality metric values against the published Stage 1 profiles, paper spot checks, suppression and privacy) — 0 failed.
+- `validate_diagnostic_data.py`: 15,171 checks (schema, denominators, eligibility, identifiers, population separation, privacy scan, no external requests, Stage 2 research data identity, engine tests) — 0 failed.
+
+---
+
+## Part B — Research Explorer data (Stage 2 dictionary, reproduced unchanged)
+
+The research-explorer files are regenerated by the Stage 2 builder and are byte-for-byte equivalent in content to `PHASE3_STAGE2/WEBSITE/data/` (checked by `validate_diagnostic_data.py`). Their dictionary from Stage 2 follows.
+
+### Website Data Dictionary
 
 All files in `data/` are generated by `build_website_data.py` and must not be edited by hand. The pipeline uses the Python standard library only and reads **aggregated, verified results**. It does not read the restaurant-level CSV and estimates no model. `data/site_data.js` contains the same six objects as `window.NCR_DATA = { site, cities, localities, performance_extremes, research_findings, methodology }`.
 
@@ -9,7 +149,7 @@ All files in `data/` are generated by `build_website_data.py` and must not be ed
 - City + Locality identifier: `"<City> | <Locality>"` (field `id` / `loc_id`). 28 locality names repeat across NCR cities.
 - Populations: **All NCR** = 7,947 restaurants in New Delhi, Gurgaon, Noida, Faridabad and Ghaziabad. **Rated NCR** = 5,808 with a published rating (rating > 0, equivalently 4+ votes).
 
-## 1. Input files and provenance
+### 1. Input files and provenance
 
 | Input | Used for | Notes |
 |---|---|---|
@@ -26,7 +166,7 @@ All files in `data/` are generated by `build_website_data.py` and must not be ed
 
 `site.json → provenance` records the MD5 checksum of every input at build time and states `raw_data_used: false` and `models_estimated: false`.
 
-## 2. `site.json`
+### 2. `site.json`
 
 | Field | Meaning | Source |
 |---|---|---|
@@ -38,7 +178,7 @@ All files in `data/` are generated by `build_website_data.py` and must not be ed
 | `engagement_note` | The exact geometric-scale sentence | Paper §5.1, brief |
 | `provenance` | Generator, timestamp, input checksums | Pipeline |
 
-## 3. Metric catalogue (`site.json → metric_catalogue`)
+### 3. Metric catalogue (`site.json → metric_catalogue`)
 
 Each entry has `id`, `label`, `dimension`, `unit`, `population`, `denominator` (`n_restaurants` or `n_rated`), `ci_columns`, `ci_method`, `requires_min_rated`, `source_column`, `transformation` and `explanation`.
 
@@ -61,7 +201,7 @@ Each entry has `id`, `label`, `dimension`, `unit`, `population`, `denominator` (
 
 The 3.9 / 2.7 / 234 cut-offs are the NCR-wide P90/P10 thresholds from the paper (§5.2), applied within each unit.
 
-## 4. `cities.json`
+### 4. `cities.json`
 
 | Field | Meaning |
 |---|---|
@@ -79,7 +219,7 @@ The 3.9 / 2.7 / 234 cut-offs are the NCR-wide P90/P10 thresholds from the paper 
 
 **How the NCR benchmark is derived (transformation).** Exact NCR values are rebuilt from the five published city rows. Counts are summed (`n_top_rated`, `n_bottom_rated`, `n_top_vote`, `n_bottom_vote`); city percentages are converted back to counts (`round(pct × n / 100)`), summed and divided by 7,947; and the mean rating is the n_rated-weighted mean of city means. Each rebuilt value is cross-checked against an independent source: 679 / 727 / 798 / 1,093 group sizes from `key_results.json`, and publication 73.1%, delivery 29.2%, booking 13.2%, chain 16.5% and mean rating 3.280 from Phase2_Results.xlsx T3. Medians cannot be rebuilt from city medians, so the NCR median rating (3.3) and NCR median votes among rated (40) come from T3. NCR median votes (all restaurants) and NCR median cost for two are **not available** in the verified results and are shown as "Not available".
 
-## 5. `localities.json`
+### 5. `localities.json`
 
 | Field | Meaning |
 |---|---|
@@ -99,7 +239,7 @@ The 3.9 / 2.7 / 234 cut-offs are the NCR-wide P90/P10 thresholds from the paper 
 | `localities[].rankings_t30{ranking}` | `{rank, of, value, tied_units}` for each of nine rankings; `null` below the primary threshold |
 | `localities[].pattern_t30`, `quadrant_mix_pct_t30` | Pattern label and quadrant shares (primary threshold, ≥ 20 rated only) |
 
-## 6. `performance_extremes.json`
+### 6. `performance_extremes.json`
 
 | Field | Meaning |
 |---|---|
@@ -108,7 +248,7 @@ The 3.9 / 2.7 / 234 cut-offs are the NCR-wide P90/P10 thresholds from the paper 
 | `rating_spread` | Vote band, n, mean and SD of rating, % top-rated and % bottom-rated; Brown–Forsythe W |
 | `overlap` | Top-vote / top-rated overlap, Jaccard, Spearman rating ~ votes among rated |
 
-## 7. `research_findings.json`
+### 7. `research_findings.json`
 
 | Field | Meaning |
 |---|---|
@@ -124,10 +264,10 @@ The 3.9 / 2.7 / 234 cut-offs are the NCR-wide P90/P10 thresholds from the paper 
 
 **Transformation.** `engagement_pct = 100 × (exp(b) − 1)` is taken from `key_results.json`, where it was computed in Phase 2. The pipeline re-checks it against `b` for every term (rounding tolerance 1e-6).
 
-## 8. `methodology.json`
+### 8. `methodology.json`
 
 `dataset`, `funnel[]` (9,551 → 8,652 → 7,947 → 5,808 / 2,139), `threshold_pattern` (0–3 votes unrated, 4+ rated, 0 exceptions; not confirmed policy), `outcomes[]`, `specification`, `analyses[]`, `figures[]` (the two Stage 1 figures copied to `assets/`) and `limitations[]` (11 items).
 
-## 9. `validation_log.json`
+### 9. `validation_log.json`
 
 The 175 checks run at build time, each `{check, pass, detail}`. They include sample sizes, city totals, unique identifiers, threshold membership, restaurants covered, the rankable-unit rule, NCR cross-checks, hypothesis statistics, the engagement transformation, NaN/Inf screening and null-with-reason screening.

@@ -3,81 +3,368 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NCR Restaurant Benchmark Explorer</title>
-  <meta name="description" content="Explore how restaurant visibility, perceived quality and customer engagement vary across Delhi NCR. A historical research benchmark built from an undated Zomato listing snapshot.">
+  <title>NCR Restaurant Intelligence</title>
+  <meta name="description" content="Benchmark. Understand. Improve. A research-backed restaurant benchmarking and diagnostic prototype based on historical Delhi NCR restaurant data.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
 </head>
-<body>
+<body data-mode="owner">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="#overview" aria-label="NCR Restaurant Benchmark Explorer, overview">
-        <span class="brand-dots" aria-hidden="true"><i class="dot v"></i><i class="dot q"></i><i class="dot e"></i></span>
-        <span class="brand-name">NCR Restaurant Benchmark Explorer</span>
+      <a class="brand" href="#home" aria-label="NCR Restaurant Intelligence, home">
+        <span class="brand-mark" aria-hidden="true"><i class="v"></i><i class="q"></i><i class="e"></i></span>
+        <span class="brand-text"><span class="brand-name">NCR Restaurant Intelligence</span><span class="brand-tag">Benchmark. Understand. Improve.</span></span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         <span class="menu-icon" aria-hidden="true"></span><span class="menu-label">Menu</span>
       </button>
-      <nav id="site-nav" class="site-nav" aria-label="Sections">
-        <a href="#overview" data-view="overview">Overview</a>
-        <a href="#cities" data-view="cities">Cities</a>
-        <a href="#localities" data-view="localities">Localities</a>
-        <a href="#extremes" data-view="extremes">Performance extremes</a>
-        <a href="#findings" data-view="findings">Research findings</a>
-        <a href="#methodology" data-view="methodology">Methodology</a>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <div class="mode-switch" role="group" aria-label="Experience">
+          <a href="#home" data-mode-link="owner">For restaurant owners</a>
+          <a href="#research" data-mode-link="research">Research explorer</a>
+        </div>
+        <a href="#diagnose" data-view="diagnose" class="nav-cta">Benchmark my restaurant</a>
+        <a href="#glossary" data-view="glossary">Glossary</a>
+        <a href="#about" data-view="about">About &amp; privacy</a>
       </nav>
     </div>
+    <nav class="sub-nav" id="research-nav" aria-label="Research explorer sections" hidden>
+      <div class="sub-inner">
+        <span class="sub-label">Research explorer</span>
+        <a href="#research" data-view="research">Overview</a>
+        <a href="#research/cities" data-view="research/cities">Cities</a>
+        <a href="#research/localities" data-view="research/localities">Localities</a>
+        <a href="#research/extremes" data-view="research/extremes">Top vs bottom</a>
+        <a href="#research/findings" data-view="research/findings">Findings</a>
+        <a href="#research/methodology" data-view="research/methodology">Methodology</a>
+      </div>
+    </nav>
     <div class="status-strip" role="note">
-      <span class="long">Historical research benchmark built from an undated Zomato listing snapshot. Not a live Zomato service. All results are associations, not causal effects.</span>
-      <span class="short">Historical research benchmark · not a live Zomato service · associations only</span>
+      <span class="long">Research prototype · historical Delhi NCR benchmarks from an undated Zomato listing snapshot · not live Zomato data · associations, not causes · your entries stay in this browser</span>
+      <span class="short">Historical research benchmarks · not live Zomato data · entries stay in your browser</span>
     </div>
   </header>
 
   <main id="main" tabindex="-1">
     <div id="load-error" class="load-error" hidden></div>
 
-    <!-- ================================================================ OVERVIEW -->
-    <section id="view-overview" class="view" data-view="overview" aria-labelledby="h-overview">
-      <div class="hero">
-        <div class="wrap hero-grid">
-          <div>
-          <p class="eyebrow">Marketing Analytics Research Project · IIT Gandhinagar</p>
-          <h1 id="h-overview">NCR Restaurant Benchmark Explorer</h1>
-          <p class="tagline" data-bind="site.tagline"></p>
-          <p class="lede">
-            A rating is only one part of restaurant performance on a discovery platform. This explorer follows the research project
-            <em>“Visible, Liked, or Both?”</em> and separates performance into three outcomes, so you can see how each one varies
-            across the five cities and the City + Locality units of Delhi NCR.
-          </p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#localities">Benchmark a locality</a>
-            <a class="btn" href="#findings">See the research findings</a>
+    <!-- ============================================================ OWNER HOME -->
+    <section id="view-home" class="view" data-view="home" aria-labelledby="h-home">
+      <div class="o-hero">
+        <div class="wrap o-hero-grid">
+          <div class="o-hero-copy">
+            <p class="o-kicker"><span class="pulse" aria-hidden="true"></span>Research-backed restaurant benchmarking for Delhi NCR</p>
+            <h1 id="h-home">Understand where your restaurant stands.</h1>
+            <p class="o-lede">Compare your restaurant with historical NCR benchmarks and discover areas worth investigating.</p>
+            <div class="o-actions">
+              <a class="o-btn primary lg" href="#diagnose">Benchmark My Restaurant <span aria-hidden="true">→</span></a>
+              <a class="o-btn ghost lg" href="#research">Explore NCR Research</a>
+            </div>
+            <ul class="o-trust" aria-label="How the tool works">
+              <li><b>No login, no upload.</b> Your entries stay in this browser.</li>
+              <li><b>Built on <span data-k="ncr_n"></span> NCR restaurants.</b> Historical, undated snapshot.</li>
+              <li><b>Transparent rules.</b> Every suggestion shows its evidence.</li>
+            </ul>
           </div>
+          <div class="o-hero-visual" aria-hidden="true">
+            <div class="hv-card hv-main">
+              <div class="hv-head"><span class="hv-dot"></span><span>Illustrative preview</span><em>not a real restaurant</em></div>
+              <div class="hv-title">Example diagnostic</div>
+              <div class="hv-row"><span class="hv-lab">Rating vs locality peers</span>
+                <svg viewBox="0 0 220 26" class="hv-range"><rect x="10" y="10" width="200" height="6" rx="3" fill="#e7ebf3"/><rect x="45" y="8" width="130" height="10" rx="5" fill="#f6d2c0"/><rect x="85" y="6" width="60" height="14" rx="7" fill="#e89b74"/><line x1="112" x2="112" y1="3" y2="23" stroke="#a8481c" stroke-width="2"/><path d="M78 2 l6 8 l-6 8 l-6 -8z" fill="#101a33"/></svg></div>
+              <div class="hv-row"><span class="hv-lab">Votes vs rated peers</span>
+                <svg viewBox="0 0 220 26" class="hv-range"><rect x="10" y="10" width="200" height="6" rx="3" fill="#e7ebf3"/><rect x="30" y="8" width="150" height="10" rx="5" fill="#cbe9d9"/><rect x="70" y="6" width="70" height="14" rx="7" fill="#6cc29a"/><line x1="100" x2="100" y1="3" y2="23" stroke="#17704a" stroke-width="2"/><path d="M150 2 l6 8 l-6 8 l-6 -8z" fill="#101a33"/></svg></div>
+              <div class="hv-row"><span class="hv-lab">Published-rating share</span>
+                <div class="hv-bars"><span style="width:82%"></span><span style="width:74%"></span><span style="width:73%"></span></div></div>
+              <div class="hv-legend"><span><i class="d"></i>Your entry</span><span><i class="b"></i>Middle half of peers</span><span><i class="m"></i>Median</span></div>
+            </div>
+            <div class="hv-card hv-side">
+              <div class="hv-chip strong">Strong statistical association</div>
+              <div class="hv-s-title">Suggestion</div>
+              <div class="hv-lines"><i></i><i></i><i class="short"></i></div>
+              <div class="hv-chip bench">Benchmark-based</div>
+            </div>
           </div>
-          <aside class="hero-card" aria-labelledby="h-hero-card">
-            <p class="eyebrow">One characteristic, three outcomes</p>
-            <h2 id="h-hero-card">Online delivery is associated with…</h2>
-            <div id="hero-delivery"></div>
-            <p class="fine">Model estimates holding price tier, city, booking, cuisine breadth and chain status constant. Associations, not effects. Source: final paper, Table 5.</p>
-          </aside>
         </div>
       </div>
 
       <div class="wrap">
-        <ul class="stat-row" id="headline-stats" aria-label="Sample at a glance"></ul>
+        <section class="o-section" aria-labelledby="h-dims">
+          <p class="o-eyebrow">Three ways to measure platform performance</p>
+          <h2 id="h-dims" class="o-h2">A rating is only one part of the picture.</h2>
+          <p class="o-sub">The research behind this tool shows that being seen, being rated highly and attracting interaction are related but different outcomes. The same restaurant characteristic can relate to them very differently.</p>
+          <div class="o-dims" id="home-dims"></div>
+        </section>
 
+        <section class="o-section" aria-labelledby="h-how">
+          <p class="o-eyebrow">How it works</p>
+          <h2 id="h-how" class="o-h2">Four short steps, about three minutes.</h2>
+          <ol class="o-steps">
+            <li><span class="n">1</span><b>Describe your restaurant</b><span>City, locality, price tier and cuisine. Only the first three are required.</span></li>
+            <li><span class="n">2</span><b>Add what you know</b><span>Your current rating, votes and services, if you want those comparisons.</span></li>
+            <li><span class="n">3</span><b>Choose your priorities</b><span>Visibility, rating, engagement, price positioning or local benchmarking.</span></li>
+            <li><span class="n">4</span><b>Get your diagnostic</b><span>Locality, city and NCR benchmarks, similar-restaurant peers, gaps and up to five suggestions, plus a printable report.</span></li>
+          </ol>
+          <div class="o-center"><a class="o-btn primary lg" href="#diagnose">Start the diagnostic <span aria-hidden="true">→</span></a>
+            <p class="fine o-mt">Or <a href="#example">open a synthetic example</a> (an invented profile, not a real restaurant).</p></div>
+        </section>
+
+        <section class="o-section o-split" aria-labelledby="h-get">
+          <div>
+            <p class="o-eyebrow">What you get</p>
+            <h2 id="h-get" class="o-h2">Comparisons first. Evidence always visible.</h2>
+            <ul class="o-checks">
+              <li><b>Benchmarks in a fixed order:</b> your locality, your city, all of Delhi NCR, then similar restaurants.</li>
+              <li><b>Exact sample sizes.</b> Every comparison shows how many restaurants it rests on, and is hidden when there are too few.</li>
+              <li><b>Plain language first.</b> Regression estimates, confidence intervals and p-values are one click away.</li>
+              <li><b>No invented scores.</b> The tool never grades your restaurant or calculates a health score.</li>
+            </ul>
+          </div>
+          <div class="o-evidence-legend" id="home-evidence"></div>
+        </section>
+
+        <section class="o-section o-caveat-band" aria-labelledby="h-limits">
+          <h2 id="h-limits" class="o-h3">Before you start</h2>
+          <div class="o-caveat-grid">
+            <p><b>Historical data.</b> Benchmarks come from one undated Zomato listing snapshot. They are research references, not current Zomato performance.</p>
+            <p><b>Unverified entries.</b> What you enter is not checked against live Zomato data. The historical data may or may not include your own restaurant.</p>
+            <p><b>Associations, not causes.</b> The study is observational. No suggestion is a guaranteed improvement.</p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- ============================================================ DIAGNOSE (WIZARD) -->
+    <section id="view-diagnose" class="view" data-view="diagnose" aria-labelledby="h-diagnose" hidden>
+      <div class="wrap narrow">
+        <header class="o-view-head">
+          <p class="o-eyebrow">Restaurant diagnostic</p>
+          <h1 id="h-diagnose">Benchmark my restaurant</h1>
+          <p class="o-sub">Required: city, locality and price tier. Everything else is optional; the more you add, the more comparisons you get. Nothing is sent anywhere. <a href="#example">See a synthetic example first</a>.</p>
+        </header>
+        <ol class="stepper" id="stepper" aria-label="Progress"></ol>
+        <form id="wizard" class="wizard" novalidate autocomplete="off">
+          <!-- STEP 1 -->
+          <fieldset class="w-step" data-step="1">
+            <legend class="w-legend">Restaurant profile</legend>
+            <div class="w-grid">
+              <div class="field span2">
+                <label for="f-name">Restaurant name <span class="opt">optional</span></label>
+                <input id="f-name" name="name" type="text" maxlength="80" placeholder="Used only as the title of your report">
+                <p class="hint">Not looked up or matched against the dataset.</p>
+              </div>
+              <div class="field">
+                <label for="f-city">City <span class="req">required</span></label>
+                <select id="f-city" name="city" aria-describedby="e-city"></select>
+                <p class="err" id="e-city" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="f-loc-search">Locality <span class="req">required</span></label>
+                <input id="f-loc-search" type="search" placeholder="Search localities in this city" aria-controls="f-locality">
+                <select id="f-locality" name="locality_id" size="6" aria-describedby="e-locality_id f-loc-info" aria-label="Locality"></select>
+                <p class="hint" id="f-loc-info" aria-live="polite"></p>
+                <p class="err" id="e-locality_id" role="alert"></p>
+              </div>
+              <div class="field span2">
+                <span class="flabel" id="l-price">Platform price tier <span class="req">required</span></span>
+                <div class="tier-cards" role="radiogroup" aria-labelledby="l-price" aria-describedby="e-price" id="f-price"></div>
+                <p class="hint">Zomato's four-level price range. The typical cost for two in the historical NCR data is shown to help you choose.</p>
+                <p class="err" id="e-price" role="alert"></p>
+              </div>
+              <div class="field span2">
+                <label for="f-cuisine-search">Cuisines <span class="opt">optional · up to 8</span></label>
+                <div class="chips-selected" id="f-cuisines-selected" aria-live="polite"></div>
+                <input id="f-cuisine-search" type="search" placeholder="Search cuisine tags, e.g. North Indian, Cafe, Italian">
+                <div class="chips-options" id="f-cuisine-options" role="listbox" aria-multiselectable="true" aria-label="Cuisine tags"></div>
+                <p class="hint">Tags as used on the platform listing. The first one you select defines your cuisine peer group. The number of tags is compared with similar restaurants.</p>
+                <p class="err" id="e-cuisines" role="alert"></p>
+              </div>
+            </div>
+          </fieldset>
+          <!-- STEP 2 -->
+          <fieldset class="w-step" data-step="2" hidden>
+            <legend class="w-legend">Restaurant operations</legend>
+            <div class="w-grid">
+              <div class="field">
+                <label for="f-rating">Current rating <span class="opt">optional · 0 to 5</span></label>
+                <input id="f-rating" name="rating" type="number" inputmode="decimal" min="0" max="5" step="0.1" placeholder="e.g. 3.6" aria-describedby="e-rating h-rating">
+                <p class="hint" id="h-rating">Enter 0 if your listing shows no published rating. A 0 is treated as “not published”, never as zero quality.</p>
+                <p class="err" id="e-rating" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="f-votes">Current votes <span class="opt">optional</span></label>
+                <input id="f-votes" name="votes" type="number" inputmode="numeric" min="0" step="1" placeholder="e.g. 85" aria-describedby="e-votes h-votes">
+                <p class="hint" id="h-votes">The number of customer votes behind your rating. Votes measure interaction, not satisfaction.</p>
+                <p class="err" id="e-votes" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="f-cost">Average cost for two (₹) <span class="opt">optional</span></label>
+                <input id="f-cost" name="cost" type="number" inputmode="numeric" min="1" step="50" placeholder="e.g. 800" aria-describedby="e-cost">
+                <p class="err" id="e-cost" role="alert"></p>
+              </div>
+              <div class="field span2 yn-grid">
+                <div class="yn" data-field="delivery"><span class="flabel" id="l-delivery">Do you offer online delivery?</span></div>
+                <div class="yn" data-field="booking"><span class="flabel" id="l-booking">Do you offer table booking?</span></div>
+                <div class="yn" data-field="multi_outlet"><span class="flabel" id="l-multi_outlet">Do you operate more than one outlet?</span></div>
+              </div>
+              <div class="field span2">
+                <div class="o-note">
+                  <b>About multi-outlet status.</b> The research's chain measure is a proxy: a restaurant name that appears 5 or more times in the historical snapshot. It does not verify ownership, and your self-reported multi-outlet status is not necessarily the same thing. Comparisons that use it say so.
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <!-- STEP 3 -->
+          <fieldset class="w-step" data-step="3" hidden>
+            <legend class="w-legend">Business improvement priorities</legend>
+            <p class="o-sub">Select what matters to you, in order of importance. Your first choice is ranked first in the action plan. Leave all unselected to see every applicable suggestion.</p>
+            <div class="goal-grid" id="f-goals" role="group" aria-label="Priorities"></div>
+          </fieldset>
+          <!-- STEP 4 -->
+          <fieldset class="w-step" data-step="4" hidden>
+            <legend class="w-legend">Review and generate</legend>
+            <div id="review-summary" class="review"></div>
+            <div class="field">
+              <span class="flabel" id="l-threshold">Locality eligibility threshold</span>
+              <div class="segmented" role="radiogroup" aria-labelledby="l-threshold" id="f-threshold">
+                <label><input type="radio" name="threshold" value="30" checked><span>30+ restaurants (primary)</span></label>
+                <label><input type="radio" name="threshold" value="20"><span>20+ (sensitivity)</span></label>
+                <label><input type="radio" name="threshold" value="50"><span>50+ (stricter)</span></label>
+              </div>
+              <p class="hint">A locality benchmark is shown only when your locality has at least this many restaurants in the historical data. Rating statistics also need 20 or more rated restaurants. The research uses 30 as its primary threshold.</p>
+            </div>
+            <div class="o-note privacy"><b>Privacy.</b> Your profile is processed only inside this browser tab. It is not uploaded, stored on a server or shared. It is kept in this tab's session storage until you clear it or close the tab.</div>
+            <div id="w-warnings" class="w-warnings" aria-live="polite"></div>
+          </fieldset>
+          <div class="w-nav">
+            <button type="button" class="o-btn ghost" id="w-back">← Back</button>
+            <span class="w-count" id="w-count" aria-live="polite"></span>
+            <button type="button" class="o-btn primary" id="w-next">Continue →</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================================================ RESULTS DASHBOARD -->
+    <section id="view-results" class="view" data-view="results" aria-labelledby="h-results" hidden>
+      <div id="results-empty" class="wrap narrow" hidden>
+        <div class="empty-state big"><strong>No diagnostic yet.</strong>Enter your restaurant's city, locality and price tier to generate one.<br><a class="o-btn primary" href="#diagnose">Start the diagnostic</a></div>
+      </div>
+      <div id="results-body" hidden>
+        <div class="r-top">
+          <div class="wrap r-top-inner">
+            <div>
+              <p class="o-eyebrow">Restaurant diagnostic · historical reference benchmarks</p>
+              <h1 id="h-results">Diagnostic</h1>
+              <div class="r-chips" id="r-chips"></div>
+            </div>
+            <div class="r-actions">
+              <a class="o-btn ghost" href="#diagnose" id="r-edit">Edit inputs</a>
+              <a class="o-btn primary" href="#report" id="r-download">Download My Restaurant Diagnostic</a>
+            </div>
+          </div>
+        </div>
+        <div class="wrap r-layout">
+          <nav class="r-nav" aria-label="Diagnostic modules" id="r-nav">
+            <a href="#m-overview" data-mod="m-overview"><span>1</span>Restaurant overview</a>
+            <a href="#m-snapshot" data-mod="m-snapshot"><span>2</span>Performance snapshot</a>
+            <a href="#m-geo" data-mod="m-geo"><span>3</span>Locality &amp; city benchmarks</a>
+            <a href="#m-peers" data-mod="m-peers"><span>4</span>Similar restaurants</a>
+            <a href="#m-opps" data-mod="m-opps"><span>5</span>Opportunity analysis</a>
+            <a href="#m-plan" data-mod="m-plan"><span>6</span>Personal action plan</a>
+          </nav>
+          <div class="r-main">
+            <div class="r-caveat" id="r-caveat"></div>
+            <div id="r-warnings"></div>
+            <section class="mod" id="m-overview" aria-labelledby="mh-overview"><header class="mod-head"><span class="mod-n">1</span><div><h2 id="mh-overview">Restaurant overview</h2><p>What you entered. Missing items limit which comparisons can be made.</p></div></header><div id="mod-overview"></div></section>
+            <section class="mod" id="m-snapshot" aria-labelledby="mh-snapshot"><header class="mod-head"><span class="mod-n">2</span><div><h2 id="mh-snapshot">Performance snapshot</h2><p>Each metric against the closest geographic reference that has enough restaurants: your locality, else your city, else Delhi NCR.</p></div></header><div id="mod-snapshot"></div></section>
+            <section class="mod" id="m-geo" aria-labelledby="mh-geo"><header class="mod-head"><span class="mod-n">3</span><div><h2 id="mh-geo">Locality and city benchmarks</h2><p>Your locality, your city and all of Delhi NCR, in that order. Choose a metric.</p></div></header><div id="mod-geo"></div></section>
+            <section class="mod" id="m-peers" aria-labelledby="mh-peers"><header class="mod-head"><span class="mod-n">4</span><div><h2 id="mh-peers">Similar restaurant comparison</h2><p>Restaurants that share your price tier and cuisine. The narrowest group with enough restaurants is used.</p></div></header><div id="mod-peers"></div></section>
+            <section class="mod" id="m-opps" aria-labelledby="mh-opps"><header class="mod-head"><span class="mod-n">5</span><div><h2 id="mh-opps">Opportunity analysis</h2><p>Where your entries differ from the reference groups. These are comparison findings, not causes or diagnoses.</p></div></header><div id="mod-opps"></div></section>
+            <section class="mod" id="m-plan" aria-labelledby="mh-plan"><header class="mod-head"><span class="mod-n">6</span><div><h2 id="mh-plan">Personal action plan</h2><p>Up to five suggestions, ordered by your priorities and by the size of the benchmark gaps. Each one shows its evidence and limits.</p></div></header><div id="mod-plan"></div></section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ PRINTABLE REPORT -->
+    <section id="view-report" class="view" data-view="report" aria-labelledby="h-report" hidden>
+      <div class="wrap narrow no-print report-bar">
+        <a class="o-btn ghost" href="#results">← Back to dashboard</a>
+        <div>
+          <button type="button" class="o-btn primary" id="rep-print">Save as PDF / Print</button>
+        </div>
+      </div>
+      <p class="wrap narrow no-print fine report-help">Use your browser's print dialog and choose “Save as PDF” as the destination. The report is generated in this browser; nothing is uploaded.</p>
+      <article class="report" id="report-doc" aria-labelledby="h-report"><h1 id="h-report">Restaurant diagnostic</h1></article>
+    </section>
+
+    <!-- ============================================================ GLOSSARY -->
+    <section id="view-glossary" class="view" data-view="glossary" aria-labelledby="h-glossary" hidden>
+      <div class="wrap narrow">
+        <header class="o-view-head">
+          <p class="o-eyebrow">Reader's guide</p>
+          <h1 id="h-glossary">Statistical terms, in plain language</h1>
+          <p class="o-sub">The words that appear in the research and in the technical details of your diagnostic. Each entry gives the plain meaning, an example from this research and a common misreading to avoid.</p>
+        </header>
+        <div id="glossary-list" class="gl-list"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ ABOUT -->
+    <section id="view-about" class="view" data-view="about" aria-labelledby="h-about" hidden>
+      <div class="wrap narrow">
+        <header class="o-view-head">
+          <p class="o-eyebrow">About this prototype</p>
+          <h1 id="h-about">About, privacy and limitations</h1>
+          <p class="o-sub">NCR Restaurant Intelligence applies the findings of the research project <em>“Visible, Liked, or Both? Understanding Restaurant Visibility, Perceived Quality and Customer Engagement on Zomato”</em>.</p>
+        </header>
+        <div class="about-grid" id="about-body"></div>
+        <div class="o-note privacy">
+          <b>Privacy statement.</b> This website has no accounts, no login, no backend, no database, no analytics and no third-party services. It makes no network request except to load its own files. Your restaurant profile is processed in this browser tab only and is kept in session storage until you clear it or close the tab. The tool does not collect email addresses, phone numbers, customer names or any personal information.
+          <div class="o-mt"><button type="button" class="o-btn ghost sm" id="about-clear">Clear my data from this browser</button> <span class="fine" id="about-clear-status" aria-live="polite"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ RESEARCH: OVERVIEW -->
+    <section id="view-research" class="view research" data-view="research" aria-labelledby="h-overview" hidden>
+      <div class="hero">
+        <div class="wrap hero-grid">
+          <div>
+          <p class="eyebrow">Research explorer · Marketing Analytics Research Project</p>
+          <h1 id="h-overview">Visible, liked, or both?</h1>
+          <p class="tagline">How restaurant visibility, perceived quality and customer engagement vary across Delhi NCR.</p>
+          <p class="lede">This is the research evidence behind the owner diagnostic. A rating is only one part of performance on a discovery platform, so the study measures three outcomes separately and compares them across five cities and the City + Locality units of Delhi NCR.</p>
+          <div class="plain-box"><b>In plain language.</b> <span data-bind="site.answer"></span></div>
+          <div class="hero-actions">
+            <a class="btn primary" href="#research/localities">Explore a locality</a>
+            <a class="btn" href="#research/findings">See the main findings</a>
+          </div>
+          </div>
+          <aside class="hero-card" aria-labelledby="h-hero-card">
+            <p class="eyebrow">One characteristic, three outcomes</p>
+            <h2 id="h-hero-card">Restaurants offering online delivery had…</h2>
+            <div id="hero-delivery"></div>
+            <p class="fine">Model estimates, holding price tier, city, booking, cuisine breadth and chain status constant. Associations, not effects. Source: final paper, Table 5. <a href="#glossary">What do these numbers mean?</a></p>
+          </aside>
+        </div>
+      </div>
+      <div class="wrap">
+        <ul class="stat-row" id="headline-stats" aria-label="Sample at a glance"></ul>
         <h2 class="section-title">Three outcomes, measured separately</h2>
         <div class="dim-grid" id="dimension-cards"></div>
-
         <div class="split">
           <div class="panel">
             <h3>Why the three outcomes are distinct</h3>
             <p>The same restaurant characteristics appear in all three models, but the size and even the direction of their associations differ.
-              Chain status is the clearest case: chain outlets are more visible and more engaged, but rated lower.</p>
+              Chain status is the clearest case: chain outlets were more visible and more engaged, but rated lower.</p>
             <div id="overview-direction" class="direction-mini table-wrap"></div>
-            <p class="fine">Filled: significant (p &lt; .05). Hollow: not significant. Baseline specifications; engagement among rated restaurants. Source: final paper, Table 10.</p>
+            <p class="fine">Filled: statistically significant (p &lt; .05). Hollow: not significant. Baseline specifications; engagement among rated restaurants. Source: final paper, Table 10.</p>
           </div>
           <div class="panel">
             <h3>Who has a published rating?</h3>
@@ -86,34 +373,31 @@
             <div id="overview-funnel" class="chart" role="img" aria-label="Sample funnel from the full dataset to rated and unrated Delhi NCR restaurants"></div>
           </div>
         </div>
-
         <div class="panel answer">
           <p class="eyebrow">Central research question</p>
           <p class="question" data-bind="site.central_question"></p>
           <p class="answer-text"><strong>Answer from the study:</strong> <span data-bind="site.answer"></span></p>
         </div>
-
-        <h2 class="section-title">Explore</h2>
+        <h2 class="section-title">Explore the evidence</h2>
         <div class="explore-grid">
-          <a class="explore-card" href="#cities"><span class="k">Cities</span><span>Compare the five NCR cities against the NCR benchmark, with sample sizes.</span></a>
-          <a class="explore-card" href="#localities"><span class="k">Localities</span><span>Pick a city and a locality and compare it with its city and with NCR.</span></a>
-          <a class="explore-card" href="#extremes"><span class="k">Performance extremes</span><span>How the highest- and lowest-performing restaurants differ.</span></a>
-          <a class="explore-card" href="#findings"><span class="k">Research findings</span><span>What is associated with visibility, quality and engagement.</span></a>
-          <a class="explore-card" href="#methodology"><span class="k">Methodology</span><span>Data, models and the limits of what can be claimed.</span></a>
+          <a class="explore-card" href="#research/cities"><span class="k">Cities</span><span>How the five NCR cities compare, with sample sizes.</span></a>
+          <a class="explore-card" href="#research/localities"><span class="k">Localities</span><span>Pick a locality and compare it with its city and with NCR.</span></a>
+          <a class="explore-card" href="#research/extremes"><span class="k">Top vs bottom</span><span>How the highest- and lowest-performing restaurants differ.</span></a>
+          <a class="explore-card" href="#research/findings"><span class="k">Findings</span><span>What is associated with visibility, quality and engagement.</span></a>
+          <a class="explore-card" href="#research/methodology"><span class="k">Methodology</span><span>Data, models and the limits of what can be claimed.</span></a>
         </div>
       </div>
     </section>
 
-    <!-- ================================================================ CITIES -->
-    <section id="view-cities" class="view" data-view="cities" aria-labelledby="h-cities" hidden>
+    <!-- ============================================================ RESEARCH: CITIES -->
+    <section id="view-cities" class="view research" data-view="research/cities" aria-labelledby="h-cities" hidden>
       <div class="wrap">
         <header class="view-head">
-          <p class="eyebrow">City explorer</p>
+          <p class="eyebrow">Research explorer · Cities</p>
           <h1 id="h-cities">Five Delhi NCR cities</h1>
-          <p class="lede">Select a city to compare its visibility, perceived quality, engagement and positioning with the NCR benchmark.
-            City differences are statistically clear but small, and no city is ranked “best”.</p>
+          <p class="lede">Select a city to compare it with the NCR benchmark on visibility, perceived quality, engagement and positioning.</p>
+          <div class="plain-box"><b>What this shows.</b> City differences are statistically clear but small, and no city is ranked “best”. None of the tests of whether delivery, booking or chain status work differently by city was significant after correction. Ghaziabad (25 restaurants) is shown but not interpreted.</div>
         </header>
-
         <div class="controls" role="group" aria-label="City controls">
           <div class="control">
             <label for="city-select">City</label>
@@ -121,7 +405,6 @@
           </div>
         </div>
         <div class="city-cards" id="city-cards" role="list" aria-label="City summary cards"></div>
-
         <div class="panel">
           <div class="panel-head">
             <h2 id="city-detail-title">City benchmark</h2>
@@ -129,12 +412,11 @@
           </div>
           <div id="city-flag"></div>
           <div class="legend" aria-hidden="true">
-            <span><i class="mk" style="background:#14213d"></i>Selected city (with 95% CI where published)</span>
+            <span><i class="mk" style="background:#14213d"></i>Selected city (with 95% confidence interval where published)</span>
             <span><i class="mk ncr"></i>NCR benchmark</span>
           </div>
           <div id="city-benchmarks" class="bench-table nocity"></div>
         </div>
-
         <div class="split">
           <div class="panel">
             <h2>Compare all five cities</h2>
@@ -151,35 +433,33 @@
             <div id="city-price-mix" class="chart"></div>
             <h3>Rating–engagement quadrants (rated restaurants)</h3>
             <div id="city-quadrant-mix" class="chart"></div>
-            <p class="fine">Quadrants are a median split of rating (3.3) and votes (40) among rated NCR restaurants, an imposed framework rather than discovered clusters. † Ghaziabad: 25 restaurants, not interpreted.</p>
+            <p class="fine">Quadrants are a median split of rating (3.3) and votes (40) among rated NCR restaurants: an imposed communication framework, not clusters discovered by statistical learning. † Ghaziabad: 25 restaurants, not interpreted.</p>
           </div>
         </div>
-
         <details class="panel details" id="city-models-details">
-          <summary>Within-city model estimates (four cities)</summary>
+          <summary>Technical detail: within-city model estimates (four cities)</summary>
           <div id="city-models"></div>
         </details>
         <div class="notes" id="city-notes"></div>
       </div>
     </section>
 
-    <!-- ================================================================ LOCALITIES -->
-    <section id="view-localities" class="view" data-view="localities" aria-labelledby="h-localities" hidden>
+    <!-- ============================================================ RESEARCH: LOCALITIES -->
+    <section id="view-localities" class="view research" data-view="research/localities" aria-labelledby="h-localities" hidden>
       <div class="wrap">
         <header class="view-head">
-          <p class="eyebrow">Locality benchmark explorer</p>
+          <p class="eyebrow">Research explorer · Localities</p>
           <h1 id="h-localities">Benchmark a City + Locality unit</h1>
-          <p class="lede">Choose a city, then a locality, and compare it with its city and with all of Delhi NCR. Localities are identified as
-            City + Locality, because some names (for example “MG Road” and “Sector 15”) occur in more than one city.</p>
+          <p class="lede">Choose a city, then a locality, and compare it with its city and with all of Delhi NCR. Localities are identified as City + Locality, because some names (for example “MG Road” and “Sector 15”) occur in more than one city.</p>
+          <div class="plain-box"><b>What this shows.</b> Localities differ far more than cities. Replacing city with locality in the models roughly doubled the share of rating variation accounted for (0.131 to 0.235). Coverage is concentrated in New Delhi, and individual ranks are indicative because they move when the eligibility threshold changes.</div>
         </header>
-
         <div class="controls loc-controls" role="group" aria-label="Locality controls">
           <fieldset class="control seg-control">
             <legend>Eligibility threshold</legend>
             <div class="segmented" id="threshold-group">
-              <label><input type="radio" name="threshold" value="20"><span>20+ restaurants</span></label>
-              <label><input type="radio" name="threshold" value="30" checked><span>30+ (primary)</span></label>
-              <label><input type="radio" name="threshold" value="50"><span>50+ restaurants</span></label>
+              <label><input type="radio" name="loc-threshold" value="20"><span>20+ restaurants</span></label>
+              <label><input type="radio" name="loc-threshold" value="30" checked><span>30+ (primary)</span></label>
+              <label><input type="radio" name="loc-threshold" value="50"><span>50+ restaurants</span></label>
             </div>
           </fieldset>
           <div class="control">
@@ -196,11 +476,8 @@
           </div>
         </div>
         <p class="fine" id="loc-filter-status" aria-live="polite"></p>
-
         <div class="coverage panel" id="loc-coverage"></div>
-
         <div id="loc-empty" class="empty-state" hidden></div>
-
         <div id="loc-detail">
           <div class="loc-header panel">
             <div>
@@ -210,7 +487,6 @@
             </div>
             <div class="loc-badges" id="loc-badges"></div>
           </div>
-
           <div class="panel">
             <div class="panel-head">
               <h2>Benchmarks: locality vs city vs NCR</h2>
@@ -226,17 +502,16 @@
               </div>
             </div>
             <div class="legend" aria-hidden="true">
-              <span><i class="mk loc"></i>Locality (with 95% CI where published)</span>
+              <span><i class="mk loc"></i>Locality (with 95% confidence interval where published)</span>
               <span><i class="mk city"></i>City benchmark</span>
               <span><i class="mk ncr"></i>NCR benchmark</span>
             </div>
             <div id="loc-benchmarks" class="bench-table"></div>
           </div>
-
           <div class="split">
             <div class="panel">
               <h2>Where it sits: rating vs engagement</h2>
-              <p class="fine">Median rating and median votes for every unit with 30+ restaurants and 20+ rated (82 units). Votes on a log scale. Spearman ρ = <span id="loc-rho"></span>.</p>
+              <p class="fine">Median rating and median votes for every unit with 30+ restaurants and 20+ rated (82 units). Votes on a log scale. The two move together: Spearman ρ = <span id="loc-rho"></span> (a rank correlation from −1 to +1).</p>
               <div id="loc-scatter" class="chart"></div>
               <p class="fine" id="loc-scatter-note"></p>
             </div>
@@ -246,10 +521,9 @@
               <div id="loc-price-mix" class="chart"></div>
               <h3>Rating–engagement quadrants (rated restaurants)</h3>
               <div id="loc-quadrant-mix" class="chart"></div>
-              <p class="fine">Quadrant mix and pattern labels are published for the primary threshold (30+) only.</p>
+              <p class="fine">Quadrant mix and pattern labels are published for the primary threshold (30+) only. Quadrants are an imposed median split, not discovered clusters.</p>
             </div>
           </div>
-
           <div class="panel" id="loc-ranks-panel">
             <h2>Ranks at the primary threshold</h2>
             <p class="fine">Nine separate rankings, never combined. Ranks are indicative: between 4 and 9 of each top-10 list change when the threshold moves from 30 to 20. Tied units share a rank.</p>
@@ -260,22 +534,21 @@
       </div>
     </section>
 
-    <!-- ================================================================ EXTREMES -->
-    <section id="view-extremes" class="view" data-view="extremes" aria-labelledby="h-extremes" hidden>
+    <!-- ============================================================ RESEARCH: EXTREMES -->
+    <section id="view-extremes" class="view research" data-view="research/extremes" aria-labelledby="h-extremes" hidden>
       <div class="wrap">
         <header class="view-head">
-          <p class="eyebrow">Performance extremes</p>
+          <p class="eyebrow">Research explorer · Performance extremes</p>
           <h1 id="h-extremes">How the top and bottom performers differ</h1>
           <p class="lede">Each comparison uses its own population. Rated-only and all-NCR comparisons are shown separately and never pooled.</p>
+          <div class="plain-box"><b>What this shows.</b> The highest-rated restaurants were set apart by price positioning and by being independent rather than chains, not by delivery. The most-voted restaurants were set apart by delivery, upper-mid pricing and broader menus. Top-voted is not the same as best.</div>
         </header>
-
         <div class="controls">
           <fieldset class="control seg-control">
             <legend>Comparison</legend>
             <div class="segmented" id="extreme-group"></div>
           </fieldset>
         </div>
-
         <div class="panel">
           <div class="panel-head">
             <h2 id="ext-title"></h2>
@@ -292,11 +565,11 @@
               <h3>Adjusted odds ratio of top-group membership</h3>
               <div id="ext-forest" class="chart"></div>
               <p class="fine" id="ext-adj-note"></p>
+              <p class="fine"><b>How to read it.</b> A dot right of 1 means higher odds of being in the top group than the bottom group, holding the other characteristics constant. Lines are 95% confidence intervals; a line crossing 1 is not statistically clear. Odds ratios compare odds, not probabilities.</p>
             </div>
           </div>
           <p class="takeaway" id="ext-takeaway"></p>
         </div>
-
         <div class="panel">
           <h2>Rating–engagement quadrants</h2>
           <div class="caveat" id="quad-caveat"></div>
@@ -317,25 +590,23 @@
           <h3>Quadrant mix by city (% of rated restaurants)</h3>
           <div id="quad-city" class="chart"></div>
         </div>
-
         <div class="panel">
           <h2>Ratings differentiate only as votes accumulate</h2>
-          <p class="fine">Rated NCR restaurants by vote band. Brown–Forsythe W = <span id="spread-w"></span>, p &lt; .001. This is a pattern in the data; the platform mechanism behind it is not observed.</p>
+          <p class="fine">Rated NCR restaurants by vote band. Brown–Forsythe W = <span id="spread-w"></span>, p &lt; .001 (a test that rating spread differs between bands). This is a pattern in the data; the platform mechanism behind it is not observed.</p>
           <div id="spread-chart" class="chart"></div>
         </div>
       </div>
     </section>
 
-    <!-- ================================================================ FINDINGS -->
-    <section id="view-findings" class="view" data-view="findings" aria-labelledby="h-findings" hidden>
+    <!-- ============================================================ RESEARCH: FINDINGS -->
+    <section id="view-findings" class="view research" data-view="research/findings" aria-labelledby="h-findings" hidden>
       <div class="wrap">
         <header class="view-head">
-          <p class="eyebrow">Research findings</p>
+          <p class="eyebrow">Research explorer · Findings</p>
           <h1 id="h-findings">What is associated with each outcome?</h1>
-          <p class="lede">Three regression models share one specification: online delivery, table booking, price tier, cuisine breadth, chain status and city fixed effects.
-            All estimates are associations, holding the other characteristics constant.</p>
+          <p class="lede">Three regression models share one specification: online delivery, table booking, price tier, cuisine breadth, chain status and city fixed effects. Each estimate is an association, holding the other characteristics constant.</p>
+          <div class="plain-box"><b>How to read the charts.</b> Visibility uses odds ratios (1 = no difference; 2 = twice the odds, not twice the probability). Perceived quality uses rating points (0 = no difference). Engagement uses percentage differences in the geometric mean of (1 + Votes), which is not an exact percentage change in raw votes. Filled dots are statistically significant; lines are 95% confidence intervals. <a href="#glossary">Glossary</a></div>
         </header>
-
         <div class="tabs" role="tablist" aria-label="Outcome" id="findings-tabs"></div>
         <div class="panel tab-panel" role="tabpanel" id="findings-panel" aria-labelledby="">
           <div class="panel-head">
@@ -359,7 +630,6 @@
           <p class="fine" id="f-meta"></p>
           <div class="note-box" id="f-reading"></div>
         </div>
-
         <div class="split">
           <div class="panel">
             <h2>Price tier: the Tier 2 to Tier 3 step</h2>
@@ -376,16 +646,14 @@
           <div class="panel">
             <h2>Location adds explanatory power</h2>
             <div id="lfe-chart" class="chart"></div>
-            <p class="fine">Adjusted R² with city fixed effects vs locality fixed effects (98 City + Locality units; pseudo-R² for visibility). Locality effects bundle footfall, demographics, rents and restaurant mix; they are not effects of location.</p>
+            <p class="fine">Adjusted R² (share of variation the model accounts for in this sample) with city vs locality fixed effects (98 City + Locality units; pseudo-R² for visibility). Locality effects bundle footfall, demographics, rents and restaurant mix; they are not effects of location.</p>
           </div>
         </div>
-
         <div class="panel">
           <h2>Direction of association across outcomes and extremes</h2>
           <div id="direction-table" class="table-wrap"></div>
-          <p class="fine">+ / −: significant positive / negative association (p &lt; .05); (ns): not significant. Baseline specifications. The all-NCR engagement column includes unrated restaurants and is a sensitivity model. Source: final paper, Table 10; RESULTS/tables/integrated_direction_table.csv.</p>
+          <p class="fine">+ / −: significant positive / negative association (p &lt; .05); (ns): not significant. Baseline specifications. The all-NCR engagement column includes unrated restaurants and is a sensitivity model. Source: final paper, Table 10.</p>
         </div>
-
         <div class="split">
           <div class="panel">
             <h2>Hypotheses</h2>
@@ -399,11 +667,11 @@
       </div>
     </section>
 
-    <!-- ================================================================ METHODOLOGY -->
-    <section id="view-methodology" class="view" data-view="methodology" aria-labelledby="h-methodology" hidden>
+    <!-- ============================================================ RESEARCH: METHODOLOGY -->
+    <section id="view-methodology" class="view research" data-view="research/methodology" aria-labelledby="h-methodology" hidden>
       <div class="wrap">
         <header class="view-head">
-          <p class="eyebrow">Methodology and limitations</p>
+          <p class="eyebrow">Research explorer · Methodology</p>
           <h1 id="h-methodology">How the benchmarks were built, and what they cannot show</h1>
           <p class="lede" id="m-status"></p>
         </header>
@@ -440,19 +708,30 @@
   </main>
 
   <footer class="site-footer">
-    <div class="wrap">
-      <p><strong>Visible, Liked, or Both?</strong> Mayank Kumbhat · Mohit · Tanishq Choudhary · Vansh Rastogi. Marketing Analytics Research Project, IIT Gandhinagar.</p>
-      <p class="fine">Historical research benchmark from an undated Zomato listing snapshot (Delhi NCR, n = 7,947). Not affiliated with Zomato and not a live service.
-        All values are read from the project's verified results; no model is re-estimated in this website.</p>
+    <div class="wrap foot-grid">
+      <div>
+        <p class="foot-brand">NCR Restaurant Intelligence</p>
+        <p class="fine">A research prototype applying <em>“Visible, Liked, or Both?”</em> by Mayank Kumbhat, Mohit, Tanishq Choudhary and Vansh Rastogi (Marketing Analytics Research Project, IIT Gandhinagar). Not affiliated with Zomato and not a live service.</p>
+      </div>
+      <div>
+        <p class="fine">Historical benchmarks from an undated Zomato listing snapshot (Delhi NCR, n = 7,947). Aggregated data only; no restaurant-level records are included in this website. All results are associations, not causal effects.</p>
+        <p class="fine"><a href="#about">About &amp; privacy</a> · <a href="#glossary">Glossary</a> · <a href="#research/methodology">Methodology</a></p>
+      </div>
     </div>
   </footer>
 
   <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+  <div id="gl-pop" class="gl-pop" role="dialog" aria-modal="false" aria-labelledby="gl-pop-t" hidden></div>
 
   <script src="data/site_data.js"></script>
+  <script src="data/diagnostic_data.js"></script>
   <script src="js/data.js"></script>
   <script src="js/charts.js"></script>
   <script src="js/filters.js"></script>
+  <script src="js/glossary.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/research.js"></script>
+  <script src="js/owner.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

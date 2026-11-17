@@ -1,0 +1,491 @@
+{
+ "models": {
+  "vis": {
+   "online_delivery": {
+    "label": "Online delivery",
+    "estimate": 9.993,
+    "lo": 8.029,
+    "hi": 12.4374,
+    "p": 1.9189614856271217e-94,
+    "unit": "odds ratio"
+   },
+   "table_booking": {
+    "label": "Table booking",
+    "estimate": 1.7874,
+    "lo": 1.2087,
+    "hi": 2.6431,
+    "p": 0.0036193102988710136,
+    "unit": "odds ratio"
+   },
+   "is_chain": {
+    "label": "Chain (name appears 5+ times)",
+    "estimate": 2.311,
+    "lo": 1.9367,
+    "hi": 2.7577,
+    "p": 1.5378649134834436e-20,
+    "unit": "odds ratio"
+   },
+   "n_cuisines": {
+    "label": "Cuisine breadth (+1 tag)",
+    "estimate": 1.4227,
+    "lo": 1.3261,
+    "hi": 1.5264,
+    "p": 8.417573662586874e-23,
+    "unit": "odds ratio"
+   },
+   "C(price)[T.2]": {
+    "label": "Price tier 2 (vs 1)",
+    "estimate": 2.0123,
+    "lo": 1.7507,
+    "hi": 2.313,
+    "p": 7.395798962068636e-23,
+    "unit": "odds ratio"
+   },
+   "C(price)[T.3]": {
+    "label": "Price tier 3 (vs 1)",
+    "estimate": 6.4107,
+    "lo": 4.1603,
+    "hi": 9.8786,
+    "p": 3.7031122351934385e-17,
+    "unit": "odds ratio"
+   },
+   "C(price)[T.4]": {
+    "label": "Price tier 4 (vs 1)",
+    "estimate": 11.5315,
+    "lo": 5.9036,
+    "hi": 22.5246,
+    "p": 8.201427110189324e-13,
+    "unit": "odds ratio"
+   }
+  },
+  "qual": {
+   "online_delivery": {
+    "label": "Online delivery",
+    "estimate": 0.0969,
+    "lo": 0.0711,
+    "hi": 0.1227,
+    "p": 1.8542312939553326e-13,
+    "unit": "rating points",
+    "sd_units": 0.2078
+   },
+   "table_booking": {
+    "label": "Table booking",
+    "estimate": -0.0401,
+    "lo": -0.0888,
+    "hi": 0.0087,
+    "p": 0.10706494812154814,
+    "unit": "rating points",
+    "sd_units": -0.0859
+   },
+   "is_chain": {
+    "label": "Chain (name appears 5+ times)",
+    "estimate": -0.0909,
+    "lo": -0.1206,
+    "hi": -0.0611,
+    "p": 2.126524743034793e-09,
+    "unit": "rating points",
+    "sd_units": -0.1948
+   },
+   "n_cuisines": {
+    "label": "Cuisine breadth (+1 tag)",
+    "estimate": 0.0221,
+    "lo": 0.011,
+    "hi": 0.0333,
+    "p": 0.00010488630777557945,
+    "unit": "rating points",
+    "sd_units": 0.0475
+   },
+   "C(price)[T.2]": {
+    "label": "Price tier 2 (vs 1)",
+    "estimate": 0.0379,
+    "lo": 0.0114,
+    "hi": 0.0645,
+    "p": 0.005087218847976843,
+    "unit": "rating points",
+    "sd_units": 0.0813
+   },
+   "C(price)[T.3]": {
+    "label": "Price tier 3 (vs 1)",
+    "estimate": 0.364,
+    "lo": 0.3097,
+    "hi": 0.4183,
+    "p": 1.8741770872178802e-39,
+    "unit": "rating points",
+    "sd_units": 0.7804
+   },
+   "C(price)[T.4]": {
+    "label": "Price tier 4 (vs 1)",
+    "estimate": 0.4703,
+    "lo": 0.4019,
+    "hi": 0.5387,
+    "p": 1.945420526484073e-41,
+    "unit": "rating points",
+    "sd_units": 1.0084
+   }
+  },
+  "eng": {
+   "online_delivery": {
+    "label": "Online delivery",
+    "estimate": 97.5239,
+    "lo": 84.9624,
+    "hi": 110.9386,
+    "p": 1.1840822270143736e-91,
+    "unit": "% difference, geometric mean of (1 + Votes), rated NCR",
+    "sd_units": 0.4837
+   },
+   "table_booking": {
+    "label": "Table booking",
+    "estimate": 10.2706,
+    "lo": -4.1169,
+    "hi": 26.817,
+    "p": 0.1704987326074212,
+    "unit": "% difference, geometric mean of (1 + Votes), rated NCR",
+    "sd_units": 0.0695
+   },
+   "is_chain": {
+    "label": "Chain (name appears 5+ times)",
+    "estimate": 34.452,
+    "lo": 24.7827,
+    "hi": 44.8706,
+    "p": 7.587900670328111e-15,
+    "unit": "% difference, geometric mean of (1 + Votes), rated NCR",
+    "sd_units": 0.2104
+   },
+   "n_cuisines": {
+    "label": "Cuisine breadth (+1 tag)",
+    "estimate": 19.3761,
+    "lo": 15.7626,
+    "hi": 23.1024,
+    "p": 1.415574466898637e-29,
+    "unit": "% difference, geometric mean of (1 + Votes), rated NCR",
+    "sd_units": 0.1259
+   },
+   "C(price)[T.2]": {
+    "label": "Price tier 2 (vs 1)",
+    "estimate": 58.8382,
+    "lo": 48.0309,
+    "hi": 70.4346,
+    "p": 6.620460821288182e-38,
+    "unit": "% difference, geometric mean of (1 + Votes), rated NCR",
+    "sd_units": 0.3288
+   },
+   "C(price)[T.3]": {
+    "label": "Price tier 3 (vs 1)",
+    "estimate": 348.8379,
+    "lo": 283.6177,
+    "hi": 425.1465,
+    "p": 2.2270415180197353e-78,
+    "unit": "% difference, geometric mean of (1 + Votes), rated NCR",
+    "sd_units": 1.067
+   },
+   "C(price)[T.4]": {
+    "label": "Price tier 4 (vs 1)",
+    "estimate": 431.1277,
+    "lo": 333.135,
+    "hi": 551.2903,
+    "p": 6.010400239494862e-58,
+    "unit": "% difference, geometric mean of (1 + Votes), rated NCR",
+    "sd_units": 1.1866
+   }
+  },
+  "eng_all": {
+   "online_delivery": {
+    "label": "Online delivery",
+    "estimate": 283.7089,
+    "lo": 256.0905,
+    "hi": 313.4693,
+    "p": 1.0805008134069898e-272,
+    "unit": "% difference, geometric mean of (1 + Votes), all NCR"
+   },
+   "table_booking": {
+    "label": "Table booking",
+    "estimate": 24.3658,
+    "lo": 6.049,
+    "hi": 45.8462,
+    "p": 0.0073084490027136104,
+    "unit": "% difference, geometric mean of (1 + Votes), all NCR"
+   },
+   "is_chain": {
+    "label": "Chain (name appears 5+ times)",
+    "estimate": 72.5125,
+    "lo": 57.7448,
+    "hi": 88.6627,
+    "p": 7.088810409772112e-33,
+    "unit": "% difference, geometric mean of (1 + Votes), all NCR"
+   },
+   "n_cuisines": {
+    "label": "Cuisine breadth (+1 tag)",
+    "estimate": 31.4186,
+    "lo": 26.9221,
+    "hi": 36.0743,
+    "p": 2.170309202706027e-53,
+    "unit": "% difference, geometric mean of (1 + Votes), all NCR"
+   },
+   "C(price)[T.2]": {
+    "label": "Price tier 2 (vs 1)",
+    "estimate": 105.1761,
+    "lo": 89.0148,
+    "hi": 122.7191,
+    "p": 4.5072934558973587e-66,
+    "unit": "% difference, geometric mean of (1 + Votes), all NCR"
+   },
+   "C(price)[T.3]": {
+    "label": "Price tier 3 (vs 1)",
+    "estimate": 621.2001,
+    "lo": 501.7931,
+    "hi": 764.2997,
+    "p": 1.516894006354714e-101,
+    "unit": "% difference, geometric mean of (1 + Votes), all NCR"
+   },
+   "C(price)[T.4]": {
+    "label": "Price tier 4 (vs 1)",
+    "estimate": 996.4772,
+    "lo": 775.7731,
+    "hi": 1272.8011,
+    "p": 7.621265333492113e-97,
+    "unit": "% difference, geometric mean of (1 + Votes), all NCR"
+   }
+  }
+ },
+ "fit": {
+  "vis_pseudo_r2": 0.219212833464283,
+  "vis_auc": 0.8044772199233181,
+  "qual_adj_r2": 0.13059420263818078,
+  "eng_adj_r2": 0.3139093216929628,
+  "eng_all_adj_r2": 0.40597603395836745,
+  "qual_bp_lm": 233.4489344845138,
+  "eng_bp_lm": 148.8566329691859
+ },
+ "sd": {
+  "rating": 0.46638345884040355,
+  "log_votes": 1.4071841999372683,
+  "log_votes_all": 1.9372630411499414
+ },
+ "price_contrasts": {
+  "Tier 1 -> 2": {
+   "qual_b": 0.03793594851708121,
+   "qual_lo": 0.011395097170324976,
+   "qual_hi": 0.06447679986383745,
+   "qual_p": 0.005087218847976843,
+   "eng_pct": 58.83822061513801,
+   "eng_lo": 48.03085627946737,
+   "eng_hi": 70.434603719054,
+   "eng_p": 6.620460821288182e-38
+  },
+  "Tier 2 -> 3": {
+   "qual_b": 0.3260498607749347,
+   "qual_lo": 0.27465032552945856,
+   "qual_hi": 0.37744939602041083,
+   "qual_p": 1.7320413105716355e-35,
+   "eng_pct": 182.575506523962,
+   "eng_lo": 143.79040416550154,
+   "eng_hi": 227.5310082880325,
+   "eng_p": 2.914049343493243e-43
+  },
+  "Tier 3 -> 4": {
+   "qual_b": 0.10630777900175092,
+   "qual_lo": 0.04323262427194645,
+   "qual_hi": 0.16938293373155539,
+   "qual_p": 0.0009553649417996203,
+   "eng_pct": 18.333957659957,
+   "eng_lo": -1.641414105222816,
+   "eng_hi": 42.36607214390673,
+   "eng_p": 0.07433927698040456
+  }
+ },
+ "extremes_adjusted_rating": {
+  "online_delivery": {
+   "OR": 1.1046788354633235,
+   "lo": 0.8559388579111754,
+   "hi": 1.4257038551779855,
+   "p": 0.44435646192457046
+  },
+  "table_booking": {
+   "OR": 0.9263846003369737,
+   "lo": 0.6080575101945196,
+   "hi": 1.4113606251930961,
+   "p": 0.7218635485370957
+  },
+  "is_chain": {
+   "OR": 0.2918038274426462,
+   "lo": 0.20691827266324142,
+   "hi": 0.4115125871399384,
+   "p": 2.1795019588447475e-12
+  },
+  "n_cuisines": {
+   "OR": 1.101410867813355,
+   "lo": 0.9833009740019263,
+   "hi": 1.2337076152789321,
+   "p": 0.09511951387800709
+  },
+  "C(price)[T.2]": {
+   "OR": 1.2913033949385395,
+   "lo": 0.9593017687994242,
+   "hi": 1.7382063830306975,
+   "p": 0.09180431003765738
+  },
+  "C(price)[T.3]": {
+   "OR": 7.755899580753783,
+   "lo": 4.849659021265083,
+   "hi": 12.403754169719939,
+   "p": 1.2244843716775046e-17
+  },
+  "C(price)[T.4]": {
+   "OR": 13.327030252207324,
+   "lo": 6.585170189288443,
+   "hi": 26.9711685860682,
+   "p": 6.015635195765006e-13
+  }
+ },
+ "extremes_adjusted_votes_rated": {
+  "online_delivery": {
+   "OR": 7.280456590315234,
+   "lo": 5.0684147031119435,
+   "hi": 10.457914608076578,
+   "p": 6.361952575864746e-27
+  },
+  "table_booking": {
+   "OR": 1.7431964309387968,
+   "lo": 0.9637811662919041,
+   "hi": 3.15292921579815,
+   "p": 0.06606931971928826
+  },
+  "is_chain": {
+   "OR": 1.8408270720023592,
+   "lo": 1.177297093457036,
+   "hi": 2.8783255542288853,
+   "p": 0.0074584230880245005
+  },
+  "n_cuisines": {
+   "OR": 1.5297327046135354,
+   "lo": 1.3050956084686305,
+   "hi": 1.7930350331268379,
+   "p": 1.5535987158863207e-07
+  },
+  "C(price)[T.2]": {
+   "OR": 3.3932344119483813,
+   "lo": 2.290652714532745,
+   "hi": 5.026532263656279,
+   "p": 1.1006375614643979e-09
+  },
+  "C(price)[T.3]": {
+   "OR": 42.02376082061338,
+   "lo": 21.71348306030447,
+   "hi": 81.33179133920845,
+   "p": 1.3096758822260945e-28
+  },
+  "C(price)[T.4]": {
+   "OR": 66.47004506860247,
+   "lo": 25.189010703656052,
+   "hi": 175.4045422189113,
+   "p": 2.3132252337624502e-17
+  }
+ },
+ "r2_booking": {
+  "visibility": {
+   "est": 2.423604779685459,
+   "sig": "***"
+  },
+  "quality": {
+   "est": 0.07783257510644925,
+   "sig": "***"
+  },
+  "engagement (rated)": {
+   "est": 0.3411517191281265,
+   "sig": "***"
+  }
+ },
+ "cuts": {
+  "top_rating": 3.9,
+  "bottom_rating": 2.7,
+  "high_votes_all": 234.0,
+  "rated_vote_p10": 7.0,
+  "rated_vote_p90": 321.0
+ },
+ "rating_spread": [
+  {
+   "vote_band": "4-10",
+   "n": 1049,
+   "mean_rating": 2.9625357483317445,
+   "sd_rating": 0.15542865778767126,
+   "p10": 2.8,
+   "p90": 3.1,
+   "min_rating": 2.3,
+   "max_rating": 3.5,
+   "pct_top_rated": 0.0,
+   "pct_bottom_rated": 8.007626310772164,
+   "pct_between_2.8_and_3.2": 90.27645376549094
+  },
+  {
+   "vote_band": "11-25",
+   "n": 1186,
+   "mean_rating": 3.1015177065767285,
+   "sd_rating": 0.3091532851105605,
+   "p10": 2.7,
+   "p90": 3.5,
+   "min_rating": 2.1,
+   "max_rating": 4.3,
+   "pct_top_rated": 0.7588532883642496,
+   "pct_bottom_rated": 15.261382799325462,
+   "pct_between_2.8_and_3.2": 53.456998313659355
+  },
+  {
+   "vote_band": "26-50",
+   "n": 993,
+   "mean_rating": 3.2143001007049348,
+   "sd_rating": 0.41472024501219346,
+   "p10": 2.6,
+   "p90": 3.7,
+   "min_rating": 2.1,
+   "max_rating": 4.5,
+   "pct_top_rated": 4.028197381671702,
+   "pct_bottom_rated": 18.22759315206445,
+   "pct_between_2.8_and_3.2": 28.700906344410875
+  },
+  {
+   "vote_band": "51-100",
+   "n": 928,
+   "mean_rating": 3.3191810344827584,
+   "sd_rating": 0.4950876025325754,
+   "p10": 2.6,
+   "p90": 3.9,
+   "min_rating": 1.9,
+   "max_rating": 4.8,
+   "pct_top_rated": 11.314655172413794,
+   "pct_bottom_rated": 17.13362068965517,
+   "pct_between_2.8_and_3.2": 18.53448275862069
+  },
+  {
+   "vote_band": "101-250",
+   "n": 907,
+   "mean_rating": 3.479272326350606,
+   "sd_rating": 0.5045601320558882,
+   "p10": 2.660000000000001,
+   "p90": 4.0,
+   "min_rating": 1.9,
+   "max_rating": 4.9,
+   "pct_top_rated": 21.168687982359426,
+   "pct_bottom_rated": 11.57662624035281,
+   "pct_between_2.8_and_3.2": 12.017640573318634
+  },
+  {
+   "vote_band": "251+",
+   "n": 745,
+   "mean_rating": 3.8084563758389263,
+   "sd_rating": 0.37163675472516733,
+   "p10": 3.4,
+   "p90": 4.2,
+   "min_rating": 1.8,
+   "max_rating": 4.9,
+   "pct_top_rated": 44.69798657718121,
+   "pct_bottom_rated": 2.2818791946308723,
+   "pct_between_2.8_and_3.2": 2.5503355704697985
+  }
+ ],
+ "samples": {
+  "full": 9551,
+  "ncr": 7947,
+  "ncr_rated": 5808,
+  "ncr_unrated": 2139
+ }
+}

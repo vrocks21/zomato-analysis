@@ -1,85 +1,56 @@
-# Website Usage Guide: NCR Restaurant Benchmark Explorer
+# Website Usage Guide — NCR Restaurant Intelligence
 
-## 1. Starting the website
+## 1. Opening the site
 
-You need Python 3 (any recent version) and a modern browser (Chrome, Edge, Firefox or Safari). No internet connection is needed once the files are on your computer.
+- **From disk:** double-click `index.html`. Everything works offline (the data are bundled as `data/*.js`).
+- **Local server (recommended for printing and for some browsers' file:// restrictions):** in the `WEBSITE` folder run `python serve.py` and open http://127.0.0.1:8010.
 
-1. Open a terminal in the website folder (`PHASE3_STAGE2/WEBSITE`, or `FINAL_SUBMISSION/Website/Website_Source` in the submission).
-2. Start the local server:
+The header has two experiences: **For restaurant owners** (default) and **Research explorer**. The status strip reminds you that the benchmarks are historical, not live Zomato data, and that your entries stay in the browser.
 
-```bash
-python -m http.server 8000
-```
+## 2. Restaurant Owner mode
 
-3. Open **http://localhost:8000** in the browser.
-4. Stop the server with Ctrl+C in the terminal.
+### Homepage
+"Understand where your restaurant stands." Choose **Benchmark My Restaurant** to start, or **Explore NCR Research**. A labelled *synthetic example* (an invented profile, not a real restaurant) is available from the homepage and the wizard (`#example`).
 
-If port 8000 is busy, use another port (for example `python -m http.server 8080`, then open http://localhost:8080).
+### Guided diagnostic (four steps, back navigation at any time)
 
-**Without a server.** `index.html` also loads `data/site_data.js`, a copy of the same data, so double-clicking `index.html` should work in most browsers. This file:// mode was not tested; the local server is the supported method.
+| Step | Fields | Notes |
+|---|---|---|
+| 1 Restaurant profile | Name (optional, report title only); **City**; **Locality** (searchable; "My locality is not listed" is allowed); **Price tier** (1–4, with the typical NCR cost for two per tier); Cuisines (optional, up to 8; the first is the peer cuisine) | The locality hint shows how many restaurants the historical data hold for it and whether a locality benchmark will be available. |
+| 2 Operations | Current rating (0–5; 0 = no published rating), votes (whole number ≥ 0), cost for two (₹), online delivery, table booking, multi-outlet (Yes / No / Not sure) | All optional. Entries are not verified against Zomato. The chain-proxy caution is shown next to multi-outlet. |
+| 3 Priorities | Become more visible · Improve perceived quality · Increase engagement · Understand price positioning · Benchmark against my local market | Click in order of importance; the number shows the rank. |
+| 4 Review | Summary with Edit links; locality threshold (30 primary, 20 sensitivity, 50 stricter); privacy statement; warnings | **Generate my diagnostic** validates required fields and ranges first. |
 
-## 2. Navigation
+Validation: city, locality and price tier are required; ratings must be 0–5; votes non-negative whole numbers; price tier must be one of the four platform tiers. Inconsistent but possible combinations (e.g. a rating with fewer than 4 votes) produce a warning, not a block.
 
-The top bar links to the six sections: Overview, Cities, Localities, Performance extremes, Research findings and Methodology. On narrow screens, the **Menu** button opens the same links. Every section has its own address (for example `#cities`), so the browser's Back button works. The dark strip under the header is a permanent reminder that this is a historical research benchmark.
+### Diagnostic dashboard (six modules)
 
-## 3. City explorer
+1. **Restaurant overview** — your entries; missing items and what they unlock.
+2. **Performance snapshot** — each metric against the closest geographic reference with enough data (locality → city → NCR). Diamond = your entry; shaded bars = middle half and middle 80% of the group; line = median. Every card shows its population and n.
+3. **Locality and city benchmarks** — availability cards for locality, city, NCR (with reasons when unavailable), then a metric switcher (published rating, rating, votes, cost, price-tier mix, delivery, booking, chain profile, cuisine tags) with a plain-language reading and the denominator under each chart.
+4. **Similar restaurant comparison** — the peer ladder (city · tier · cuisine → city · tier → city · all tiers → NCR · tier) with each group's size and status, the group used, and why narrower groups were not used. Other peer groups are listed for context only.
+5. **Opportunity analysis** — where your entries differ from the reference groups (below/above median, within middle half, differs from/similar to most). Comparison findings, not causes.
+6. **Personal action plan** — up to five suggestions ordered by your priorities and benchmark gaps. Each shows what was observed, what it means, what you could consider, its evidence class and limitations; "Evidence and limitations" reveals estimates, 95% CIs and p-values. The table-booking note explains why no booking recommendation is made. "How these suggestions were chosen" lists every rule's status.
 
-- Pick a city from the **City** list or click a city card.
-- **City vs Delhi NCR** lists 14 metrics in four groups (visibility, perceived quality, engagement, positioning). Each row shows the city value with its 95% interval where one was published, the NCR benchmark, the sample size it is based on, and a small comparison line (dot = city, diamond = NCR). Select **i** next to a metric to see its definition, denominator and source column.
-- **Compare all five cities** charts any metric across the cities. The selected city is orange, the dashed line is the NCR benchmark, and Ghaziabad is hatched and marked † because it has only 25 restaurants.
-- **Within-city model estimates** (collapsed by default) shows Models 1–3 re-estimated for New Delhi, Gurgaon, Noida and Faridabad. No predictor × city interaction is significant, so these do not show that associations differ between cities.
+Inline **?** buttons open plain-language explanations (odds ratio, p-value, confidence interval, log outcome …). The full **Glossary** page gives each term's meaning, an example from this research and a misreading to avoid.
 
-## 4. Locality benchmark explorer
+### Download My Restaurant Diagnostic
+Opens a print-ready report (profile, goals, locality/city/NCR benchmarks, peers, gaps, suggestions, evidence classes, sample sizes and denominators, historical caveat, limitations, references). Click **Save as PDF / Print** and choose "Save as PDF" in the browser's print dialog. The report is generated locally; nothing is uploaded.
 
-1. **Eligibility threshold.** 30+ restaurants is the primary threshold used in the paper (98 units). 20+ (136 units) and 50+ (47 units) are the paper's sensitivity thresholds. Only units meeting the selected threshold can be chosen.
-2. **City.** Each option shows how many eligible units the city has. Ghaziabad has none at any threshold, and the page says so.
-3. **Search.** Type part of a locality name to filter the list (for example "sector", "cyber" or "nagar").
-4. **Locality.** Choose a unit. Units are identified as **City + Locality**, because names such as "MG Road", "Sector 15" and "Sector 37" exist in more than one city.
+### Clearing your data
+About & privacy → **Clear my data from this browser**, or close the tab.
 
-For the selected unit you get:
+## 3. Research Explorer mode
 
-- **Header**: restaurants, rated and unrated counts, the identifier, the thresholds it meets, and its rating–engagement pattern label (primary threshold only).
-- **Benchmarks**: locality value (with 95% interval and the n it is based on), city benchmark and NCR benchmark for every metric. Use **Show** to restrict the table to one dimension.
-- **Where it sits**: median rating against median votes for the 82 units with 30+ restaurants and 20+ rated restaurants. The selected unit is orange, its city's other units navy, and the rest grey.
-- **Composition**: price-tier mix and rating–engagement quadrant mix, each next to the city.
-- **Ranks**: the unit's position in each of the nine separate rankings (primary threshold only; ties share a rank).
+The approved Stage 2 explorer, reworded for non-technical readers with "In plain language / What this shows" boxes:
 
-The address bar keeps the selection (for example `#localities?t=30&loc=New+Delhi+%7C+Khan+Market`), so a view can be bookmarked or shared.
+- **Overview** — the three outcomes, the delivery example, the publication pattern, the central question and answer.
+- **Cities** — five city cards, city vs NCR benchmarks with CIs, five-city comparison by metric, price and quadrant mix, within-city model estimates. Ghaziabad (n = 25) is shown but not interpreted.
+- **Localities** — threshold (20 / 30 primary / 50), city, search; locality vs city vs NCR benchmarks; rating-vs-engagement scatter; composition; nine separate ranks. Deep links: `#research/localities?t=30&loc=<City | Locality>`.
+- **Top vs bottom** — rating extremes, rated-only vote extremes and all-NCR vote extremes (never pooled), adjusted odds ratios, the four quadrants (an imposed median split), rating spread by vote band.
+- **Findings** — the three models as forest plots (rated vs all-NCR engagement selectable), price-tier steps, locality fixed effects, direction table, hypotheses with the H1 qualification, table-booking sensitivity.
+- **Methodology** — sample construction, outcomes, analyses, limitations, the Stage 1 figures and data provenance.
 
-**"Not available".** A value is never replaced with zero. You will see "Not available" when:
-- the unit has fewer than 20 rated restaurants (rating statistics are not reported, following the paper's rule);
-- no NCR-wide value exists in the verified results (NCR median votes and NCR median cost for two: a median cannot be rebuilt from city medians);
-- the quadrant mix or ranks are requested for a unit below the primary threshold.
+## 4. What the site cannot do
 
-## 5. Performance extremes
-
-- **Comparison** switches between three separate populations: highest- vs lowest-rated (rated NCR), most- vs least-voted (rated NCR), and most-voted vs zero-vote (all NCR). The population and group sizes are shown above the charts.
-- **Adjusted odds ratios** come from the paper's extreme-group logistic regressions. They are not shown for the all-NCR comparison, because the paper reports near-separation there.
-- **Quadrants.** Select a quadrant to see its profile, and choose a characteristic to compare all four. The quadrants are a median split (rating 3.3, votes 40), not discovered clusters, and they describe groups. They must not be used to predict an individual restaurant's success.
-
-## 6. Research findings
-
-- Tabs switch between the visibility, perceived quality and engagement models (arrow keys also work). Each chart shows estimates with 95% intervals; filled markers are significant at p < .05.
-- On the engagement tab, **Population** switches between the primary rated-NCR model and the all-NCR sensitivity model.
-- **Show city fixed effects** adds the city coefficients (Ghaziabad, n = 25, is shown but not interpreted).
-- Engagement values are percentage differences in the geometric mean of (1 + Votes), not percentage changes in raw vote counts.
-
-## 7. Accessibility
-
-All controls have labels and work from the keyboard (Tab, Enter or Space, and arrow keys in the outcome tabs). Charts have text labels and accessible names, and chart elements with a tooltip can be focused. The layout adapts to phones, tablets and desktops.
-
-## 8. Rebuilding the data
-
-After any change to the verified results, regenerate the data from the project root:
-
-```bash
-python PHASE3_STAGE2/WEBSITE/build_website_data.py
-```
-
-It prints the number of validation checks passed and refuses to write data if any check fails. If you run a copy of the script from somewhere else (for example `FINAL_SUBMISSION/Website/Website_Source/`), point it at the project folder and it will write into that copy's `data/` folder:
-
-```bash
-python build_website_data.py --root "<path to ZOMATO_RESEARCH_PROJECT>"
-```
-
-The generated data are already included, so rebuilding is only needed if the underlying results change.
+Show current Zomato performance; verify your entries; know whether your own restaurant is in the historical data (it may or may not be, and cannot be removed); identify your real competitors; or predict the effect of any change.

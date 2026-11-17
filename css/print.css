@@ -1,0 +1,14 @@
+/* Print / Save-as-PDF: only the diagnostic report is printed. */
+@page { size: A4; margin: 14mm 13mm 16mm; }
+html, body { background: #fff !important; }
+.site-header, .site-footer, .skip-link, .no-print, .tooltip, .gl-pop, #load-error { display: none !important; }
+/* base.css (Stage 2) prints every view via `.view[hidden] { display: block !important }`; override it */
+.view, .view[hidden], main .view[hidden] { display: none !important; }
+#view-report, #view-report[hidden] { display: block !important; }
+.report { box-shadow: none !important; border: 0 !important; margin: 0 !important; padding: 0 !important; max-width: none !important; font-size: 9.6pt !important; }
+.report h1 { font-size: 17pt !important; }
+.rs-sec h2 { font-size: 11.5pt !important; break-after: avoid; }
+.rt { font-size: 8.4pt !important; } .rt tr { break-inside: avoid; }
+.rep-sug { break-inside: avoid; }
+a { color: inherit; text-decoration: none; }
+* { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
